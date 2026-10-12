@@ -80,8 +80,9 @@ export function GallerySection() {
               title="Roofing & Exterior Projects in Essex County NJ"
               description={
                 <>
-                  Explore recent roof replacement, siding installation, chimney repair, and exterior
-                  renovation projects completed by <BrandLink>Gutama Home Improvement</BrandLink>
+                  Explore recent roof replacement, siding installation, chimney
+                  repair, and exterior renovation projects completed by{" "}
+                  <BrandLink>Gutama Home Improvement</BrandLink>
                   across Essex County, NJ.
                 </>
               }
@@ -162,8 +163,7 @@ export function GallerySection() {
               fill
               className="object-contain"
               sizes="100vw"
-              quality={90}
-              priority
+              quality={60}
             />
           </div>
         </div>

@@ -10,7 +10,7 @@ type BlogBreadcrumbsProps = {
 export function BlogBreadcrumbs({ title }: BlogBreadcrumbsProps) {
   return (
     <nav
-      className="sticky top-24.25 z-10 border-b border-secondary/10 bg-background/80 backdrop-blur-md"
+      className="sticky top-24.25 z-20 border-b border-secondary/10 bg-background/80 backdrop-blur-md"
       aria-label="Breadcrumb"
     >
       <Container className="py-2 sm:py-3">

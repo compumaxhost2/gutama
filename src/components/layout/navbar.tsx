@@ -174,7 +174,7 @@ export function Navbar() {
     <>
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex h-24 w-full max-w-7xl items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2" aria-label={siteConfig.business.name}>
+          <Link href="/" className="flex h-24 items-center gap-2" aria-label={siteConfig.business.name}>
             <Image
               src="/images/logo.webp"
               alt={siteConfig.business.name}
@@ -182,7 +182,7 @@ export function Navbar() {
               height={96}
               priority
               sizes="180px"
-              className="h-42 w-auto object-contain mt-6"
+              className="h-42 w-auto object-contain mt-6 pointer-events-none"
             />
           </Link>
 

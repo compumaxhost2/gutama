@@ -97,6 +97,16 @@ export const BLOG_PROJECTS: BlogProject[] = [
     href: "/blog/dormer-addition-existing-roof-essex-county-nj",
     date: "15th September 2026",
   },
+  {
+    title:
+      "Gutter Installation in Essex County, NJ: Costs, Types, and How to Choose the Right System in 2026",
+    shortDesc:
+      "Explore gutter installation in Essex County, NJ. Compare seamless gutters, installation costs, replacement options, and tips for choosing the right contractor.",
+    image: "/blog/gutter-installation-essex-county-nj.webp",
+    href: "/blog/gutter-installation-essex-county-nj-2026",
+    date: "19th October 2026",
+  },
 ];
+
 
 

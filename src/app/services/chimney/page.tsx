@@ -1,4 +1,4 @@
-import { ChimneyAboutSection } from "@/components/services/chimney/about-section";
+﻿import { ChimneyAboutSection } from "@/components/services/chimney/about-section";
 import { ChimneyCtaSection } from "@/components/services/chimney/cta-section";
 import { ChimneyFaqSection } from "@/components/services/chimney/faq-section";
 import { ChimneyHeroSection } from "@/components/services/chimney/hero-section";
@@ -16,7 +16,7 @@ import {WhyChooseProfessionalChimneySection} from "@/components/services/chimney
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <ChimneyHeroSection />
       <ChimneyOverviewSection />
       <ChimneyAboutSection />

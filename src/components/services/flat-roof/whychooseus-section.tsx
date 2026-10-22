@@ -1,4 +1,4 @@
-import {
+﻿import {
   Award,
   MessageSquare,
   Shield,
@@ -41,7 +41,7 @@ export function FlatRoofWhyChooseUsSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-20 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -49,15 +49,15 @@ export function FlatRoofWhyChooseUsSection() {
             Why Choose Us
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Why Property Owners Choose
-            <em className="text-secondary">
+            <em className="text-secondary italic">
               {" "}
               Gutama Home Improvement
             </em>
           </h2>
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose text-stone-300">
             Property owners throughout Essex County trust our team for reliable
             flat roofing solutions, quality workmanship, and professional
             service from consultation through project completion.
@@ -71,17 +71,17 @@ export function FlatRoofWhyChooseUsSection() {
             return (
               <div
                 key={benefit.title}
-                className="glass-card border border-border/40 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
               >
                 <div className="mb-6 flex h-11 w-11 items-center justify-center border border-secondary/35 bg-secondary/5">
                   <Icon size={18} className="text-secondary" />
                 </div>
 
-                <h3 className="mb-3 font-serif text-lg leading-snug text-foreground">
+                <h3 className="mb-3 font-serif text-lg leading-snug text-stone-900">
                   {benefit.title}
                 </h3>
 
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose text-stone-600">
                   {benefit.description}
                 </p>
               </div>

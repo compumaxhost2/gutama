@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Phone } from "lucide-react";
@@ -55,7 +55,7 @@ export function ReRoofingFaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-20 lg:grid-cols-[1fr_1.6fr]">
         <div>
           <div className="lg:sticky lg:top-28">
@@ -64,15 +64,15 @@ export function ReRoofingFaqSection() {
               Frequently Asked Questions
             </p>
 
-            <h2 className="mb-7 font-serif text-[clamp(32px,3.5vw,48px)] leading-snug text-foreground">
+            <h2 className="mb-7 font-serif text-[clamp(32px,3.5vw,48px)] leading-snug font-bold text-white">
               Re-Roofing
               <br />
-              <em className="text-secondary">FAQs</em>
+              <em className="text-secondary italic">FAQs</em>
             </h2>
 
             <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="mb-8 text-sm leading-loose text-muted-foreground">
+            <p className="mb-8 text-sm leading-loose text-stone-600">
               {content.intro}
             </p>
 
@@ -93,7 +93,7 @@ export function ReRoofingFaqSection() {
           {content.items.map((item, i) => (
             <div
               key={item.q}
-              className="border-b border-border/40"
+              className="border-b border-stone-200/90"
             >
               <button
                 onClick={() =>
@@ -106,7 +106,7 @@ export function ReRoofingFaqSection() {
                     "font-serif text-lg transition-colors duration-200",
                     activeIndex === i
                       ? "text-secondary"
-                      : "text-foreground",
+                      : "text-stone-900",
                   ].join(" ")}
                 >
                   {item.q}
@@ -123,7 +123,7 @@ export function ReRoofingFaqSection() {
                     className={
                       activeIndex === i
                         ? "text-secondary"
-                        : "text-muted-foreground"
+                        : "text-stone-600"
                     }
                   />
                 </motion.div>
@@ -150,7 +150,7 @@ export function ReRoofingFaqSection() {
                     }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 text-sm leading-loose text-muted-foreground">
+                    <p className="pb-6 text-sm leading-loose text-stone-600">
                       {item.a}
                     </p>
                   </motion.div>

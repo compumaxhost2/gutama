@@ -29,7 +29,7 @@ export function BlogGrid({ projects }: BlogGridProps) {
             href={project.href}
             className="block touch-manipulation transition-transform duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/50 focus-visible:rounded-lg"
           >
-            <article className="glass-card group mb-6 break-inside-avoid overflow-hidden transition-all duration-500 hover:border-secondary/30 hover:shadow-xl cursor-pointer">
+            <article className="group mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-md transition-all duration-300 hover:border-primary/40 hover:shadow-xl cursor-pointer">
 
               {/* IMAGE */}
               <div className={`relative w-full overflow-hidden ${getCardHeight()}`}>
@@ -37,29 +37,29 @@ export function BlogGrid({ projects }: BlogGridProps) {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   quality={60}
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-card/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
 
               {/* CONTENT */}
-              <div className="p-4">
+              <div className="p-5">
                 <div className="flex items-start justify-between mb-1">
-                  <h3 className="font-serif text-base font-semibold text-foreground group-hover:text-secondary transition">
+                  <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                 </div>
 
                 {project.date && (
-                  <p className="text-xs text-muted-foreground mb-2">
+                  <p className="text-xs font-medium text-stone-500 mb-2">
                     {project.date}
                   </p>
                 )}
 
                 {/* line-clamp-2 keeps masonry cards consistent in height */}
-                <p className="text-sm text-muted-foreground line-clamp-2">
+                <p className="text-sm text-stone-600 line-clamp-2">
                   {project.shortDesc}
                 </p>
 
@@ -71,8 +71,8 @@ export function BlogGrid({ projects }: BlogGridProps) {
                  * this card is tappable — no accidental discovery required.
                  * ────────────────────────────────────────────────────────────
                  */}
-                <div className="mt-3 pt-3 border-t border-border/40">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-secondary group-hover:gap-2.5 transition-all duration-300">
+                <div className="mt-3 pt-3 border-t border-stone-100">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
                     Read article
                     <ArrowRight
                       className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5"

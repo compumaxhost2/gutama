@@ -1,4 +1,4 @@
-import { GuttersBenefitsSection } from "@/components/services/gutters/benefits-section";
+﻿import { GuttersBenefitsSection } from "@/components/services/gutters/benefits-section";
 import { GuttersCtaSection } from "@/components/services/gutters/cta-section";
 import { GuttersFaqSection } from "@/components/services/gutters/faq-section";
 import { GuttersHeroSection } from "@/components/services/gutters/hero-section";
@@ -16,7 +16,7 @@ import {GuttersWhyChooseSection} from "@/components/services/gutters/whychoose-s
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <GuttersHeroSection />
       <GuttersOverviewSection />
       <GuttersSystemSection />

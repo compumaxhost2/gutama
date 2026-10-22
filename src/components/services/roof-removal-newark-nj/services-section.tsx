@@ -1,4 +1,4 @@
-export function RoofRemovalServicesSection() {
+﻿export function RoofRemovalServicesSection() {
   const services = [
     "Residential roof removal Newark NJ",
     "Commercial roof removal Newark NJ",
@@ -8,7 +8,7 @@ export function RoofRemovalServicesSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -16,15 +16,15 @@ export function RoofRemovalServicesSection() {
             Roof Tear-Off Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Roof Tear-Off
             <br />
-            <em className="text-secondary">Newark NJ</em>
+            <em className="text-secondary italic">Newark NJ</em>
           </h2>
 
           <div className="mx-auto mb-6 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="mx-auto max-w-4xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-4xl text-base leading-loose text-stone-600">
             A roof tear-off is the process of removing all existing roofing
             materials before installing a new roof. Unlike adding another layer
             of shingles, a complete tear-off allows contractors to identify
@@ -37,11 +37,11 @@ export function RoofRemovalServicesSection() {
           {services.map((service) => (
             <div
               key={service}
-              className="border border-border/40 bg-card p-6 transition-all duration-300 hover:border-secondary/40"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-6 transition-all duration-300 hover:border-secondary/40"
             >
               <div className="mb-4 h-px w-8 bg-secondary" />
 
-              <p className="text-sm leading-relaxed text-foreground">
+              <p className="text-sm leading-relaxed text-stone-900">
                 {service}
               </p>
             </div>

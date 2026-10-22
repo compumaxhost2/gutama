@@ -9,19 +9,19 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function AboutHero() {
   return (
-    <section className="relative flex min-h-[90vh] items-end overflow-hidden">
+    <section className="relative flex min-h-[72vh] lg:min-h-[75vh] items-end overflow-hidden">
       {/* Background image with layered overlays */}
       <div className="absolute inset-0">
         <Image
-          src="/images/about-aerial.webp"
-          alt="Aerial view of completed roofing projects in Essex County"
+          src="/images/gutama new images/roofing.jpg"
+          alt="Professional roofing work by Gutama Home Improvement in Essex County NJ"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center brightness-105"
           sizes="100vw"
-          quality={60}
+          quality={85}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/70 to-background/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/80 via-background/50 to-background/20" />
         <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent" />
       </div>
 
@@ -31,7 +31,7 @@ export function AboutHero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pt-8 pb-24">
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pt-24 pb-14">
         {/* Breadcrumb */}
         <nav className="mb-10 flex items-center gap-2" aria-label="Breadcrumb">
           <span className="flex items-center gap-2">
@@ -80,7 +80,7 @@ export function AboutHero() {
         {/* CTAs */}
         <Reveal delay={0.1}>
           <div className="flex flex-wrap gap-3.5">
-            <Button asChild className="h-12 px-7 text-sm uppercase tracking-[0.14em] text-amber">
+            <Button asChild className="h-12 px-7 text-sm uppercase tracking-[0.14em] text-white font-semibold">
               <Link href="/contact">
                 Get Free Estimate
                 <ArrowRight className="ml-2 h-4 w-4" />

@@ -1,4 +1,4 @@
-import { ReRoofingHeroSection } from "@/components/services/re-roofing/hero-section";
+﻿import { ReRoofingHeroSection } from "@/components/services/re-roofing/hero-section";
 import { ReRoofingOverviewSection } from "@/components/services/re-roofing-newark-nj/overview-section";
 import { ReRoofingWhatSection } from "@/components/services/re-roofing-newark-nj/about-section";
 import {ReRoofingProcessSection} from "@/components/services/re-roofing-newark-nj/working-section";
@@ -16,7 +16,7 @@ import {LocationNavigationSection} from "@/components/services/re-roofing/locati
 
 export default function Page() {
     return (
-        <div className="bg-background text-foreground selection:bg-secondary/30">
+        <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
             <ReRoofingHeroSection />
             <LocationNavigationSection />
             <ReRoofingOverviewSection />

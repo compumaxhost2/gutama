@@ -1,4 +1,4 @@
-import { FlatRoofBenefitsSection } from "@/components/services/flat-roof/benefits-section";
+﻿import { FlatRoofBenefitsSection } from "@/components/services/flat-roof/benefits-section";
 import { FlatRoofCtaSection } from "@/components/services/flat-roof/cta-section";
 import { FlatRoofFaqSection } from "@/components/services/flat-roof/faq-section";
 import { FlatRoofHeroSection } from "@/components/services/flat-roof/hero-section";
@@ -18,7 +18,7 @@ import {LocationNavigationSection} from "@/components/services/flat-roof/locatio
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <FlatRoofHeroSection />
       <LocationNavigationSection />
       <FlatRoofOverviewSection />

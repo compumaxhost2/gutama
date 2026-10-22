@@ -1,4 +1,4 @@
-
+﻿
 import { ReRoofingBenefitsSection } from "@/components/services/re-roofing/benefits-section";
 import { ReRoofingCtaSection } from "@/components/services/re-roofing/cta-section";
 import { ReRoofingFaqSection } from "@/components/services/re-roofing/faq-section";
@@ -22,7 +22,7 @@ import {LocationNavigationSection} from "@/components/services/re-roofing/locati
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <ReRoofingHeroSection />
       <LocationNavigationSection />
       <ReRoofingOverviewSection />

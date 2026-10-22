@@ -1,4 +1,4 @@
-export function DormersServicesSection() {
+﻿export function DormersServicesSection() {
   const services = [
     "New dormer construction",
     "Roof dormer additions",
@@ -9,23 +9,23 @@ export function DormersServicesSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="bg-stone-100 text-black py-14 px-6 border-t border-stone-200">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 max-w-4xl">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Our Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-snug text-black">
             Dormer Installation
             <br />
-            <em className="text-secondary">Services We Provide</em>
+            <em className="text-primary italic">Services We Provide</em>
           </h2>
 
-          <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose font-medium text-black">
             At Gutama Home Improvement, we specialize in professional dormer
             construction, expansion, repair, and structural improvement
             services throughout Essex County, NJ.
@@ -36,11 +36,11 @@ export function DormersServicesSection() {
           {services.map((service) => (
             <div
               key={service}
-              className="border border-border/40 bg-card p-8 transition-all duration-300 hover:border-secondary/40"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 transition-all duration-300 hover:border-primary/40"
             >
-              <div className="mb-5 h-px w-10 bg-secondary" />
+              <div className="mb-5 h-px w-10 bg-primary" />
 
-              <h3 className="font-serif text-xl leading-snug text-foreground">
+              <h3 className="font-serif text-xl leading-snug text-black">
                 {service}
               </h3>
             </div>

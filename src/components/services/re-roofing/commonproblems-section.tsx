@@ -23,23 +23,23 @@ export function ReRoofingProblemsSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-5xl">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-secondary">
             <span className="h-px w-6 bg-secondary" />
             Roof Inspection Findings
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-white">
             Common Problems We Discover
             <br />
-            <em className="text-secondary">During Re-Roofing</em>
+            <em className="text-secondary italic">During Re-Roofing</em>
           </h2>
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose text-stone-300">
             Many roofing issues remain hidden until the project begins.
           </p>
         </div>
@@ -48,15 +48,15 @@ export function ReRoofingProblemsSection() {
           {problems.map((problem) => (
             <div
               key={problem.title}
-              className="border border-border bg-card p-8 md:p-10 transition-all duration-300 hover:border-secondary/30"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-2xl p-8 md:p-10 transition-all duration-300 hover:border-secondary/40"
             >
               <div className="mb-5 h-px w-10 bg-secondary" />
 
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+              <h3 className="mb-4 font-serif text-2xl font-bold text-black">
                 {problem.title}
               </h3>
 
-              <p className="leading-loose text-muted-foreground">
+              <p className="leading-loose font-medium text-black">
                 {problem.description}
               </p>
             </div>
@@ -64,7 +64,7 @@ export function ReRoofingProblemsSection() {
         </div>
 
         <div className="mt-12 max-w-5xl">
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose text-stone-300">
             Addressing these issues during re-roofing helps improve overall roof
             performance and longevity.
           </p>

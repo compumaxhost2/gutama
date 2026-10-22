@@ -10,7 +10,7 @@ export function RoofingHeroSection() {
     label: "Roofing",
     title: "Roofing Services in",
     accent: "Essex County, NJ",
-    image: "/images/Hero.webp",
+    image: "/images/gutama new images/roofing.jpg",
     imageAlt: "Gutama Roofing Solutions in Essex County NJ",
     stats: [
       { value: "18+", label: "Years in Essex County" },
@@ -21,26 +21,26 @@ export function RoofingHeroSection() {
   };
 
   return (
-    <section className="relative flex min-h-[90vh] items-end overflow-hidden">
+    <section className="relative flex min-h-[72vh] lg:min-h-[75vh] items-end overflow-hidden">
       <div className="absolute inset-0">
-        <div className="relative h-[115%] w-full">
+        <div className="relative h-full w-full">
           <Image
             src={content.image}
             alt={content.imageAlt}
             fill
             priority
-            className="object-cover object-[center_35%]"
+            className="object-cover object-[center_35%] brightness-105"
             sizes="100vw"
-            quality={75}
+            quality={85}
           />
         </div>
-        <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/75 to-background/45" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/80 via-background/50 to-background/20" />
         <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent" />
       </div>
 
       <div className="absolute top-0 bottom-0 left-[max(24px,calc((100vw-1280px)/2))] z-10 w-px bg-linear-to-b from-transparent via-secondary/40 to-transparent" />
 
-      <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pt-12 pb-24">
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pt-24 pb-14">
         {/* Breadcrumb */}
         <nav className="mb-10 flex items-center gap-2">
           <span className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export function RoofingHeroSection() {
         <div className="flex flex-wrap gap-4">
           <Button
             asChild
-            className="h-12 px-8 text-sm uppercase tracking-[0.14em] text-amber shadow-lg"
+            className="h-12 px-8 text-sm uppercase tracking-[0.14em] text-white font-semibold shadow-lg"
           >
             <Link href="/contact">Request Free Estimate</Link>
           </Button>

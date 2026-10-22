@@ -11,13 +11,9 @@ const STATS = [
 
 export function AboutStats() {
   return (
-    <div className="relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-black text-white border-t border-white/10">
       <div
-        className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-secondary/5"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 border-y border-secondary/15"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_70%)]"
         aria-hidden="true"
       />
 
@@ -34,12 +30,12 @@ export function AboutStats() {
         >
           {STATS.map((stat) => (
             <StaggerItem key={stat.label}>
-              <div className="glass-card border border-secondary/20 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-luxury">
+              <div className="rounded-2xl border border-white/10 bg-[#0c0c0e] p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                 <p className="mb-1 font-serif text-4xl font-bold text-secondary">{stat.value}</p>
-                <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-foreground">
+                <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-white">
                   {stat.label}
                 </p>
-                <p className="text-xs text-muted-foreground">{stat.note}</p>
+                <p className="text-xs text-stone-400">{stat.note}</p>
               </div>
             </StaggerItem>
           ))}

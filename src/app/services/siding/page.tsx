@@ -1,4 +1,4 @@
-import { SidingBenefitsSection } from "@/components/services/siding/benefits-section";
+﻿import { SidingBenefitsSection } from "@/components/services/siding/benefits-section";
 import { SidingCtaSection } from "@/components/services/siding/cta-section";
 import { SidingFaqSection } from "@/components/services/siding/faq-section";
 import { SidingHeroSection } from "@/components/services/siding/hero-section";
@@ -16,7 +16,7 @@ import {SidingWhyChooseSection} from "@/components/services/siding/whychoose-sec
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <SidingHeroSection />
       <SidingOverviewSection />
       <WhatIsSidingSection />

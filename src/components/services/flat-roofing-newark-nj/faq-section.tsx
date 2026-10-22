@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Phone } from "lucide-react";
@@ -59,31 +59,31 @@ export function FlatRoofFaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-20 lg:grid-cols-[1fr_1.6fr]">
         <div>
           <div className="lg:sticky lg:top-28">
-            <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-              <span className="h-px w-6 bg-secondary" />
+            <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+              <span className="h-px w-6 bg-primary" />
               FAQ
             </p>
 
-            <h2 className="mb-7 font-serif text-[clamp(32px,3.5vw,48px)] leading-snug text-foreground">
+            <h2 className="mb-7 font-serif text-[clamp(32px,3.5vw,48px)] leading-snug text-black">
               Frequently Asked
               <br />
-              <em className="text-secondary">Questions</em>
+              <em className="text-primary italic">Questions</em>
             </h2>
 
-            <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+            <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-            <p className="mb-8 text-sm leading-loose text-muted-foreground">
+            <p className="mb-8 text-sm leading-loose font-medium text-black">
               {content.intro}
             </p>
 
             <Button
               asChild
               variant="outline"
-              className="h-12 border-secondary/40 px-6 text-sm text-secondary hover:bg-secondary/10 hover:text-secondary"
+              className="h-12 border-primary/40 px-6 text-sm text-primary hover:bg-primary/10 hover:text-primary"
             >
               <a href={`tel:${siteConfig.phones.english}`}>
                 <Phone size={14} className="mr-2 inline-block" />
@@ -95,7 +95,7 @@ export function FlatRoofFaqSection() {
 
         <div className="flex flex-col gap-0">
           {content.items.map((item, i) => (
-            <div key={item.q} className="border-b border-border/40">
+            <div key={item.q} className="border-b border-stone-200/90">
               <button
                 onClick={() =>
                   setActiveIndex(activeIndex === i ? null : i)
@@ -106,8 +106,8 @@ export function FlatRoofFaqSection() {
                   className={[
                     "font-serif text-lg transition-colors duration-200",
                     activeIndex === i
-                      ? "text-secondary"
-                      : "text-foreground",
+                      ? "text-primary"
+                      : "text-black",
                   ].join(" ")}
                 >
                   {item.q}
@@ -121,8 +121,8 @@ export function FlatRoofFaqSection() {
                     size={18}
                     className={
                       activeIndex === i
-                        ? "text-secondary"
-                        : "text-muted-foreground"
+                        ? "text-primary"
+                        : "font-medium text-black"
                     }
                   />
                 </motion.div>
@@ -140,7 +140,7 @@ export function FlatRoofFaqSection() {
                     }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 text-sm leading-loose text-muted-foreground">
+                    <p className="pb-6 text-sm leading-loose font-medium text-black">
                       {item.a}
                     </p>
                   </motion.div>

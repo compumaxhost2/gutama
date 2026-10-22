@@ -34,31 +34,27 @@ export function ServiceAreasSection() {
   return (
     <Section
       id="service-areas"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden bg-[#dfd0c0] pt-6 pb-20 md:pt-8 md:pb-24 text-stone-900"
       aria-label="Roofing service areas"
     >
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-[url('/images/about-aerial.webp')] bg-cover bg-center opacity-10"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 bg-background/90" aria-hidden="true" />
-
       <Container className="relative">
         <Reveal>
-          <SectionHeading
-            eyebrow="Service Areas"
-            title={SERVICE_AREA_LABEL}
-            description={
-              <>
-                <BrandLink>Gutama Home Improvement</BrandLink> provides{" "}
-                <Link href="/services/re-roofing" className="contents">roof repair</Link>,{" "}
-                <Link href="/services/re-roofing" className="contents">roof replacement</Link>,{" "}
-                <Link href="/services/siding" className="contents">siding</Link>, and exterior services across {siteConfig.business.regionLabel},
-                including the following cities and ZIP codes.
-              </>
-            }
-          />
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#844b20]">
+              Service Areas
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-stone-900 md:text-4xl lg:text-5xl">
+              {SERVICE_AREA_LABEL}
+            </h2>
+            <div className="gold-divider mt-5 mx-auto" />
+            <p className="mt-4 max-w-2xl text-stone-700 md:text-lg mx-auto">
+              <BrandLink className="font-semibold text-stone-900">Gutama Home Improvement</BrandLink> provides{" "}
+              <Link href="/services/re-roofing" className="contents font-medium text-stone-900 underline decoration-secondary/50 underline-offset-2">roof repair</Link>,{" "}
+              <Link href="/services/re-roofing" className="contents font-medium text-stone-900 underline decoration-secondary/50 underline-offset-2">roof replacement</Link>,{" "}
+              <Link href="/services/siding" className="contents font-medium text-stone-900 underline decoration-secondary/50 underline-offset-2">siding</Link>, and exterior services across {siteConfig.business.regionLabel},
+              including the following cities and ZIP codes.
+            </p>
+          </div>
         </Reveal>
 
         {/* ✅ Hidden SEO boost */}
@@ -68,19 +64,19 @@ export function ServiceAreasSection() {
         </h2>
 
         <StaggerGroup
-          className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+          className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
           delay={0.08}
         >
           {MUNICIPALITIES.map((town) => (
             <StaggerItem key={town.name}>
-              <div className="glass-card border px-4 py-3 text-center text-sm font-medium text-foreground transition-colors hover:border-secondary/40">
+              <div className="rounded-xl border border-[#cdbba8] bg-white px-4 py-3 text-center text-sm font-medium text-stone-900 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary hover:shadow-md">
                 {/* ✅ SEO-ENHANCED CITY NAME */}
                 <p>
-                  {town.name}, <span className="text-muted-foreground">NJ</span>
+                  {town.name}, <span className="text-stone-500">NJ</span>
                 </p>
 
                 {/* ZIP */}
-                <p className="text-xs font-semibold tracking-wide text-secondary">
+                <p className="text-xs font-bold tracking-wide text-primary">
                   {town.zip}
                 </p>
               </div>

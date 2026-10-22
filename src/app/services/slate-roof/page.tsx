@@ -1,4 +1,4 @@
-import { SlateRoofBenefitsSection } from "@/components/services/slate-roof/benefits-section";
+﻿import { SlateRoofBenefitsSection } from "@/components/services/slate-roof/benefits-section";
 import { SlateRoofCtaSection } from "@/components/services/slate-roof/cta-section";
 import { SlateRoofFaqSection } from "@/components/services/slate-roof/faq-section";
 import { SlateRoofHeroSection } from "@/components/services/slate-roof/hero-section";
@@ -14,7 +14,7 @@ import {SlateRoofRepairVsReplacementSection} from "@/components/services/slate-r
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <SlateRoofHeroSection />
       <SlateRoofOverviewSection />
       <SlateRoofUsesSection />

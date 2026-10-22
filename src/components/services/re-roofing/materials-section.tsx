@@ -28,23 +28,23 @@ export function ReRoofingMaterialsSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="bg-stone-100 text-black py-14 px-6 border-t border-stone-200">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-5xl">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Roofing Options
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-black">
             Roofing Materials Available
             <br />
-            <em className="text-secondary">for Re-Roofing</em>
+            <em className="text-primary italic">for Re-Roofing</em>
           </h2>
 
-          <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose font-medium text-black">
             We offer a variety of roofing options to match your property's
             needs, performance requirements, and architectural style.
           </p>
@@ -54,15 +54,15 @@ export function ReRoofingMaterialsSection() {
           {materials.map((material) => (
             <div
               key={material.title}
-              className="border border-border bg-card p-8 transition-all duration-300 hover:border-secondary/30"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 transition-all duration-300 hover:border-primary/40"
             >
-              <div className="mb-5 h-px w-10 bg-secondary" />
+              <div className="mb-5 h-px w-10 bg-primary" />
 
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+              <h3 className="mb-4 font-serif text-2xl font-bold text-black">
                 {material.title}
               </h3>
 
-              <p className="leading-loose text-muted-foreground">
+              <p className="leading-loose font-medium text-black">
                 {material.description}
               </p>
             </div>

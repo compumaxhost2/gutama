@@ -1,4 +1,4 @@
-export function SlateRoofServicesSection() {
+﻿export function SlateRoofServicesSection() {
   const residentialServices = [
     "New slate roof installation",
     "Slate roof replacement",
@@ -22,7 +22,7 @@ export function SlateRoofServicesSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -30,9 +30,9 @@ export function SlateRoofServicesSection() {
             Our Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Our Slate Roofing Services in
-            <em className="text-secondary"> Essex County, NJ</em>
+            <em className="text-secondary italic"> Essex County, NJ</em>
           </h2>
 
           <div className="h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
@@ -40,8 +40,8 @@ export function SlateRoofServicesSection() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Residential */}
-          <div className="border border-border/40 bg-card p-10">
-            <h3 className="mb-6 font-serif text-2xl text-foreground">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-10">
+            <h3 className="mb-6 font-serif text-2xl text-stone-900">
               Residential Slate Roofing
             </h3>
 
@@ -49,15 +49,15 @@ export function SlateRoofServicesSection() {
               {residentialServices.map((service) => (
                 <div key={service} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-muted-foreground">{service}</span>
+                  <span className="text-stone-600">{service}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Commercial */}
-          <div className="border border-border/40 bg-card p-10">
-            <h3 className="mb-6 font-serif text-2xl text-foreground">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-10">
+            <h3 className="mb-6 font-serif text-2xl text-stone-900">
               Commercial Slate Roofing
             </h3>
 
@@ -65,7 +65,7 @@ export function SlateRoofServicesSection() {
               {commercialServices.map((service) => (
                 <div key={service} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-muted-foreground">{service}</span>
+                  <span className="text-stone-600">{service}</span>
                 </div>
               ))}
             </div>
@@ -73,12 +73,12 @@ export function SlateRoofServicesSection() {
         </div>
 
         {/* Service Areas */}
-        <div className="mt-12 border border-border/40 bg-card p-10">
-          <h3 className="mb-6 font-serif text-2xl text-foreground">
+        <div className="mt-12 rounded-2xl border border-stone-200/90 bg-white shadow-md p-10">
+          <h3 className="mb-6 font-serif text-2xl text-stone-900">
             Areas We Serve
           </h3>
 
-          <p className="mb-8 text-muted-foreground">
+          <p className="mb-8 text-stone-600">
             We proudly provide slate roofing services throughout Essex County,
             including:
           </p>
@@ -87,7 +87,7 @@ export function SlateRoofServicesSection() {
             {serviceAreas.map((area) => (
               <div key={area} className="flex items-center gap-3">
                 <div className="h-px w-5 shrink-0 bg-secondary" />
-                <span className="text-muted-foreground">{area}</span>
+                <span className="text-stone-600">{area}</span>
               </div>
             ))}
           </div>

@@ -7,7 +7,7 @@ export function ReRoofingWhatSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -15,7 +15,7 @@ export function ReRoofingWhatSection() {
             Understanding Re-Roofing
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(32px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(32px,4vw,52px)] text-white">
             What Is
             <em className="ml-2 text-secondary">Re-Roofing?</em>
           </h2>
@@ -24,7 +24,7 @@ export function ReRoofingWhatSection() {
         </div>
 
         <div className="space-y-6">
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose text-stone-300">
             Re-roofing is the process of renewing an existing roof by
             installing new roofing materials. Depending on the roof&apos;s
             condition and local building code requirements, re-roofing may
@@ -37,17 +37,17 @@ export function ReRoofingWhatSection() {
             {reroofingOptions.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 border border-border/40 bg-card p-5"
+                className="flex items-start gap-3 rounded-2xl border border-stone-200/90 bg-white shadow-xl p-5"
               >
                 <div className="mt-2 h-px w-5 shrink-0 bg-secondary" />
-                <span className="text-sm leading-relaxed text-foreground/85">
+                <span className="text-sm leading-relaxed font-medium text-black">
                   {item}
                 </span>
               </div>
             ))}
           </div>
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose text-stone-300">
             Re-roofing is commonly used for residential homes and commercial
             properties with aging roofing systems that still have a structurally
             sound roof deck. When appropriate, it can provide a cost-effective

@@ -1,4 +1,4 @@
-import { Layers, ShieldCheck, Wind, Droplets, Sun, Hammer } from "lucide-react";
+﻿import { Layers, ShieldCheck, Wind, Droplets, Sun, Hammer } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -66,7 +66,7 @@ export function RoofingEngineeringSection() {
             return (
               <div
                 key={layer.num}
-                className="glass-card relative overflow-hidden border border-border/40 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="relative overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-md p-7 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-3xl font-bold text-secondary/30">

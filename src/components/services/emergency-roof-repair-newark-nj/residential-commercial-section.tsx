@@ -1,4 +1,4 @@
-export function EmergencyRepairPropertyTypesSection() {
+﻿export function EmergencyRepairPropertyTypesSection() {
   const residential = [
     "Asphalt shingle roofs",
     "Metal roofs",
@@ -18,7 +18,7 @@ export function EmergencyRepairPropertyTypesSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -26,10 +26,10 @@ export function EmergencyRepairPropertyTypesSection() {
             Residential & Commercial Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Emergency Roof Repair
             <br />
-            <em className="text-secondary">For Every Property Type</em>
+            <em className="text-secondary italic">For Every Property Type</em>
           </h2>
 
           <div className="mx-auto h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
@@ -37,14 +37,14 @@ export function EmergencyRepairPropertyTypesSection() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Residential */}
-          <div className="border border-border/40 bg-card p-8 md:p-10">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-4 font-serif text-2xl text-foreground">
+            <h3 className="mb-4 font-serif text-2xl text-stone-900">
               Residential Emergency Roof Repair Newark NJ
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Your home is one of your most valuable investments. Roofing
               emergencies can put your family and property at risk.
             </p>
@@ -53,27 +53,27 @@ export function EmergencyRepairPropertyTypesSection() {
               {residential.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-border pt-6">
-              <p className="text-sm leading-loose text-muted-foreground">
+            <div className="mt-8 border-t border-stone-200 pt-6">
+              <p className="text-sm leading-loose text-stone-600">
                 Our goal is to restore protection quickly and safely.
               </p>
             </div>
           </div>
 
           {/* Commercial */}
-          <div className="border border-border/40 bg-card p-8 md:p-10">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-4 font-serif text-2xl text-foreground">
+            <h3 className="mb-4 font-serif text-2xl text-stone-900">
               Commercial Emergency Roof Repair Newark NJ
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Commercial roofing emergencies can disrupt business operations
               and lead to significant property damage.
             </p>
@@ -82,13 +82,13 @@ export function EmergencyRepairPropertyTypesSection() {
               {commercial.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-border pt-6">
-              <p className="text-sm leading-loose text-muted-foreground">
+            <div className="mt-8 border-t border-stone-200 pt-6">
+              <p className="text-sm leading-loose text-stone-600">
                 Fast response helps minimize downtime and protect valuable
                 assets.
               </p>

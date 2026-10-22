@@ -1,4 +1,4 @@
-import { DormersBenefitsSection } from "@/components/services/dormers/benefits-section";
+﻿import { DormersBenefitsSection } from "@/components/services/dormers/benefits-section";
 import { DormersCtaSection } from "@/components/services/dormers/cta-section";
 import { DormersFaqSection } from "@/components/services/dormers/faq-section";
 import { DormersHeroSection } from "@/components/services/dormers/hero-section";
@@ -18,7 +18,7 @@ import { DormersComparisonSection } from "@/components/services/dormers/dormerVs
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <DormersHeroSection />
       <DormersOverviewSection />
       <DormersFunctionsSection />

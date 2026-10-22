@@ -21,7 +21,7 @@ export function PerksStrip() {
   return (
     <section
       aria-label="Roofing contractor benefits"
-      className="border-y border-secondary/25 bg-primary/8 py-5"
+      className="border-y border-red-700/50 bg-primary py-5 text-white shadow-inner"
     >
       <Container>
         {/* ✅ HIDDEN SEO BOOST (does NOT affect UI) */}
@@ -30,16 +30,16 @@ export function PerksStrip() {
           Warranty & Bilingual Service
         </h2>
 
-        <ul className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-0 sm:divide-x sm:divide-secondary/25">
+        <ul className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-0 sm:divide-x sm:divide-white/20">
           {PERKS.map(({ icon: Icon, label }) => (
             <li
               key={label}
               className="flex items-center gap-2.5 px-6 text-center sm:text-left lg:px-10"
             >
-              <Icon className="h-5 w-5 shrink-0 text-secondary" />
+              <Icon className="h-5 w-5 shrink-0 text-amber-300" />
 
               {/* ✅ SEO-ENHANCED TEXT */}
-              <span className="text-sm font-extrabold uppercase tracking-widest text-foreground">
+              <span className="text-sm font-extrabold uppercase tracking-widest text-white">
                 {label}
               </span>
             </li>

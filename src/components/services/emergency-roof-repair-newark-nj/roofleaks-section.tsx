@@ -1,4 +1,4 @@
-export function EmergencyLeakRepairSection() {
+﻿export function EmergencyLeakRepairSection() {
   const signs = [
     "Water stains on ceilings",
     "Wet insulation",
@@ -9,7 +9,7 @@ export function EmergencyLeakRepairSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
@@ -18,32 +18,32 @@ export function EmergencyLeakRepairSection() {
               Emergency Leak Services
             </p>
 
-            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-white">
               Emergency Roof Leak Repair
               <br />
-              <em className="text-secondary">Newark, NJ</em>
+              <em className="text-secondary italic">Newark, NJ</em>
             </h2>
 
             <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="mb-6 text-base leading-loose text-muted-foreground">
+            <p className="mb-6 text-base leading-loose text-stone-600">
               Roof leaks are one of the most common reasons homeowners request
               emergency roofing services.
             </p>
 
-            <div className="border border-border/40 bg-card p-8">
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+            <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8">
+              <h3 className="mb-4 font-serif text-2xl text-stone-900">
                 Immediate Leak Response
               </h3>
 
-              <p className="text-sm leading-loose text-muted-foreground">
+              <p className="text-sm leading-loose text-stone-600">
                 Our team quickly identifies leak sources and performs temporary
                 or permanent repairs to prevent further water intrusion.
               </p>
             </div>
           </div>
 
-          <div className="border border-border/40 bg-card p-8 md:p-10">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10">
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.16em] text-secondary">
               Signs of a Roof Leak
             </p>
@@ -52,16 +52,16 @@ export function EmergencyLeakRepairSection() {
               {signs.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 border-b border-border/30 pb-4 last:border-0 last:pb-0"
+                  className="flex items-center gap-3 border-b border-stone-200/70 pb-4 last:border-0 last:pb-0"
                 >
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/85">{item}</span>
+                  <span className="text-sm text-stone-900/85">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-border pt-6">
-              <p className="text-sm leading-loose text-muted-foreground">
+            <div className="mt-8 border-t border-stone-200 pt-6">
+              <p className="text-sm leading-loose text-stone-600">
                 Ignoring roof leaks can lead to structural damage and costly
                 repairs.
               </p>

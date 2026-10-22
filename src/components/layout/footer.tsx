@@ -61,7 +61,7 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/20">
+    <footer className="border-t border-white/10 bg-black text-white">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-y-10 px-4 py-16 md:grid-cols-2 md:gap-x-12 md:gap-y-12 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-12">
         <div>
           <Link href="/" className="inline-flex">
@@ -125,14 +125,16 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-serif text-lg text-foreground">Top Services</h3>
-          <div className="gold-divider mx-0! my-4" />
-          <div className="flex flex-col gap-2">
+          <div className="text-center -translate-x-5 sm:-translate-x-6">
+            <h3 className="font-serif text-lg text-foreground">Top Services</h3>
+            <div className="gold-divider my-4" />
+          </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
             {TOP_SERVICES.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm text-stone-400 transition-colors hover:text-white"
               >
                 {service.shortTitle}
               </Link>
@@ -145,41 +147,51 @@ export function Footer() {
             Need An Estimate?
           </h3>
           <div className="gold-divider mx-0! my-4" />
-          <div className="space-y-3 text-sm text-muted-foreground">
+          <div className="space-y-3 text-sm text-stone-400">
             <p>Call us for free consultation and project planning.</p>
             <Link
               href="/contact"
-              className="text-secondary hover:text-secondary/85"
+              className="text-secondary hover:text-secondary/85 inline-block font-medium"
             >
               Go to Contact Page
             </Link>
             <div className="pt-2">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">
                 Follow Us
               </p>
               <div className="flex items-center gap-3">
-                {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Follow us on ${label}`}
-                    className="group inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 bg-card/40 text-foreground/70 shadow-[0_10px_24px_-16px_rgba(0,0,0,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/60 hover:bg-secondary/10 hover:text-secondary hover:shadow-luxury"
-                  >
-                    <Icon className="h-4.5 w-4.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(201,159,58,0.45)]" />
-                  </a>
-                ))}
+                {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => {
+                  const brandStyles: Record<string, string> = {
+                    Instagram: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white border-transparent hover:brightness-110",
+                    Facebook: "bg-[#1877F2] text-white border-transparent hover:bg-[#166fe5]",
+                    TikTok: "bg-black text-[#00f2fe] border-[#fe2c55]/60 hover:border-[#fe2c55]",
+                    X: "bg-black text-white border-white/20 hover:border-white/50",
+                    Yelp: "bg-[#d32323] text-white border-transparent hover:bg-[#c01f1f]",
+                  };
+
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Follow us on ${label}`}
+                      className={`group inline-flex h-11 w-11 items-center justify-center rounded-xl border shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${brandStyles[label] || "border-white/10 bg-[#0c0c0e] text-white"}`}
+                    >
+                      <Icon className="h-5 w-5 transition-all duration-300 group-hover:scale-110" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-3 border-t border-border/40 px-4 py-5 text-xs text-muted-foreground sm:text-sm md:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-3 border-t border-white/10 px-4 py-5 text-xs text-stone-400 sm:text-sm md:flex-row">
         <p>
           © {new Date().getFullYear()}{" "}
-          <BrandLink>{siteConfig.business.name}</BrandLink>. All rights
+          <BrandLink className="font-semibold text-white">{siteConfig.business.name}</BrandLink>. All rights
           reserved.
         </p>
         <p>Licensed & Fully Insured | {siteConfig.business.regionLabel}</p>

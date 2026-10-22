@@ -1,4 +1,4 @@
-import {
+﻿import {
   Shield,
   Wind,
   Flame,
@@ -55,7 +55,7 @@ export function ChimneyAboutSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-20 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -63,11 +63,11 @@ export function ChimneyAboutSection() {
             Understanding Chimneys
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
-            What A <em className="text-secondary">Chimney Does</em>
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
+            What A <em className="text-secondary italic">Chimney Does</em>
           </h2>
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose text-stone-300">
             A chimney safely directs smoke, gases, and heat from fireplaces,
             furnaces, or heating systems out of the building. A properly
             functioning chimney improves indoor air quality and reduces fire
@@ -82,17 +82,17 @@ export function ChimneyAboutSection() {
             return (
               <div
                 key={item.title}
-                className="glass-card border border-border/40 p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
               >
                 <div className="mb-7 flex h-11 w-11 items-center justify-center border border-secondary/35 bg-secondary/5">
                   <Icon size={18} className="text-secondary" />
                 </div>
 
-                <h3 className="mb-3 font-serif text-xl leading-snug text-foreground">
+                <h3 className="mb-3 font-serif text-xl leading-snug text-stone-900">
                   {item.title}
                 </h3>
 
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose text-stone-600">
                   {item.desc}
                 </p>
               </div>
@@ -111,7 +111,7 @@ export function ChimneyAboutSection() {
               key={component}
               className="border border-secondary/20 bg-background p-5 text-center"
             >
-              <p className="font-serif text-lg text-foreground">
+              <p className="font-serif text-lg text-stone-900">
                 {component}
               </p>
             </div>

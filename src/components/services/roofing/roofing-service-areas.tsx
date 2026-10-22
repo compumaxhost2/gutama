@@ -27,18 +27,18 @@ export function RoofingServiceAreasSection() {
   ];
 
   return (
-    <section className="relative py-20 bg-background border-t border-border/40">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-secondary">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
               Local NJ Presence
             </p>
-            <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="font-serif text-3xl font-bold tracking-tight text-black sm:text-4xl">
               Serving Essex County & Surrounding Communities
             </h2>
             <div className="gold-divider mt-5 mb-5" />
-            <p className="text-base text-muted-foreground">
+            <p className="text-base font-medium text-black">
               Headquartered at {siteConfig.address.streetAddress} in {siteConfig.address.locality}, NJ, we deliver responsive roofing services tailored to North Jersey's unique architectural heritage and local municipal permitting requirements.
             </p>
           </div>
@@ -48,9 +48,9 @@ export function RoofingServiceAreasSection() {
           {towns.map((town) => (
             <div
               key={town}
-              className="flex items-center gap-2 rounded-lg border border-border/40 bg-card/40 px-3.5 py-3 text-xs font-medium text-foreground transition-all duration-200 hover:border-secondary/40 hover:bg-secondary/5 hover:text-secondary"
+              className="flex items-center gap-2 rounded-xl border border-stone-300/80 bg-white/95 px-3.5 py-3 text-xs font-medium text-black shadow-xs transition-all duration-200 hover:border-primary/40 hover:bg-white hover:text-primary hover:shadow-sm"
             >
-              <MapPin className="h-3.5 w-3.5 text-secondary shrink-0" />
+              <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
               <span>{town}, NJ</span>
             </div>
           ))}

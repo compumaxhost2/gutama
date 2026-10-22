@@ -1,4 +1,4 @@
-export function AdditionsSignsSection() {
+﻿export function AdditionsSignsSection() {
   const signs = [
     "Your home feels overcrowded",
     "You need more bedrooms or bathrooms",
@@ -9,7 +9,7 @@ export function AdditionsSignsSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
@@ -18,30 +18,30 @@ export function AdditionsSignsSection() {
               When to Expand
             </p>
 
-            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight text-foreground">
+            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight text-stone-900">
               Signs You May Need
               <br />
-              <em className="text-secondary">a Home Addition</em>
+              <em className="text-secondary italic">a Home Addition</em>
             </h2>
 
             <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="text-base leading-loose text-muted-foreground">
+            <p className="text-base leading-loose text-stone-600">
               If your current home no longer supports your lifestyle, a home
               addition can provide the extra space and functionality you need
               without the cost and disruption of moving.
             </p>
           </div>
 
-          <div className="border border-border/40 bg-card p-8 md:p-10">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10">
             <div className="grid gap-4">
               {signs.map((sign) => (
                 <div
                   key={sign}
-                  className="flex items-center gap-4 border-b border-border/30 pb-4 last:border-0 last:pb-0"
+                  className="flex items-center gap-4 border-b border-stone-200/70 pb-4 last:border-0 last:pb-0"
                 >
                   <div className="h-px w-6 shrink-0 bg-secondary" />
-                  <span className="text-base text-muted-foreground">
+                  <span className="text-base text-stone-600">
                     {sign}
                   </span>
                 </div>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Oswald, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 
 import { siteConfig, siteUrl } from "@/config/site";
@@ -21,6 +21,14 @@ const bodyFont = Inter({
 const headingFont = Playfair_Display({
   variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
+
+const displayFont = Oswald({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,
 });
@@ -464,7 +472,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${bodyFont.variable} ${headingFont.variable} antialiased`}
+        className={`${bodyFont.variable} ${headingFont.variable} ${displayFont.variable} antialiased`}
       >
         <SiteShell>{children}</SiteShell>
 

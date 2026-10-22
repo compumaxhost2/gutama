@@ -1,4 +1,4 @@
-import { EmergencyRepairBenefitsSection } from "@/components/services/emergency-repair/benefits-section";
+﻿import { EmergencyRepairBenefitsSection } from "@/components/services/emergency-repair/benefits-section";
 import { EmergencyRepairCtaSection } from "@/components/services/emergency-repair/cta-section";
 import { EmergencyRepairFaqSection } from "@/components/services/emergency-repair/faq-section";
 import { EmergencyRepairHeroSection } from "@/components/services/emergency-repair/hero-section";
@@ -17,7 +17,7 @@ import {LocationNavigationSection} from "@/components/services/emergency-repair/
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <EmergencyRepairHeroSection />
       <LocationNavigationSection />
       <EmergencyRepairOverviewSection />

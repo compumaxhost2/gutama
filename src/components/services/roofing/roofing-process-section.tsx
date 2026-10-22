@@ -1,4 +1,4 @@
-import { ClipboardCheck, FileText, ShieldAlert, Wrench, Sparkles } from "lucide-react";
+﻿import { ClipboardCheck, FileText, ShieldAlert, Wrench, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -37,7 +37,7 @@ export function RoofingProcessSection() {
   ];
 
   return (
-    <section className="relative py-24 bg-muted/15 border-t border-border/40">
+    <section className="relative py-24 bg-muted/15 border-t border-stone-200/90">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -60,7 +60,7 @@ export function RoofingProcessSection() {
             return (
               <div
                 key={item.step}
-                className="glass-card relative flex flex-col justify-between border border-border/40 p-6 transition-all duration-300 hover:border-secondary/40 hover:-translate-y-1"
+                className="relative flex flex-col justify-between rounded-2xl border border-stone-200/90 bg-white shadow-md p-6 transition-all duration-300 hover:border-secondary/40 hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -79,7 +79,7 @@ export function RoofingProcessSection() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-border/30 text-[10px] uppercase tracking-wider text-secondary/80 font-medium">
+                <div className="mt-6 pt-3 border-t border-stone-200/70 text-[10px] uppercase tracking-wider text-secondary/80 font-medium">
                   Phase {idx + 1} of 5
                 </div>
               </div>

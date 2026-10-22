@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -29,7 +29,7 @@ function GalleryTile({
       />
       <div className="absolute inset-0 flex flex-col justify-end bg-background/70 p-[clamp(16px,2vw,32px)] opacity-0 transition-opacity duration-400 group-hover:opacity-100">
         <p className="mb-1.5 text-[10px] tracking-[0.2em] uppercase text-secondary">{location}</p>
-        <p className={`font-serif text-foreground ${titleSize}`}>{title}</p>
+        <p className={`font-serif text-stone-900 ${titleSize}`}>{title}</p>
       </div>
     </div>
   );
@@ -39,22 +39,22 @@ export function CarpentryShowcaseSection() {
   const content = {
         title: "Crafted",
         accent: "Projects",
-        featured: { src: "/images/service-carpentry.webp", location: "Montclair, NJ", title: "Custom Exterior Trim Restoration" },
+        featured: { src: "/images/gutama new images/exterior.jpg", location: "Montclair, NJ", title: "Custom Exterior Trim Restoration" },
         items: [
           { src: "/images/about-team.webp", location: "Maplewood, NJ", title: "Porch Framing Repair" },
-          { src: "/images/service-carpentry.webp", location: "South Orange, NJ", title: "Decorative Millwork Upgrade" },
+          { src: "/images/gutama new images/exterior.jpg", location: "South Orange, NJ", title: "Decorative Millwork Upgrade" },
           { src: "/images/about-team.webp", location: "Verona, NJ", title: "Window & Fascia Rebuild" },
-          { src: "/images/service-carpentry.webp", location: "Glen Ridge, NJ", title: "Custom Soffit Detailing" },
+          { src: "/images/gutama new images/exterior.jpg", location: "Glen Ridge, NJ", title: "Custom Soffit Detailing" },
         ],
       };
 
   return (
-    <section className="bg-muted/20 py-16 px-4 md:py-28 md:px-6">
+    <section className="bg-[#dfd0c0] text-stone-900 py-16 px-4 md:py-28 md:px-6 border-t border-stone-300">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary"><span className="h-px w-6 bg-secondary" />Our Work</p>
-            <h2 className="m-0 font-serif text-[clamp(36px,4vw,52px)] text-foreground">{content.title} <em className="text-secondary">{content.accent}</em></h2>
+            <h2 className="m-0 font-serif text-[clamp(36px,4vw,52px)] text-stone-900">{content.title} <em className="text-secondary">{content.accent}</em></h2>
           </div>
           <Button asChild variant="outline" className="h-12 border-secondary/40 px-6 text-sm text-secondary hover:bg-secondary/10 hover:text-secondary"><Link href="/gallery">Full Portfolio <ArrowUpRight size={14} className="ml-2" /></Link></Button>
         </div>

@@ -1,4 +1,4 @@
-export function EmergencyRepairTypesSection() {
+﻿export function EmergencyRepairTypesSection() {
   const services = [
     {
       title: "Leak Emergency Repair",
@@ -23,36 +23,36 @@ export function EmergencyRepairTypesSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="bg-stone-100 text-black py-14 px-6 border-t border-stone-200">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Emergency Roofing Solutions
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-black">
             Types of Emergency
             <br />
-            <em className="text-secondary">Roof Repairs We Provide</em>
+            <em className="text-primary italic">Roof Repairs We Provide</em>
           </h2>
 
-          <div className="mx-auto h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mx-auto h-px w-24 bg-linear-to-r from-primary to-primary/30" />
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => (
             <div
               key={service.title}
-              className="border border-border/40 bg-card p-8 transition-all duration-300 hover:border-secondary/30"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 transition-all duration-300 hover:border-primary/30"
             >
-              <div className="mb-5 h-px w-10 bg-secondary" />
+              <div className="mb-5 h-px w-10 bg-primary" />
 
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+              <h3 className="mb-4 font-serif text-2xl text-black">
                 {service.title}
               </h3>
 
-              <p className="text-sm leading-loose text-muted-foreground">
+              <p className="text-sm leading-loose font-medium text-black">
                 {service.desc}
               </p>
             </div>

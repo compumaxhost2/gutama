@@ -11,7 +11,7 @@ export function BrandLink({ children, className }: BrandLinkProps) {
   return (
     <Link
       href={siteUrl}
-      className={className}
+      className={className || "text-secondary font-medium hover:underline hover:text-secondary/80"}
     >
       {children}
     </Link>

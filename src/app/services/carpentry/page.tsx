@@ -1,4 +1,4 @@
-import { CarpentryBenefitsSection } from "@/components/services/carpentry/benefits-section";
+﻿import { CarpentryBenefitsSection } from "@/components/services/carpentry/benefits-section";
 import { CarpentryCtaSection } from "@/components/services/carpentry/cta-section";
 import { CarpentryFaqSection } from "@/components/services/carpentry/faq-section";
 import { CarpentryHeroSection } from "@/components/services/carpentry/hero-section";
@@ -16,7 +16,7 @@ import { CarpentryWhyChooseSection } from "@/components/services/carpentry/whych
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <CarpentryHeroSection />
       <CarpentryOverviewSection />
       <CarpentryBenefitsSection />

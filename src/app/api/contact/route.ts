@@ -3,8 +3,8 @@ import { Resend } from "resend";
 import { contactSchema, mapZodErrorsToFieldErrors } from "@/lib/contact-schema";
 import { generateContactEmailHtml } from "@/lib/email-template";
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend safely (fallback to dummy key during build time if env var not set)
+const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder_for_build");
 
 // Parse comma/semicolon/whitespace separated email list
 function parseEmailList(emailString: string | undefined): string[] {

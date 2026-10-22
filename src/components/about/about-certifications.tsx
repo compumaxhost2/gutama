@@ -14,7 +14,7 @@ const CREDENTIALS = [
 
 export function AboutCertifications() {
   return (
-    <div className="border-y border-secondary/20 bg-card/40 py-14">
+    <div className="border-y border-white/10 bg-[#0c0c0e] py-14 text-white">
       <Container>
         <Reveal>
           <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
@@ -29,8 +29,8 @@ export function AboutCertifications() {
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-secondary/30 bg-secondary/10">
                   <Icon className="h-6 w-6 text-secondary" />
                 </div>
-                <p className="text-xs font-bold uppercase tracking-wide text-foreground">{label}</p>
-                <p className="text-[11px] text-muted-foreground">{sub}</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-white">{label}</p>
+                <p className="text-[11px] text-stone-400">{sub}</p>
               </li>
             ))}
           </ul>

@@ -1,4 +1,4 @@
-
+﻿
 import { BenefitsSection } from "@/components/services/roof-removal/benefits-section";
 import { RoofRemovalCtaSection } from "@/components/services/roof-removal/cta-section";
 import { RoofRemovalFaqSection } from "@/components/services/roof-removal/faq-section";
@@ -21,7 +21,7 @@ import {LocationNavigationSection} from "@/components/services/roof-removal/loca
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <RoofRemovalHeroSection />
       <LocationNavigationSection />
       <RoofRemovalOverviewSection />

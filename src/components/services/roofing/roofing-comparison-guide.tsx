@@ -49,7 +49,7 @@ export function RoofingComparisonGuideSection() {
   ];
 
   return (
-    <section className="relative border-y border-border/40 bg-muted/20 py-20">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -80,13 +80,13 @@ export function RoofingComparisonGuideSection() {
               return (
                 <div
                   key={reason.title}
-                  className="glass-card flex items-center gap-4 border border-border/50 p-5 transition-all duration-300 hover:border-secondary/40 hover:shadow-luxury"
+                  className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#0c0c0e] p-5 transition-all duration-300 hover:border-secondary/40 hover:shadow-xl"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary/10">
                     <Icon className="h-5 w-5 text-secondary" />
                   </div>
 
-                  <h3 className="text-sm font-semibold leading-snug text-foreground">
+                  <h3 className="text-sm font-semibold leading-snug text-white">
                     {reason.title}
                   </h3>
                 </div>

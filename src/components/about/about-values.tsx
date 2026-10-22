@@ -34,7 +34,7 @@ const VALUES = [
 
 export function AboutValues() {
   return (
-    <Section className="bg-muted/20">
+    <Section className="border-t border-stone-300/80 bg-[#dfd0c0] text-stone-900">
       <Container>
         <Reveal>
           <SectionHeading
@@ -50,12 +50,12 @@ export function AboutValues() {
         >
           {VALUES.map(({ icon: Icon, title, description }) => (
             <StaggerItem key={title}>
-              <article className="glass-card h-full border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury">
-                <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10 ring-2 ring-secondary/20">
-                  <Icon className="h-8 w-8 text-secondary" />
+              <article className="h-full rounded-2xl border border-stone-300/80 bg-white/95 p-7 text-center shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl">
+                <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 ring-2 ring-primary/20">
+                  <Icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="mb-3 font-serif text-lg font-semibold text-foreground">{title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+                <h3 className="mb-3 font-serif text-lg font-bold text-stone-900">{title}</h3>
+                <p className="text-sm leading-relaxed text-stone-700">{description}</p>
               </article>
             </StaggerItem>
           ))}

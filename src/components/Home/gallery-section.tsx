@@ -13,32 +13,32 @@ import type { GalleryItem } from "@/types/site";
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     title: "Roof Replacement in Essex County NJ",
-    image: "/images/gallery-roof-1.webp",
+    image: "/images/gutama new images/roof replacement.jpg",
     category: "roofing",
   },
   {
     title: "Architectural Shingle Roofing Installation",
-    image: "/images/gallery-roof-2.webp",
+    image: "/images/gutama new images/roofing.jpg",
     category: "roofing",
   },
   {
     title: "Storm Damage Roof Repair",
-    image: "/images/service-dormers.webp",
+    image: "/images/gutama new images/Emergency_roofing.jpg",
     category: "roofing",
   },
   {
     title: "Siding Installation & Exterior Upgrade",
-    image: "/images/service-siding.webp",
+    image: "/images/gutama new images/siding.jpg",
     category: "siding",
   },
   {
     title: "Chimney Repair & Restoration",
-    image: "/images/gallery-chimney-1.webp",
+    image: "/images/gutama new images/chimney.jpg",
     category: "chimney",
   },
   {
     title: "Custom Home Addition Project",
-    image: "/images/service-additions.webp",
+    image: "/images/gutama new images/home additions.jpg",
     category: "additions",
   },
 ];
@@ -70,23 +70,26 @@ export function GallerySection() {
     <>
       <Section
         id="gallery"
-        className="bg-background"
+        className="relative border-t border-red-200 bg-[#f3d9d9] text-stone-900"
         aria-label="Roofing and exterior project gallery"
       >
         <Container>
           <Reveal>
-            <SectionHeading
-              eyebrow="Project Gallery"
-              title="Roofing & Exterior Projects in Essex County NJ"
-              description={
-                <>
-                  Explore recent roof replacement, siding installation, chimney
-                  repair, and exterior renovation projects completed by{" "}
-                  <BrandLink>Gutama Home Improvement</BrandLink>
-                  across Essex County, NJ.
-                </>
-              }
-            />
+            <div className="text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9e1c23]">
+                Project Gallery
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-stone-900 md:text-4xl lg:text-5xl">
+                Roofing & Exterior Projects in Essex County NJ
+              </h2>
+              <div className="gold-divider mt-5 mx-auto" />
+              <p className="mt-4 max-w-2xl text-stone-700 md:text-lg mx-auto">
+                Explore recent roof replacement, siding installation, chimney
+                repair, and exterior renovation projects completed by{" "}
+                <BrandLink className="font-semibold text-stone-900">Gutama Home Improvement</BrandLink>{" "}
+                across Essex County, NJ.
+              </p>
+            </div>
           </Reveal>
 
           {/* ✅ HIDDEN SEO BOOST */}
@@ -101,7 +104,7 @@ export function GallerySection() {
           >
             {GALLERY_ITEMS.map((item) => (
               <StaggerItem key={item.image}>
-                <article className="glass-card overflow-hidden border transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40">
+                <article className="overflow-hidden rounded-xl border border-rose-200/90 bg-white shadow-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-xl">
                   <button
                     type="button"
                     className="relative block h-64 w-full cursor-zoom-in"
@@ -112,20 +115,20 @@ export function GallerySection() {
                       src={item.image}
                       alt={`${item.title} by roofing contractor in Essex County NJ`}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={60}
                     />
                   </button>
 
-                  <div className="p-4">
+                  <div className="p-5">
                     {/* ✅ CATEGORY WITH CONTEXT */}
-                    <p className="text-xs uppercase tracking-[0.18em] text-secondary">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                       {item.category} project
                     </p>
 
                     {/* ✅ KEYWORD-ENHANCED TITLE */}
-                    <h3 className="mt-2 font-serif text-lg font-semibold text-foreground">
+                    <h3 className="mt-2 font-serif text-lg font-semibold text-stone-900">
                       {item.title}
                     </h3>
                   </div>

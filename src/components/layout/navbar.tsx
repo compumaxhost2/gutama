@@ -78,14 +78,14 @@ const ServicesMenu = memo(function ServicesMenu({
 
       <div
         className={cn(
-          "absolute left-1/2 top-full z-60 w-150 -translate-x-1/2 pt-3 transition-all duration-200",
-          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          "absolute left-1/2 top-full z-60 w-96 -translate-x-1/2 pt-2.5 transition-all duration-200",
+          isOpen ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-1"
         )}
       >
-        <div className="rounded-xl border border-border bg-card p-4 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.85)] backdrop-blur-md">
-          <div className="mb-4 flex items-center justify-between border-b border-border/50 pb-3">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-secondary">All Services</p>
-            <Link href="/services" onClick={onClose} className="text-xs text-muted-foreground transition-colors hover:text-foreground">View Service Hub</Link>
+        <div className="rounded-xl border border-white/15 bg-[#0c0c0e] p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-md">
+          <div className="mb-2.5 flex items-center justify-between border-b border-white/10 px-1 pb-2">
+            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-secondary">Services</p>
+            <Link href="/services" onClick={onClose} className="text-[11px] text-stone-400 transition-colors hover:text-white">View All →</Link>
           </div>
           <div className="grid grid-cols-2 gap-1.5">
             {SERVICE_LINKS.map((service) => {
@@ -96,10 +96,10 @@ const ServicesMenu = memo(function ServicesMenu({
                   href={service.href}
                   onClick={onClose}
                   className={cn(
-                    "rounded-md border px-3 py-2.5 text-sm transition-all duration-200",
+                    "rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all duration-150",
                     isServiceActive
-                      ? "border-secondary/60 bg-secondary/10 text-foreground"
-                      : "border-border/50 text-muted-foreground hover:border-secondary/50 hover:bg-secondary/10 hover:text-foreground"
+                      ? "bg-secondary/15 font-bold text-secondary"
+                      : "text-stone-300 hover:bg-white/10 hover:text-white"
                   )}
                 >
                   {service.label}
@@ -172,7 +172,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-xl">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black text-white shadow-md transition-all duration-300">
         <div className="mx-auto flex h-24 w-full max-w-7xl items-center justify-between px-4">
           <Link href="/" className="flex h-24 items-center gap-2" aria-label={siteConfig.business.name}>
             <Image
@@ -241,8 +241,7 @@ export function Navbar() {
                 </span>
               </a>
 
-              <Button asChild
-              className="text-amber">
+              <Button asChild className="text-white font-semibold shadow-md">
                 <Link href="/contact">Get Free Estimate</Link>
               </Button>
             </div>

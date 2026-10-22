@@ -1,4 +1,4 @@
-import { FlatRoofHeroSection } from "@/components/services/flat-roof/hero-section";
+﻿import { FlatRoofHeroSection } from "@/components/services/flat-roof/hero-section";
 import { FlatRoofOverviewSection } from "@/components/services/flat-roofing-newark-nj/overview-section";
 import { FlatRoofWhatIsSection } from "@/components/services/flat-roofing-newark-nj/about-section";
 import { FlatRoofBenefitsSection } from "@/components/services/flat-roofing-newark-nj/benefits-section";
@@ -18,7 +18,7 @@ import {LocationNavigationSection} from "@/components/services/flat-roof/locatio
 
 export default function Page() {
     return (
-        <div className="bg-background text-foreground selection:bg-secondary/30">
+        <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
             <FlatRoofHeroSection />
             <LocationNavigationSection />
             <FlatRoofOverviewSection />

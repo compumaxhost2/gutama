@@ -1,4 +1,4 @@
-import {
+﻿import {
   Shield,
   Droplets,
   Hammer,
@@ -42,23 +42,23 @@ const benefits = [
 
 export function SidingWhyChooseSection() {
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Why Choose Professional Contractors
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-black">
             Why Homeowners Trust
             <br />
-            <em className="text-secondary">Professional Siding Installation</em>
+            <em className="text-primary italic">Professional Siding Installation</em>
           </h2>
 
-          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose font-medium text-black">
             Siding installation requires precision and experience. Poor
             installation can lead to water leaks, insulation failure, and
             costly repairs. Professional installation ensures long-term
@@ -73,17 +73,17 @@ export function SidingWhyChooseSection() {
             return (
               <div
                 key={item.title}
-                className="glass-card border border-border/40 p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-11 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
               >
-                <div className="mb-7 flex h-11 w-11 items-center justify-center border border-secondary/35 bg-secondary/5">
-                  <Icon size={18} className="text-secondary" />
+                <div className="mb-7 flex h-11 w-11 items-center justify-center border border-primary/35 bg-primary/5">
+                  <Icon size={18} className="text-primary" />
                 </div>
 
-                <h3 className="mb-3 font-serif text-xl leading-snug text-foreground">
+                <h3 className="mb-3 font-serif text-xl leading-snug text-black">
                   {item.title}
                 </h3>
 
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose font-medium text-black">
                   {item.desc}
                 </p>
               </div>

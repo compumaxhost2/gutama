@@ -1,4 +1,4 @@
-import { AdditionsTypesSection } from "@/components/services/additions/about-section";
+﻿import { AdditionsTypesSection } from "@/components/services/additions/about-section";
 import { AdditionsBenefitsSection } from "@/components/services/additions/benefits-section";
 import { AdditionsCtaSection } from "@/components/services/additions/cta-section";
 import { AdditionsFaqSection } from "@/components/services/additions/faq-section";
@@ -17,7 +17,7 @@ import {AdditionsDecisionGuideSection} from "@/components/services/additions/com
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <AdditionsHeroSection />
       <AdditionsOverviewSection />
       <AdditionsTypesSection />

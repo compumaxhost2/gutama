@@ -23,7 +23,7 @@ export function GalleryShowcase() {
   }, [activeCategory]);
 
   return (
-    <section className="py-10">
+    <section className="py-14 bg-[#f3d9d9] text-stone-900 min-h-screen">
       <Container>
         <GalleryFilters
           categories={GALLERY_CATEGORIES}

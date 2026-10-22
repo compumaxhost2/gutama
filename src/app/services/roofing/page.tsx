@@ -8,13 +8,13 @@ import { RelatedServicesSection } from "@/components/services/related-services-s
 
 export default function RoofingPage() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <RoofingHeroSection />
       <RoofingCategoriesSection />
       <RoofingComparisonGuideSection />
-      <RelatedServicesSection currentServiceSlug="roofing" />
       <RoofingServiceAreasSection />
       <RoofingFaqSection />
+      <RelatedServicesSection currentServiceSlug="roofing" />
       <RoofingCtaSection />
     </div>
   );

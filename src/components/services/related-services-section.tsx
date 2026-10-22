@@ -100,7 +100,7 @@ export function RelatedServicesSection({
   );
 
   return (
-    <Section className="bg-muted/20" aria-label="Other services we offer">
+    <Section className="border-t border-white/10 bg-black text-white" aria-label="Other services we offer">
       <Container>
         <Reveal>
           <SectionHeading
@@ -117,16 +117,16 @@ export function RelatedServicesSection({
           {relatedServices.map((service) => (
             <StaggerItem key={service.slug}>
               <Link href={`/services/${service.slug}`}>
-                <div className="glass-card group relative flex h-full flex-col border border-secondary/20 p-6 shadow-lg transition-all duration-300 hover:border-secondary/40 active:scale-[0.95]">
-                  <h3 className="text-lg font-semibold text-secondary transition-colors">
+                <div className="group relative flex h-full flex-col rounded-2xl border border-white/10 bg-[#0c0c0e] p-6 shadow-xl transition-all duration-300 hover:border-secondary/50 hover:bg-[#121216] active:scale-[0.98]">
+                  <h3 className="text-lg font-bold text-white group-hover:text-secondary transition-colors">
                     {service.name}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground grow">
+                  <p className="mt-2 text-sm leading-relaxed text-stone-300 grow">
                     {service.description}
                   </p>
-                  <div className="mt-4 flex items-center text-secondary opacity-100 transition-opacity">
-                    <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                  <div className="mt-4 flex items-center text-secondary font-semibold">
+                    <span className="text-sm">Learn More</span>
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>

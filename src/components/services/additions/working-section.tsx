@@ -1,4 +1,4 @@
-export function AdditionsWorkingSection() {
+﻿export function AdditionsWorkingSection() {
   const steps = [
     {
       number: "01",
@@ -40,23 +40,23 @@ export function AdditionsWorkingSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Construction Process
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] text-black">
             How Home Additions
             <br />
-            <em className="text-secondary">Work</em>
+            <em className="text-primary italic">Work</em>
           </h2>
 
-          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose font-medium text-black">
             Home additions require planning, design, and structural construction
             to safely integrate new space into an existing building.
           </p>
@@ -66,25 +66,25 @@ export function AdditionsWorkingSection() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="border border-border/40 bg-card p-8 transition-all duration-300 hover:border-secondary/30"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 transition-all duration-300 hover:border-primary/30"
             >
-              <span className="mb-5 block font-serif text-4xl leading-none text-secondary/30">
+              <span className="mb-5 block font-serif text-4xl leading-none text-primary/30">
                 {step.number}
               </span>
 
-              <h3 className="mb-3 font-serif text-xl text-foreground">
+              <h3 className="mb-3 font-serif text-xl text-black">
                 {step.title}
               </h3>
 
-              <p className="text-sm leading-loose text-muted-foreground">
+              <p className="text-sm leading-loose font-medium text-black">
                 {step.description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 border border-secondary/20 bg-secondary/5 p-8">
-          <p className="text-base leading-loose text-muted-foreground">
+        <div className="mt-12 border border-primary/20 bg-primary/5 p-8">
+          <p className="text-base leading-loose font-medium text-black">
             Each step ensures structural safety, durability, and long-term
             performance.
           </p>

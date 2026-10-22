@@ -1,4 +1,4 @@
-export function EmergencyRepairSignsSection() {
+﻿export function EmergencyRepairSignsSection() {
   const leakDamage = [
     "Ceilings",
     "Drywall",
@@ -45,23 +45,23 @@ export function EmergencyRepairSignsSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 max-w-4xl">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Emergency Roofing Guide
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-black">
             When Should You Call
             <br />
-            <em className="text-secondary">An Emergency Roofer?</em>
+            <em className="text-primary italic">An Emergency Roofer?</em>
           </h2>
 
-          <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose font-medium text-black">
             Not every roofing issue requires immediate service, but some
             situations should be addressed as soon as possible.
           </p>
@@ -71,24 +71,24 @@ export function EmergencyRepairSignsSection() {
           {emergencySigns.map((sign) => (
             <div
               key={sign.title}
-              className="border border-border/40 bg-card p-8 md:p-10"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10"
             >
-              <div className="mb-5 h-px w-10 bg-secondary" />
+              <div className="mb-5 h-px w-10 bg-primary" />
 
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+              <h3 className="mb-4 font-serif text-2xl text-black">
                 {sign.title}
               </h3>
 
-              <p className="text-sm leading-loose text-muted-foreground">
+              <p className="text-sm leading-loose font-medium text-black">
                 {sign.description}
               </p>
 
               {sign.items && (
-                <div className="mt-6 space-y-3 border-t border-border pt-6">
+                <div className="mt-6 space-y-3 border-t border-stone-200 pt-6">
                   {sign.items.map((item) => (
                     <div key={item} className="flex items-center gap-3">
-                      <div className="h-px w-5 shrink-0 bg-secondary" />
-                      <span className="text-sm text-foreground/80">
+                      <div className="h-px w-5 shrink-0 bg-primary" />
+                      <span className="text-sm text-black/80">
                         {item}
                       </span>
                     </div>

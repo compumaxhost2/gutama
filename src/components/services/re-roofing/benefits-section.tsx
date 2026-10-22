@@ -55,44 +55,44 @@ export function ReRoofingBenefitsSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-20 text-center">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-secondary">
             <span className="h-px w-6 bg-secondary" />
             Re-Roofing Benefits
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Benefits of
-            <em className="text-secondary"> Re-Roofing</em>
+            <em className="text-secondary italic"> Re-Roofing</em>
           </h2>
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose text-stone-300">
             Investing in a professionally installed roofing system provides
             long-term protection, improved performance, and increased value for
             your property.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {content.map((benefit) => {
             const Icon = ICON_MAP[benefit.icon];
 
             return (
               <div
                 key={benefit.title}
-                className="glass-card border border-border/40 p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
               >
-                <div className="mb-7 flex h-11 w-11 items-center justify-center border border-secondary/35 bg-secondary/5">
+                <div className="mb-7 flex h-11 w-11 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10">
                   <Icon size={18} className="text-secondary" />
                 </div>
 
-                <h3 className="mb-3 font-serif text-xl leading-snug text-foreground">
+                <h3 className="mb-3 font-serif text-xl font-bold leading-snug text-black">
                   {benefit.title}
                 </h3>
 
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose text-stone-800">
                   {benefit.desc}
                 </p>
               </div>

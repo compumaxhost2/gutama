@@ -54,16 +54,23 @@ function withBrandLink(text: string) {
 export function TestimonialsSection() {
   return (
     <Section
-      className="bg-background"
+      className="border-t border-white/10 bg-black text-white"
       aria-label="Customer reviews for roofing services"
     >
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow="Reviews"
-            title={`Trusted Roofing Contractor Reviews in ${siteConfig.business.regionLabel}`}
-            description={`See what homeowners across ${siteConfig.business.regionLabel} say about our roof repair, roof replacement, and exterior services.`}
-          />
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-secondary">
+              Reviews
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+              Trusted Roofing Contractor Reviews in {siteConfig.business.regionLabel}
+            </h2>
+            <div className="gold-divider mt-5 mx-auto" />
+            <p className="mt-4 max-w-2xl text-stone-300 md:text-lg mx-auto">
+              See what homeowners across {siteConfig.business.regionLabel} say about our roof repair, roof replacement, and exterior services.
+            </p>
+          </div>
         </Reveal>
 
         {/* ✅ Hidden SEO boost */}
@@ -73,12 +80,12 @@ export function TestimonialsSection() {
         </h2>
 
         <StaggerGroup
-          className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3"
+          className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3"
           delay={0.1}
         >
           {TESTIMONIALS.map((item) => (
             <StaggerItem key={item.name}>
-              <article className="glass-card border p-7">
+              <article className="h-full rounded-2xl border border-white/10 bg-[#0c0c0e] p-7 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:bg-[#141418]">
                 {/* ⭐ Rating */}
                 <div className="mb-4 flex items-center gap-1">
                   {Array.from({ length: item.rating }).map((_, idx) => (
@@ -90,7 +97,7 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* 💬 Review Text (SEO enhanced but natural) */}
-                <p className="text-sm italic leading-relaxed text-foreground">
+                <p className="text-sm italic leading-relaxed text-stone-200">
                   &ldquo;{withBrandLink(item.text)}&rdquo;
                 </p>
 
@@ -101,13 +108,13 @@ export function TestimonialsSection() {
                     alt={`Customer review from ${item.name} in ${item.location}`}
                     width={48}
                     height={48}
-                    className="h-12 w-12 rounded-full border-2 border-secondary/40 object-cover"
+                    className="h-12 w-12 rounded-full border-2 border-secondary/50 object-cover shadow-md"
                   />
                   <div>
-                    <p className="font-serif font-semibold text-foreground">
+                    <p className="font-serif font-semibold text-white">
                       {item.name}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-stone-400">
                       {item.location}
                     </p>
                   </div>

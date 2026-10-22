@@ -13,9 +13,9 @@ export function SectionHeading({ eyebrow, title, as: Heading = "h2", description
   return (
     <div className={cn(centered && "text-center", className)}>
       {eyebrow ? <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">{eyebrow}</p> : null}
-      <Heading className="mt-3 font-serif text-3xl font-bold leading-tight text-foreground md:text-4xl lg:text-5xl">{title}</Heading>
+      <Heading className="mt-3 font-serif text-3xl font-bold leading-tight text-inherit md:text-4xl lg:text-5xl">{title}</Heading>
       <div className={cn("gold-divider mt-5", !centered && "mx-0!")} />
-      {description ? <p className={cn("mt-4 max-w-2xl text-muted-foreground md:text-lg", centered && "mx-auto")}>{description}</p> : null}
+      {description ? <p className={cn("mt-4 max-w-2xl opacity-80 md:text-lg", centered && "mx-auto")}>{description}</p> : null}
     </div>
   );
 }

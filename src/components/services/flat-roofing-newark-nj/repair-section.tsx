@@ -1,4 +1,4 @@
-export function FlatRoofRepairSection() {
+﻿export function FlatRoofRepairSection() {
   const problems = [
     {
       title: "Flat Roof Leaks",
@@ -33,7 +33,7 @@ export function FlatRoofRepairSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -41,15 +41,15 @@ export function FlatRoofRepairSection() {
             Repair Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-white">
             Flat Roof Repair
             <br />
-            <em className="text-secondary">Newark NJ</em>
+            <em className="text-secondary italic">Newark NJ</em>
           </h2>
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="max-w-4xl text-base leading-loose text-muted-foreground">
+          <p className="max-w-4xl text-base leading-loose text-stone-600">
             Even high-quality flat roofing systems may require repairs over time
             due to weather exposure, aging materials, or storm damage.
           </p>
@@ -59,16 +59,16 @@ export function FlatRoofRepairSection() {
           {problems.map((problem) => (
             <div
               key={problem.title}
-              className="border border-border/40 bg-card p-8"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8"
             >
               <div className="mb-5 h-px w-10 bg-secondary" />
 
-              <h3 className="mb-4 font-serif text-xl text-foreground">
+              <h3 className="mb-4 font-serif text-xl text-stone-900">
                 {problem.title}
               </h3>
 
               {problem.intro && (
-                <p className="mb-5 text-sm leading-loose text-muted-foreground">
+                <p className="mb-5 text-sm leading-loose text-stone-600">
                   {problem.intro}
                 </p>
               )}
@@ -81,7 +81,7 @@ export function FlatRoofRepairSection() {
                       className="flex items-center gap-3"
                     >
                       <div className="h-px w-5 shrink-0 bg-secondary" />
-                      <span className="text-sm text-foreground/85">
+                      <span className="text-sm text-stone-900/85">
                         {item}
                       </span>
                     </div>
@@ -90,7 +90,7 @@ export function FlatRoofRepairSection() {
               )}
 
               {problem.description && (
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose text-stone-600">
                   {problem.description}
                 </p>
               )}

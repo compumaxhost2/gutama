@@ -1,4 +1,4 @@
-import { EmergencyRepairHeroSection } from "@/components/services/emergency-repair/hero-section";
+﻿import { EmergencyRepairHeroSection } from "@/components/services/emergency-repair/hero-section";
 import {EmergencyRepairOverviewSection} from "@/components/services/emergency-roof-repair-newark-nj/overview-section";
 import {EmergencyRepairDefinitionSection} from "@/components/services/emergency-roof-repair-newark-nj/about-section";
 import {EmergencyRepairSignsSection} from "@/components/services/emergency-roof-repair-newark-nj/signs-section";
@@ -20,7 +20,7 @@ import {LocationNavigationSection} from "@/components/services/emergency-repair/
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground selection:bg-secondary/30">
+    <div className="bg-stone-100 text-stone-900 selection:bg-secondary/30">
       <EmergencyRepairHeroSection />
       <LocationNavigationSection />
       <EmergencyRepairOverviewSection />

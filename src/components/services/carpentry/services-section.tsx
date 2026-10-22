@@ -1,4 +1,4 @@
-export function CarpentryServiceTypesSection() {
+﻿export function CarpentryServiceTypesSection() {
   const structural = [
     "Wall framing",
     "Roof framing",
@@ -28,7 +28,7 @@ export function CarpentryServiceTypesSection() {
   ];
 
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 max-w-5xl">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -36,15 +36,15 @@ export function CarpentryServiceTypesSection() {
             Professional Solutions
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-white">
             Types of
             <br />
-            <em className="text-secondary">Carpentry Services</em>
+            <em className="text-secondary italic">Carpentry Services</em>
           </h2>
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose text-stone-600">
             We provide a wide range of residential and commercial carpentry
             services, from structural framing and finish work to custom
             woodcraft and repair solutions.
@@ -53,14 +53,14 @@ export function CarpentryServiceTypesSection() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {/* Structural */}
-          <div className="border border-border/40 bg-card p-8">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-5 font-serif text-2xl text-foreground">
+            <h3 className="mb-5 font-serif text-2xl text-stone-900">
               Structural Carpentry
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Essential framing and support systems that provide strength,
               stability, and structural integrity.
             </p>
@@ -69,21 +69,21 @@ export function CarpentryServiceTypesSection() {
               {structural.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Finish */}
-          <div className="border border-border/40 bg-card p-8">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-5 font-serif text-2xl text-foreground">
+            <h3 className="mb-5 font-serif text-2xl text-stone-900">
               Finish Carpentry
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Detailed finishing work that enhances the appearance and value of
               your property.
             </p>
@@ -92,21 +92,21 @@ export function CarpentryServiceTypesSection() {
               {finish.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Repair */}
-          <div className="border border-border/40 bg-card p-8">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-5 font-serif text-2xl text-foreground">
+            <h3 className="mb-5 font-serif text-2xl text-stone-900">
               Repair Carpentry
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Restoration and repair services for damaged or deteriorated wood
               structures.
             </p>
@@ -115,21 +115,21 @@ export function CarpentryServiceTypesSection() {
               {repair.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Custom */}
-          <div className="border border-border/40 bg-card p-8">
+          <div className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8">
             <div className="mb-5 h-px w-10 bg-secondary" />
 
-            <h3 className="mb-5 font-serif text-2xl text-foreground">
+            <h3 className="mb-5 font-serif text-2xl text-stone-900">
               Custom Carpentry
             </h3>
 
-            <p className="mb-6 text-sm leading-loose text-muted-foreground">
+            <p className="mb-6 text-sm leading-loose text-stone-600">
               Personalized woodworking solutions designed around your space and
               functional requirements.
             </p>
@@ -138,7 +138,7 @@ export function CarpentryServiceTypesSection() {
               {custom.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-foreground/80">{item}</span>
+                  <span className="text-sm text-stone-900/80">{item}</span>
                 </li>
               ))}
             </ul>

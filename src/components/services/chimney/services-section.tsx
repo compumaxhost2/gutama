@@ -1,4 +1,4 @@
-import {
+﻿import {
   Search,
   Wrench,
   Building2,
@@ -41,7 +41,7 @@ const services = [
 
 export function ChimneyServicesSection() {
   return (
-    <section className="bg-muted/20 py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-20 text-center">
           <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
@@ -49,12 +49,12 @@ export function ChimneyServicesSection() {
             Our Services
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] font-bold text-white">
             Types of
-            <em className="text-secondary"> Chimney Services</em>
+            <em className="text-secondary italic"> Chimney Services</em>
           </h2>
 
-          <p className="mx-auto max-w-3xl text-base leading-loose text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-base leading-loose text-stone-300">
             We provide complete chimney inspection, repair, rebuilding,
             waterproofing, and maintenance services for residential and
             commercial properties throughout Essex County, NJ.
@@ -68,17 +68,17 @@ export function ChimneyServicesSection() {
             return (
               <div
                 key={service.title}
-                className="glass-card border border-border/40 p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-luxury"
+                className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-11 transition-all duration-500 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl"
               >
                 <div className="mb-7 flex h-11 w-11 items-center justify-center border border-secondary/35 bg-secondary/5">
                   <Icon size={18} className="text-secondary" />
                 </div>
 
-                <h3 className="mb-3 font-serif text-xl leading-snug text-foreground">
+                <h3 className="mb-3 font-serif text-xl leading-snug text-stone-900">
                   {service.title}
                 </h3>
 
-                <p className="text-sm leading-loose text-muted-foreground">
+                <p className="text-sm leading-loose text-stone-600">
                   {service.description}
                 </p>
               </div>

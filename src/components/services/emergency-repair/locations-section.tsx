@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export function LocationNavigationSection() {
   const locations = [
@@ -26,7 +26,7 @@ export function LocationNavigationSection() {
   ];
 
   return (
-    <section className="border-y border-border/40 bg-background py-5 px-6">
+    <section className="border-y border-stone-200 bg-stone-100 text-stone-900 py-5 px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-4">
           <span className="h-px w-8 bg-secondary" />

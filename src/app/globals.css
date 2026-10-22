@@ -54,7 +54,7 @@
   --popover: hsl(0 0% 12%);
   --popover-foreground: hsl(0 0% 100%);
   --primary: hsl(358, 65%, 45%);
-  --primary-foreground: hsl(0 0% 8%);
+  --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(43 56% 52%);
   --secondary-foreground: hsl(0 0% 7%);
   --muted: hsl(0 0% 15%);
@@ -88,8 +88,8 @@
   --card-foreground: hsl(0 0% 100%);
   --popover: hsl(0 0% 12%);
   --popover-foreground: hsl(0 0% 100%);
-  --primary: hsl(0 78% 68%);
-  --primary-foreground: hsl(0 0% 8%);
+  --primary: hsl(358, 65%, 45%);
+  --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(43 56% 52%);
   --secondary-foreground: hsl(0 0% 7%);
   --muted: hsl(0 0% 15%);
@@ -206,4 +206,23 @@
   }
 }
 
+/* Google Translate Widget & Popup suppression */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-menu-frame,
+.goog-te-gadget,
+.goog-te-gadget-simple,
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight,
+body > .skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
 
+body {
+  top: 0px !important;
+  position: static !important;
+}

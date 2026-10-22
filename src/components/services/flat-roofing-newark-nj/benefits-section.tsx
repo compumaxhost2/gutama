@@ -1,4 +1,4 @@
-export function FlatRoofBenefitsSection() {
+﻿export function FlatRoofBenefitsSection() {
   const roofUses = [
     "HVAC systems",
     "Solar panels",
@@ -27,23 +27,23 @@ export function FlatRoofBenefitsSection() {
   ];
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="bg-[#dfd0c0] text-black py-14 px-6 border-t border-stone-300">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 max-w-4xl">
-          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-secondary">
-            <span className="h-px w-6 bg-secondary" />
+          <p className="mb-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] uppercase text-primary">
+            <span className="h-px w-6 bg-primary" />
             Why Property Owners Choose Flat Roofing
           </p>
 
-          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-foreground">
+          <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug text-black">
             Why Flat Roofing Is Popular
             <br />
-            <em className="text-secondary">In Newark NJ</em>
+            <em className="text-primary italic">In Newark NJ</em>
           </h2>
 
-          <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
+          <div className="mb-8 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
 
-          <p className="text-base leading-loose text-muted-foreground">
+          <p className="text-base leading-loose font-medium text-black">
             Property owners across Newark and Essex County choose flat roofing
             because of its affordability, versatility, and long lifespan.
           </p>
@@ -53,29 +53,29 @@ export function FlatRoofBenefitsSection() {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="border border-border/40 bg-card p-8 md:p-10"
+              className="rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10"
             >
-              <div className="mb-5 h-px w-10 bg-secondary" />
+              <div className="mb-5 h-px w-10 bg-primary" />
 
-              <h3 className="mb-4 font-serif text-2xl text-foreground">
+              <h3 className="mb-4 font-serif text-2xl text-black">
                 {benefit.title}
               </h3>
 
-              <p className="text-sm leading-loose text-muted-foreground">
+              <p className="text-sm leading-loose font-medium text-black">
                 {benefit.desc}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 border border-border/40 bg-card p-8 md:p-10">
-          <div className="mb-5 h-px w-10 bg-secondary" />
+        <div className="mt-6 rounded-2xl border border-stone-200/90 bg-white shadow-md p-8 md:p-10">
+          <div className="mb-5 h-px w-10 bg-primary" />
 
-          <h3 className="mb-6 font-serif text-2xl text-foreground">
+          <h3 className="mb-6 font-serif text-2xl text-black">
             Maximized Roof Space
           </h3>
 
-          <p className="mb-6 text-sm leading-loose text-muted-foreground">
+          <p className="mb-6 text-sm leading-loose font-medium text-black">
             Flat roofs can accommodate:
           </p>
 
@@ -83,9 +83,9 @@ export function FlatRoofBenefitsSection() {
             {roofUses.map((item) => (
               <div
                 key={item}
-                className="border border-border/30 px-4 py-5 text-center"
+                className="border border-stone-200/70 px-4 py-5 text-center"
               >
-                <span className="text-sm text-foreground/85">{item}</span>
+                <span className="text-sm text-black/85">{item}</span>
               </div>
             ))}
           </div>

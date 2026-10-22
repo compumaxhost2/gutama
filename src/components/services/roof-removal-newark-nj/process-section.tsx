@@ -1,4 +1,4 @@
-export function RoofRemovalProcessSection() {
+﻿export function RoofRemovalProcessSection() {
   const content = {
     intro:
       "A successful roof replacement begins with a complete tear-off and detailed inspection of the underlying structure. Our process ensures your new roofing system is installed on a solid, code-compliant foundation.",
@@ -38,7 +38,7 @@ export function RoofRemovalProcessSection() {
   };
 
   return (
-    <section className="bg-background py-12 px-6">
+    <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-20 lg:grid-cols-[1fr_1.4fr]">
         <div>
           <div className="lg:sticky lg:top-28">
@@ -47,15 +47,15 @@ export function RoofRemovalProcessSection() {
               Our Process
             </p>
 
-            <h2 className="mb-7 font-serif text-[clamp(36px,3.5vw,52px)] leading-snug text-foreground">
+            <h2 className="mb-7 font-serif text-[clamp(36px,3.5vw,52px)] leading-snug font-bold text-white">
               Roof Removal
               <br />
-              <em className="text-secondary">Process</em>
+              <em className="text-secondary italic">Process</em>
             </h2>
 
             <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="text-[15px] leading-loose text-muted-foreground">
+            <p className="text-[15px] leading-loose text-stone-600">
               {content.intro}
             </p>
 
@@ -64,11 +64,11 @@ export function RoofRemovalProcessSection() {
                 Average Timeline
               </p>
 
-              <p className="mb-1 font-serif text-[32px] text-foreground">
+              <p className="mb-1 font-serif text-[32px] text-stone-900">
                 {content.timeline}
               </p>
 
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-stone-600">
                 {content.timelineNote}
               </p>
             </div>
@@ -95,11 +95,11 @@ export function RoofRemovalProcessSection() {
                 </div>
 
                 <div className="pt-3">
-                  <h3 className="mb-2 font-serif text-xl text-foreground">
+                  <h3 className="mb-2 font-serif text-xl text-stone-900">
                     {step.title}
                   </h3>
 
-                  <p className="text-sm leading-loose text-muted-foreground">
+                  <p className="text-sm leading-loose text-stone-600">
                     {step.desc}
                   </p>
                 </div>

@@ -41,16 +41,23 @@ const WHY_CHOOSE_US: WhyChooseItem[] = [
 export function WhyChooseSection() {
   return (
     <Section
-      className="bg-muted/20"
+      className="border-t border-white/10 bg-black text-white"
       aria-label="Why choose our roofing services"
     >
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow="Why Choose Us"
-            title={`Trusted Roofing Contractor in ${siteConfig.business.regionLabel}`}
-            description={`Providing reliable roof repair, replacement, and exterior services across ${siteConfig.business.regionLabel}.`}
-          />
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-secondary">
+              Why Choose Us
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+              Trusted Roofing Contractor in {siteConfig.business.regionLabel}
+            </h2>
+            <div className="gold-divider mt-5 mx-auto" />
+            <p className="mt-4 max-w-2xl text-stone-300 md:text-lg mx-auto">
+              Providing reliable roof repair, replacement, and exterior services across {siteConfig.business.regionLabel}.
+            </p>
+          </div>
         </Reveal>
 
         {/* ✅ Hidden SEO boost */}
@@ -60,23 +67,23 @@ export function WhyChooseSection() {
         </h2>
 
         <StaggerGroup
-          className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+          className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
           delay={0.08}
         >
           {WHY_CHOOSE_US.map((item) => {
             const Icon = featureIconMap[item.icon];
             return (
               <StaggerItem key={item.title}>
-                <article className="glass-card border p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40">
-                  <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-secondary/10">
+                <article className="h-full rounded-2xl border border-white/10 bg-[#0c0c0e] p-6 text-center shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-secondary/60 hover:bg-[#141418]">
+                  <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-secondary/30 bg-secondary/10 shadow-inner">
                     <Icon className="h-7 w-7 text-secondary" />
                   </div>
 
-                  <h3 className="font-serif text-base font-semibold text-foreground">
+                  <h3 className="font-serif text-base font-semibold text-white">
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-sm leading-relaxed text-stone-400">
                     {item.description}
                   </p>
                 </article>

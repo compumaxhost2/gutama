@@ -98,12 +98,15 @@ export function Footer() {
               href="https://maps.app.goo.gl/Ft48fUmJwB71CMAk9"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+              className="flex items-start gap-2 text-muted-foreground transition-colors hover:text-foreground"
               aria-label="Open business location in Google Maps"
             >
-              <MapPin className="h-4 w-4 text-primary" />
-              {siteConfig.address.streetAddress}, {siteConfig.address.locality},{" "}
-              {siteConfig.address.region} {siteConfig.address.postalCode}
+              <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+              <span className="leading-snug">
+                {siteConfig.address.streetAddress}
+                <br />
+                {siteConfig.address.locality}, {siteConfig.address.region} {siteConfig.address.postalCode}
+              </span>
             </a>
           </div>
         </div>

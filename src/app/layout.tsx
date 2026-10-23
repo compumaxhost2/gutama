@@ -43,28 +43,23 @@ export const metadata: Metadata = {
   title: "Roofing Contractor Essex County NJ | Gutama Home Improvement",
 
   description:
-    "Gutama Home Improvement provides expert roofing, siding, and exterior services in Essex County, NJ. Licensed, insured, and trusted for roof repair, replacement, and emergency services. Get a free estimate today.",
+    "Gutama Home Improvement provides roofing, roof removal, re-roofing, flat roofing, slate roofing, siding, chimney repair, gutters, carpentry, dormers, home additions, and emergency roof repairs in Newark and Essex County, NJ. Request a free estimate.",
 
   keywords: [
-    "roofing contractor essex county nj",
-    "roof repair nj",
-    "roof replacement essex county",
-    "roofing company essex county",
-    "roof installation nj",
-    "emergency roofing nj",
-    "roof inspection nj",
-    "storm damage roof repair",
-    "flat roofing essex county",
-    "metal roofing nj",
-    "asphalt shingle roofing",
-    "chimney repair nj",
-    "chimney flashing repair",
-    "gutter installation nj",
-    "gutter repair essex county",
-    "siding contractor nj",
-    "vinyl siding installation",
-    "commercial roofing nj",
-    "residential roofing essex county",
+    "roofing contractor Essex County NJ",
+    "roofing contractor Newark NJ",
+    "roof repair Essex County NJ",
+    "roof replacement Newark NJ",
+    "roof removal NJ",
+    "flat roofing Essex County NJ",
+    "slate roofing NJ",
+    "siding contractor Newark NJ",
+    "chimney repair Essex County NJ",
+    "gutter installation NJ",
+    "carpentry services NJ",
+    "dormer contractor NJ",
+    "home additions Essex County NJ",
+    "emergency roof repair Newark NJ",
   ],
 
   authors: [
@@ -159,226 +154,207 @@ export const viewport: Viewport = {
 
 const roofingContractorSchema = {
   "@context": "https://schema.org",
-
   "@type": "RoofingContractor",
-
   "@id": `${siteUrl}/#roofingcontractor`,
-
-  name: siteConfig.business.name,
-
-  url: siteUrl,
-
-  image: `${siteUrl}/images/logo.webp`,
-
+  name: "Gutama Home Improvement",
+  url: `${siteUrl}/`,
   logo: `${siteUrl}/images/logo.webp`,
-
+  image: `${siteUrl}/images/logo.webp`,
   description:
-    "Professional roofing contractor serving Essex County, NJ with roof repair, replacement, siding, chimney, gutters, and emergency roofing services.",
-
-  telephone: siteConfig.phones.english,
-
-  email: siteConfig.email,
-
+    "Gutama Home Improvement provides roofing and exterior home improvement services for residential and commercial properties in Essex County, New Jersey. Services include roof installation, roof repair, roof replacement, roof removal, re-roofing, flat roofing, slate roofing, metal roofing, asphalt shingle roofing, roof inspections, roof maintenance, emergency roof repairs, storm damage repairs, emergency roof tarping, siding installation, chimney repair, chimney flashing repair, gutter installation, gutter repair, carpentry, dormers, and home additions.",
+  telephone: "+1-973-820-5130",
+  email: "antoniogutama@gmail.com",
   priceRange: "$$",
-
   address: {
     "@type": "PostalAddress",
-
-    streetAddress: siteConfig.address.streetAddress,
-
-    addressLocality: siteConfig.address.locality,
-
-    addressRegion: siteConfig.address.region,
-
-    postalCode: siteConfig.address.postalCode,
-
-    addressCountry: siteConfig.address.country,
+    streetAddress: "272-274 Orange St",
+    addressLocality: "Newark",
+    addressRegion: "NJ",
+    postalCode: "07103",
+    addressCountry: "US",
   },
-
   geo: {
     "@type": "GeoCoordinates",
-
-    latitude: "40.7357",
-
-    longitude: "-74.1724",
+    latitude: 40.7357,
+    longitude: -74.1724,
   },
-
-  areaServed: [
-    {
-      "@type": "AdministrativeArea",
-      name: "Essex County",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Newark",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Bloomfield",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Belleville",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Montclair",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Nutley",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "East Orange",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "West Orange",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Irvington",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Livingston",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Maplewood",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "South Orange",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Orange",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Verona",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Cedar Grove",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Millburn",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Caldwell",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Fairfield",
-    },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Essex County, New Jersey",
+  },
+  sameAs: [
+    "https://www.tiktok.com/@gutamaroofingnj.com",
+    "https://www.facebook.com/gutamaroofingnj",
+    "https://www.instagram.com/gutamahomeimprovement",
+    "https://x.com/gutamaroofingnj",
+    "https://www.youtube.com/@Gutama-01",
+    "https://www.yelp.com/biz/gutama-home-improvement-newark-5",
   ],
-
-
-  makesOffer: [
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Roof Repair",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Roofing and Home Improvement Services",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Roofing Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Roof Installation",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Roof Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Roof Replacement",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Roof Removal",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Re-Roofing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Flat Roofing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Slate Roofing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Metal Roofing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Asphalt Shingle Roofing",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Roof Inspection and Maintenance",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Emergency Roof Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Storm Damage Roof Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Emergency Roof Tarping",
+            },
+          },
+        ],
       },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Roof Replacement",
+      {
+        "@type": "OfferCatalog",
+        name: "Exterior and Home Improvement Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Siding Installation",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Chimney Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Chimney Flashing Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Gutter Installation",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Gutter Repair",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Carpentry Services",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Dormer Construction",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Home Additions",
+            },
+          },
+        ],
       },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Roof Inspection",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Emergency Roof Repair",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Storm Damage Roof Repair",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Emergency Roof Tarping",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Roof Maintenance",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Flat Roofing",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Metal Roofing",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Slate Roofing",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Asphalt Shingle Roofing",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Siding Installation",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Gutter Installation",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Chimney Repair",
-      },
-    },
-  ],
+    ],
+  },
 };
 
 // Schema.org - Organization

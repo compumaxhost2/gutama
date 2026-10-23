@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { ArrowRight, Award, FileBadge, Handshake, Phone, ShieldCheck } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
+
+const TRUST_BADGES = [
+  { label: "Certified", icon: Award },
+  { label: "Licensed", icon: FileBadge },
+  { label: "Bonded", icon: Handshake },
+  { label: "Insured", icon: ShieldCheck },
+] as const;
 
 export function HeroSection() {
   return (
@@ -25,19 +32,35 @@ export function HeroSection() {
       {/* Top subtle gradient accent line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent z-20" />
 
-      {/* Split Screen Grid: Left Content (Gradient Backdrop) | Right Side (Bright & Clear Image) */}
+      {/* Split Screen Grid: Left Content (Mobile: Image as background | Desktop: Left Column) */}
       <div className="grid min-h-[auto] lg:min-h-[70vh] xl:min-h-[74vh] grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Content */}
-        <div className="relative z-10 flex flex-col justify-center px-6 py-10 sm:px-10 md:px-12 lg:py-12 xl:py-14 lg:pl-[max(2rem,calc((100vw-1280px)/2+1.5rem))] lg:pr-10 xl:pr-14 bg-gradient-to-br from-neutral-950/95 via-[#141417]/95 to-neutral-900/90">
+        <div className="relative z-10 flex flex-col justify-center overflow-hidden px-6 py-12 sm:px-10 md:px-12 lg:py-12 xl:py-14 lg:pl-[max(2rem,calc((100vw-1280px)/2+1.5rem))] lg:pr-10 xl:pr-14 lg:bg-gradient-to-br lg:from-neutral-950/95 lg:via-[#141417]/95 lg:to-neutral-900/90">
+          {/* Mobile-Only Background Image (Behind Content) */}
+          <div className="absolute inset-0 z-0 lg:hidden pointer-events-none" aria-hidden="true">
+            <Image
+              src="/images/gutama new images/hero 4k.jpg"
+              alt="Roofing contractor working on residential roof in Essex County NJ"
+              fill
+              priority
+              sizes="100vw"
+              quality={90}
+              className="object-cover object-center brightness-105"
+            />
+            {/* Dark gradient overlays for high contrast and readability on mobile */}
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/95 via-black/60 to-neutral-950/95" />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px]" />
+          </div>
+
           {/* Vertical gradient divider at split boundary on desktop */}
           <div
             className="absolute top-0 bottom-0 right-0 hidden lg:block w-px bg-gradient-to-b from-transparent via-secondary/40 to-transparent pointer-events-none z-20"
             aria-hidden="true"
           />
 
-          <div className="max-w-xl xl:max-w-2xl">
-            {/* Region Tag */}
-            <div className="mb-3.5 inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3.5 py-1 backdrop-blur-xs">
+          <div className="relative z-10 max-w-xl xl:max-w-2xl">
+            {/* Region Tag (Hidden on mobile) */}
+            <div className="mb-3.5 hidden sm:inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3.5 py-1 backdrop-blur-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-secondary">
                 Roofing Contractor — New Jersey
@@ -53,7 +76,7 @@ export function HeroSection() {
               <br />
               <span className="tracking-[0.03em] text-white">in New Jersey</span>
               <br />
-              <span className="text-gradient-gold mt-2.5 block text-[0.52em] font-semibold normal-case leading-[1.35] tracking-[0.05em]">
+              <span className="text-red-500 mt-2.5 block text-[0.52em] font-semibold normal-case leading-[1.35] tracking-[0.05em]">
                 Free Inspections &amp; Quality Work
               </span>
             </h1>
@@ -73,8 +96,8 @@ export function HeroSection() {
                   </p>
                 </div>
 
-                <div className="border-l-2 border-primary/80 pl-3.5">
-                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-400">
+                <div className="border-l-2 border-red-500/80 pl-3.5">
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-red-500">
                     FAST RESPONSE
                   </p>
                   <p className="mt-1 font-serif text-base font-bold text-white drop-shadow-sm sm:text-lg">
@@ -115,30 +138,37 @@ export function HeroSection() {
               </div>
             </Reveal>
 
-            {/* Certification Badges Row */}
+            {/* Trust Badges - Single Line, Relatable Icons + Larger Word Below */}
             <Reveal delay={0.18}>
-              <div className="mt-5 flex flex-wrap items-center gap-2 sm:gap-2.5">
-                {(["Certified", "Licensed", "Bonded", "Insured"] as const).map(
-                  (badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center gap-2 rounded-full border border-amber-400/80 bg-gradient-to-r from-amber-500/25 via-yellow-400/15 to-amber-500/25 px-3.5 py-1.5 text-xs sm:text-sm font-bold tracking-wide text-white shadow-[0_0_15px_rgba(245,158,11,0.28)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-amber-300 hover:bg-amber-500/35 hover:shadow-[0_0_22px_rgba(245,158,11,0.5)]"
-                    >
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-amber-300 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
-                      {badge}
-                    </span>
-                  ),
-                )}
+              <div className="mt-8 pt-5 border-t border-white/15 max-w-lg">
+                <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-5">
+                  {TRUST_BADGES.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={item.label}
+                        className="group flex flex-col items-center justify-center text-center cursor-default transition-transform duration-300 hover:-translate-y-1"
+                      >
+                        {/* Larger Red Seal Icon on Top */}
+                        <div className="relative flex h-13 w-13 sm:h-15 sm:w-15 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-red-500 via-red-600 to-red-800 shadow-[0_0_22px_rgba(220,38,38,0.65)] ring-2 ring-red-400/60 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_32px_rgba(239,68,68,0.95)] group-hover:ring-red-300">
+                          <Icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white stroke-[2.3] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" />
+                        </div>
+                        {/* Larger Word Below the Icon */}
+                        <span className="mt-2.5 text-xs sm:text-sm md:text-[15px] font-black uppercase italic tracking-wider text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] transition-colors duration-200 group-hover:text-red-400">
+                          {item.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </Reveal>
+
           </div>
         </div>
 
-        {/* Divider on mobile/tablet screens */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-secondary/40 to-transparent lg:hidden" />
-
-        {/* Right Side: Bright, Clear Image (100% Opacity, NO Black Shadow) */}
-        <div className="relative min-h-[340px] sm:min-h-[400px] md:min-h-[460px] lg:min-h-full w-full overflow-hidden bg-neutral-900">
+        {/* Right Side: Bright, Clear Image (Desktop Only - on mobile it is positioned behind content) */}
+        <div className="relative hidden lg:block lg:min-h-full w-full overflow-hidden bg-neutral-900">
           <Image
             src="/images/gutama new images/hero 4k.jpg"
             alt="Roofing contractor working on residential roof in Essex County NJ"

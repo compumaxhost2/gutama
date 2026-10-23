@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, Globe, Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TRANSLATE_SCRIPT_ID = "google-translate-script";
@@ -130,19 +130,25 @@ export function GoogleTranslateWidget() {
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-[#0c0c0e] px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:border-secondary hover:bg-[#141418]",
+          "inline-flex items-center gap-1 sm:gap-1.5 rounded-full border border-white/20 bg-[#0c0c0e] px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:border-secondary hover:bg-[#141418] cursor-pointer",
           isOpen && "border-secondary ring-1 ring-secondary/50"
         )}
         aria-label="Select Language"
       >
-        <Globe className="h-3.5 w-3.5 text-secondary" />
-        <span>{currentLabel}</span>
-        <ChevronDown className={cn("h-3 w-3 text-secondary transition-transform duration-200", isOpen && "rotate-180")} />
+        {/* 文A Translate Icon on Mobile, Globe on Desktop */}
+        <Languages className="h-3 w-3 sm:hidden text-secondary shrink-0" />
+        <Globe className="hidden sm:inline-block h-3.5 w-3.5 text-secondary shrink-0" />
+
+        {/* Short Code on Mobile (EN), Full Label on Desktop (ENGLISH) */}
+        <span className="sm:hidden font-bold tracking-wide">{currentLang.toUpperCase()}</span>
+        <span className="hidden sm:inline font-bold tracking-wider">{currentLabel.toUpperCase()}</span>
+
+        <ChevronDown className={cn("h-2.5 w-2.5 sm:h-3 sm:w-3 text-secondary shrink-0 transition-transform duration-200", isOpen && "rotate-180")} />
       </button>
 
       {/* Custom Jet Black Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border border-white/15 bg-[#0c0c0e] p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.95)] backdrop-blur-md">
+        <div className="absolute right-0 top-full z-50 mt-2 w-38 sm:w-44 rounded-xl border border-white/15 bg-[#0c0c0e] p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.95)] backdrop-blur-md">
           <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border-b border-white/10 mb-1">
             Language
           </div>

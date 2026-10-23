@@ -1,4 +1,4 @@
-﻿import { MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export function AdditionsPropertyTypesSection() {
   const properties = [
@@ -32,7 +32,7 @@ export function AdditionsPropertyTypesSection() {
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             We specialize in residential expansion projects for homeowners
             throughout Essex County, helping create additional living space,
             improve functionality, and increase long-term property value.
@@ -48,7 +48,7 @@ export function AdditionsPropertyTypesSection() {
             {properties.map((property) => (
               <div key={property} className="flex items-center gap-3">
                 <div className="h-px w-5 shrink-0 bg-secondary" />
-                <span className="text-stone-600">{property}</span>
+                <span className="text-stone-800 font-medium">{property}</span>
               </div>
             ))}
           </div>
@@ -63,12 +63,12 @@ export function AdditionsPropertyTypesSection() {
             {areas.map((area) => (
               <div key={area} className="flex items-center gap-3">
                 <MapPin size={16} className="shrink-0 text-secondary" />
-                <span className="text-stone-600">{area}</span>
+                <span className="text-stone-800 font-medium">{area}</span>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-600">
+          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-700">
             And surrounding communities throughout Essex County, New Jersey.
           </p>
         </div>

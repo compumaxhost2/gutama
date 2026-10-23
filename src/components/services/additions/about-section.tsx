@@ -1,4 +1,4 @@
-﻿export function AdditionsTypesSection() {
+export function AdditionsTypesSection() {
   const additionTypes = [
     "Room extensions",
     "Kitchen expansions",
@@ -18,7 +18,7 @@
               Home Expansion
             </p>
 
-            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight text-stone-900">
+            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight font-bold text-white">
               What Is a
               <br />
               <em className="text-secondary italic">Home Addition?</em>
@@ -26,7 +26,7 @@
 
             <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="text-base leading-loose text-stone-600">
+            <p className="text-base leading-loose text-stone-300">
               A home addition is a construction project that increases the
               square footage of an existing property by building new structures
               attached to the original building.
@@ -45,7 +45,7 @@
                   className="flex items-center gap-3 border border-stone-200/70 p-4"
                 >
                   <div className="h-px w-5 shrink-0 bg-secondary" />
-                  <span className="text-sm text-stone-600">
+                  <span className="text-sm font-medium text-stone-800">
                     {item}
                   </span>
                 </div>
@@ -55,7 +55,7 @@
         </div>
 
         <div className="mt-10 border border-secondary/20 bg-secondary/5 p-8">
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             Home additions are one of the most effective ways to increase
             property value without relocating.
           </p>

@@ -1,4 +1,4 @@
-﻿export function AdditionsSignsSection() {
+export function AdditionsSignsSection() {
   const signs = [
     "Your home feels overcrowded",
     "You need more bedrooms or bathrooms",
@@ -18,7 +18,7 @@
               When to Expand
             </p>
 
-            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight text-stone-900">
+            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight font-bold text-white">
               Signs You May Need
               <br />
               <em className="text-secondary italic">a Home Addition</em>
@@ -26,7 +26,7 @@
 
             <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="text-base leading-loose text-stone-600">
+            <p className="text-base leading-loose text-stone-300">
               If your current home no longer supports your lifestyle, a home
               addition can provide the extra space and functionality you need
               without the cost and disruption of moving.
@@ -41,7 +41,7 @@
                   className="flex items-center gap-4 border-b border-stone-200/70 pb-4 last:border-0 last:pb-0"
                 >
                   <div className="h-px w-6 shrink-0 bg-secondary" />
-                  <span className="text-base text-stone-600">
+                  <span className="text-base font-medium text-stone-800">
                     {sign}
                   </span>
                 </div>

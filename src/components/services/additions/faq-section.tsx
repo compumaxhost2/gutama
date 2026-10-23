@@ -1,10 +1,9 @@
-﻿"use client";
+"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Phone } from "lucide-react";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
 const FAQS = {
@@ -57,30 +56,54 @@ export function AdditionsFaqSection() {
               <em className="text-secondary italic">Questions</em>
             </h2>
             <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
-            <p className="mb-8 text-sm leading-loose text-stone-600">
+            <p className="mb-8 text-sm leading-loose text-stone-300">
               {FAQS.intro}
             </p>
-            <Button asChild variant="outline" className="h-12 border-secondary/40 px-6 text-sm text-secondary hover:bg-secondary/10 hover:text-secondary">
-              <a href={`tel:${siteConfig.phones.english}`}>
-                <Phone size={14} className="mr-2 inline-block" />
-                Speak with a Specialist
-              </a>
-            </Button>
+            <motion.a
+              href={`tel:${siteConfig.phones.english}`}
+              initial="rest"
+              whileHover="hover"
+              whileTap={{ scale: 0.98 }}
+              variants={{
+                rest: { scale: 1, y: 0 },
+                hover: {
+                  scale: 1.025,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400, damping: 20 },
+                },
+              }}
+              className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-secondary/40 bg-secondary/10 px-6 text-sm font-medium text-secondary shadow-xs transition-all duration-200 hover:bg-secondary/20 hover:border-secondary/60 hover:shadow-md hover:shadow-secondary/15"
+            >
+              <motion.span
+                variants={{
+                  rest: { rotate: 0, scale: 1 },
+                  hover: {
+                    rotate: [0, -14, 14, -10, 10, -5, 5, 0],
+                    scale: 1.15,
+                    transition: { duration: 0.6, ease: "easeInOut" },
+                  },
+                }}
+                className="inline-flex items-center justify-center"
+              >
+                <Phone size={15} />
+              </motion.span>
+              <span>Speak with a Specialist</span>
+            </motion.a>
           </div>
         </div>
 
         <div className="flex flex-col gap-0">
           {FAQS.items.map((item, i) => (
-            <div key={item.q} className="border-b border-stone-200/90">
+            <div key={item.q} className="border-b border-white/10">
               <button
                 onClick={() => setActiveIndex(activeIndex === i ? null : i)}
                 className="flex w-full cursor-pointer items-center justify-between gap-4 bg-transparent py-6 text-left"
               >
-                <span className={["font-serif text-lg transition-colors duration-200", activeIndex === i ? "text-secondary" : "text-stone-900"].join(" ")}>
+                <span className={["font-serif text-lg transition-colors duration-200", activeIndex === i ? "text-secondary font-bold" : "text-white font-medium"].join(" ")}>
                   {item.q}
                 </span>
                 <motion.div animate={{ rotate: activeIndex === i ? 90 : 0 }} transition={{ duration: 0.3 }}>
-                  <ChevronRight size={18} className={activeIndex === i ? "text-secondary" : "text-stone-600"} />
+                  <ChevronRight size={18} className={activeIndex === i ? "text-secondary" : "text-stone-400"} />
                 </motion.div>
               </button>
               <AnimatePresence initial={false}>
@@ -92,7 +115,7 @@ export function AdditionsFaqSection() {
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 text-sm leading-loose text-stone-600">{item.a}</p>
+                    <p className="pb-6 text-sm leading-loose text-stone-300">{item.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

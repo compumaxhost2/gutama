@@ -1,4 +1,4 @@
-﻿export function CarpentryServiceTypesSection() {
+export function CarpentryServiceTypesSection() {
   const structural = [
     "Wall framing",
     "Roof framing",
@@ -44,7 +44,7 @@
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             We provide a wide range of residential and commercial carpentry
             services, from structural framing and finish work to custom
             woodcraft and repair solutions.

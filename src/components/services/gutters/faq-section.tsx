@@ -1,10 +1,9 @@
-﻿"use client";
+"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Phone } from "lucide-react";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
 export function GuttersFaqSection() {
@@ -50,7 +49,36 @@ export function GuttersFaqSection() {
             <h2 className="mb-7 font-serif text-[clamp(32px,3.5vw,48px)] leading-snug text-black">Common<br /><em className="text-primary italic">Questions</em></h2>
             <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-primary to-primary/30" />
             <p className="mb-8 text-sm leading-loose font-medium text-black">{content.intro}</p>
-            <Button asChild variant="outline" className="h-12 border-primary/40 px-6 text-sm text-primary hover:bg-primary/10 hover:text-primary"><a href={`tel:${siteConfig.phones.english}`}><Phone size={14} className="mr-2 inline-block" />Speak with a Specialist</a></Button>
+            <motion.a
+              href={`tel:${siteConfig.phones.english}`}
+              initial="rest"
+              whileHover="hover"
+              whileTap={{ scale: 0.98 }}
+              variants={{
+                rest: { scale: 1, y: 0 },
+                hover: {
+                  scale: 1.025,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400, damping: 20 },
+                },
+              }}
+              className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-primary/35 bg-[color-mix(in_srgb,var(--color-primary)_10%,white)] px-6 text-sm font-medium text-primary shadow-xs transition-all duration-200 hover:bg-[color-mix(in_srgb,var(--color-primary)_16%,white)] hover:border-primary/50 hover:shadow-md hover:shadow-primary/15"
+            >
+              <motion.span
+                variants={{
+                  rest: { rotate: 0, scale: 1 },
+                  hover: {
+                    rotate: [0, -14, 14, -10, 10, -5, 5, 0],
+                    scale: 1.15,
+                    transition: { duration: 0.6, ease: "easeInOut" },
+                  },
+                }}
+                className="inline-flex items-center justify-center"
+              >
+                <Phone size={15} />
+              </motion.span>
+              <span>Speak with a Specialist</span>
+            </motion.a>
           </div>
         </div>
         <div className="flex flex-col gap-0">

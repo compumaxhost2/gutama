@@ -1,4 +1,4 @@
-﻿import { MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export function EmergencyRepairAreasWeServeSection() {
   const areas = [
@@ -25,7 +25,7 @@ export function EmergencyRepairAreasWeServeSection() {
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             We provide emergency roof repair services throughout Essex County,
             NJ, helping homeowners and businesses respond quickly to roof leaks,
             storm damage, and other urgent roofing issues.
@@ -37,12 +37,12 @@ export function EmergencyRepairAreasWeServeSection() {
             {areas.map((area) => (
               <div key={area} className="flex items-center gap-3">
                 <MapPin size={16} className="shrink-0 text-secondary" />
-                <span className="text-stone-600">{area}</span>
+                <span className="text-stone-800 font-medium">{area}</span>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-600">
+          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-700">
             And surrounding Essex County communities.
           </p>
         </div>

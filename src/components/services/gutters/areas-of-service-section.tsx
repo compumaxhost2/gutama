@@ -1,4 +1,4 @@
-﻿import { MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export function GuttersAreasWeServeSection() {
   const areas = [
@@ -25,7 +25,7 @@ export function GuttersAreasWeServeSection() {
 
           <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             We proudly provide professional gutter installation, repair,
             cleaning, and replacement services throughout Essex County, NJ.
           </p>
@@ -36,12 +36,12 @@ export function GuttersAreasWeServeSection() {
             {areas.map((area) => (
               <div key={area} className="flex items-center gap-3">
                 <MapPin size={16} className="shrink-0 text-secondary" />
-                <span className="text-stone-600">{area}</span>
+                <span className="text-stone-800 font-medium">{area}</span>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-600">
+          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-700">
             And surrounding communities throughout Essex County, New Jersey.
           </p>
         </div>

@@ -1,4 +1,4 @@
-﻿export function ChimneyPropertyServicesSection() {
+export function ChimneyPropertyServicesSection() {
   return (
     <section className="relative bg-black text-white py-20 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
@@ -94,12 +94,12 @@
         </div>
 
         {/* Service Areas */}
-        <div className="mt-12 border border-secondary/20 bg-secondary/5 p-8 text-center">
-          <h3 className="mb-4 font-serif text-2xl text-stone-900">
+        <div className="mt-12 rounded-2xl border border-secondary/20 bg-secondary/5 p-8 text-center">
+          <h3 className="mb-4 font-serif text-2xl font-bold text-white">
             Areas We Serve
           </h3>
 
-          <p className="mb-6 text-stone-600">
+          <p className="mb-6 text-stone-300">
             We proudly provide chimney services throughout Essex County, NJ.
           </p>
 
@@ -112,7 +112,7 @@
             ].map((city) => (
               <span
                 key={city}
-                className="border border-secondary/30 px-4 py-2 text-sm text-stone-900"
+                className="rounded-lg border border-secondary/30 bg-secondary/10 px-4 py-2 text-sm font-medium text-secondary"
               >
                 {city}
               </span>

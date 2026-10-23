@@ -1,4 +1,4 @@
-﻿export function DormersSignsSection() {
+export function DormersSignsSection() {
   const signs = [
     "Unused attic space",
     "Low ceiling height in upper floors",
@@ -19,7 +19,7 @@
               Expansion Indicators
             </p>
 
-            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight text-stone-900">
+            <h2 className="mb-6 font-serif text-[clamp(36px,4vw,52px)] leading-tight font-bold text-white">
               Signs You May Need
               <br />
               <em className="text-secondary italic">a Dormer Addition</em>
@@ -27,7 +27,7 @@
 
             <div className="mb-8 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="text-base leading-loose text-stone-600">
+            <p className="text-base leading-loose text-stone-300">
               A dormer can transform underutilized areas into functional living
               space while improving comfort, ventilation, and property value.
             </p>
@@ -42,7 +42,7 @@
               >
                 <div className="mb-4 h-px w-8 bg-secondary" />
 
-                <p className="text-sm leading-loose text-stone-600">
+                <p className="text-sm leading-loose font-medium text-stone-800">
                   {item}
                 </p>
               </div>
@@ -51,7 +51,7 @@
         </div>
 
         <div className="mt-10 border border-secondary/20 bg-secondary/5 p-8">
-          <p className="text-base leading-loose text-stone-600">
+          <p className="text-base leading-loose text-stone-300">
             Dormers are one of the most cost-effective home expansion solutions
             in Essex County, NJ.
           </p>

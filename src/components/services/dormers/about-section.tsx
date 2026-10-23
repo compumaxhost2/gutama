@@ -1,4 +1,4 @@
-﻿export function DormersFunctionsSection() {
+export function DormersFunctionsSection() {
   const functions = [
     "Adds usable living space or storage",
     "Increases natural light through windows",
@@ -24,7 +24,7 @@
 
           <div className="mx-auto mb-6 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-          <p className="mx-auto max-w-4xl text-base leading-loose text-stone-600">
+          <p className="mx-auto max-w-4xl text-base leading-loose text-stone-300">
             A dormer increases both living space and structural usability by
             extending upward from a sloped roof.
           </p>
@@ -39,17 +39,17 @@
             {functions.map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-3 border border-stone-200/90 bg-background p-4"
+                className="flex items-center gap-3 border border-stone-200/90 bg-stone-50 p-4"
               >
                 <div className="h-px w-5 shrink-0 bg-secondary" />
-                <span className="text-sm leading-relaxed text-stone-900/80">
+                <span className="text-sm leading-relaxed text-stone-900">
                   {item}
                 </span>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-600">
+          <p className="mt-10 border-t border-stone-200 pt-8 text-base leading-loose text-stone-700">
             Dormers are commonly used in attic conversions and home expansion
             projects across New Jersey.
           </p>

@@ -1,4 +1,4 @@
-﻿import {
+import {
   Shield,
   Wind,
   Flame,
@@ -109,9 +109,9 @@ export function ChimneyAboutSection() {
           ].map((component) => (
             <div
               key={component}
-              className="border border-secondary/20 bg-background p-5 text-center"
+              className="border border-secondary/20 bg-secondary/5 rounded-xl p-5 text-center"
             >
-              <p className="font-serif text-lg text-stone-900">
+              <p className="font-serif text-lg text-white font-medium">
                 {component}
               </p>
             </div>

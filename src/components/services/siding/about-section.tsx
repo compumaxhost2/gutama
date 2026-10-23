@@ -1,4 +1,4 @@
-﻿export function WhatIsSidingSection() {
+export function WhatIsSidingSection() {
   const materials = [
     "Vinyl Siding",
     "Fiber Cement Siding",
@@ -25,14 +25,14 @@
 
             <div className="mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="mb-5 text-base leading-loose text-stone-600">
+            <p className="mb-5 text-base leading-loose text-stone-300">
               Home siding is the outer protective layer of a building&apos;s exterior
               walls. It acts as a barrier against rain, wind, snow, heat, and
               moisture while helping improve energy efficiency and overall
               aesthetics.
             </p>
 
-            <p className="text-base leading-loose text-stone-600">
+            <p className="text-base leading-loose text-stone-300">
               The right siding system protects your property from weather
               exposure, reduces maintenance needs, and enhances curb appeal for
               years to come.
@@ -51,7 +51,7 @@
                   className="flex items-center gap-4 border-b border-stone-200/70 pb-4 last:border-0 last:pb-0"
                 >
                   <div className="h-px w-6 shrink-0 bg-secondary" />
-                  <span className="text-sm tracking-wide text-stone-900/80">
+                  <span className="text-sm font-medium tracking-wide text-stone-800">
                     {material}
                   </span>
                 </div>
@@ -59,7 +59,7 @@
             </div>
 
             <div className="mt-8 border-t border-stone-200/90 pt-6">
-              <p className="text-sm leading-loose text-stone-600">
+              <p className="text-sm leading-loose text-stone-700">
                 Each siding material offers different levels of durability,
                 maintenance requirements, appearance, and long-term value,
                 allowing homeowners to choose the best option for their

@@ -49,7 +49,7 @@ export function ReRoofingOverviewSection() {
           <div className="relative">
             <div className="relative aspect-4/5 overflow-hidden rounded-2xl">
               <Image
-                src="/images/before-roof.webp"
+                src="/images/re-roofing.webp"
                 alt="Professional Re-Roofing Services in Essex County NJ"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

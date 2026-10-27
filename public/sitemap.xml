@@ -124,7 +124,7 @@
 
   <url>
     <loc>https://www.gutamaroofingnj.com/blog</loc>
-    <lastmod>2026-05-06T17:06:38+00:00</lastmod>
+    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -203,6 +203,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://www.gutamaroofingnj.com/blog/common-causes-roof-leaks-new-jersey-homes</loc>
+    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
     <!-- Location Pages -->
 
   <url>

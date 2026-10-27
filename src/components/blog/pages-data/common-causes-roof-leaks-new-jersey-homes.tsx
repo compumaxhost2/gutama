@@ -352,9 +352,9 @@ export const commonCausesRoofLeaksNewJerseyHomes = {
                     </p>
                     <p>
                         If you suspect a roof leak or have noticed water stains after a storm,
-                        visit Gutama Roofing&apos;s{" "}
+                        visit{" "}
                         <Link href="/services/roofing" className="text-secondary">
-                            services page
+                            Gutama Roofing&apos;s services page
                         </Link>{" "}
                         to learn more and contact the team to discuss an inspection or
                         request a quote.

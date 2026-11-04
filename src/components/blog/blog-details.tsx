@@ -74,6 +74,7 @@ export function BlogDetails({
                                     height={800}
                                     className="h-64 w-full sm:h-72 lg:h-140"
                                     priority
+                                    loading="eager"
                                 />
                             </div>
                         </Reveal>

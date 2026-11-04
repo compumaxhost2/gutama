@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [45, 50, 60, 75, 90],
+    qualities: [45, 50, 60, 75, 85, 90, 95],
   },
 
   experimental: {

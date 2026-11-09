@@ -13,7 +13,7 @@ export function RoofingHeroSection() {
     image: "/images/gutama new images/roofing.jpg",
     imageAlt: "Gutama Roofing Solutions in Essex County NJ",
     stats: [
-      { value: "18+", label: "Years in Essex County" },
+      { value: "26+", label: "Years in Essex County" },
       { value: "1,200+", label: "Roofs Completed" },
       { value: "100%", label: "Licensed & Insured" },
       { value: "4.9★", label: "Client Satisfaction" },

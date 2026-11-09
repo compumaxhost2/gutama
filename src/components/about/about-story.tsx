@@ -9,7 +9,7 @@ import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion/reveal";
 
 const STORY_BULLETS = [
-  "Family-owned and operated since 2008",
+  "Family-owned and operated since 2000",
   "Fully licensed, bonded, and insured in New Jersey",
   "Bilingual team — English & Español",
   "5-year installation warranty on all services",

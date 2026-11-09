@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 
 const STATS = [
-  { value: "2008", label: "Year Founded", note: "Over 18 years in business" },
+  { value: "2000", label: "Year Founded", note: "Over 26 years in business" },
   { value: "1,200+", label: "Projects Completed", note: "Residential & commercial" },
   { value: "19", label: "Municipalities", note: "Across Essex County, NJ" },
   { value: "5★", label: "Client Rating", note: "Consistent 5-star reviews" },

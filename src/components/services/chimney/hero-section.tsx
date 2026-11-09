@@ -15,7 +15,7 @@ export function ChimneyHeroSection() {
     description: "Complete chimney repair, rebuilding, flashing, and waterproofing services focused on safety, weather protection, and lasting masonry performance.",
         stats: [
           { value: "Same-Day", label: "Safety Inspections" },
-          { value: "20+", label: "Years in Essex County" },
+          { value: "26+", label: "Years in Essex County" },
           { value: "Certified", label: "Chimney Sweep Team" },
           { value: "Affordable", label: "Repair & Maintenance" },
         ],

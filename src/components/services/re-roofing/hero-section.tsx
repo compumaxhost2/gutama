@@ -22,7 +22,7 @@ export function ReRoofingHeroSection({
         imageAlt: "Re-roofing services",
         description: "Premium re-roofing services using top-quality materials and disciplined installation for lasting protection and stronger curb appeal.",
         stats: [
-          { value: "22+", label: "Years of Roofing Experience" },
+          { value: "26+", label: "Years of Roofing Experience" },
           { value: "690+", label: "Roofs Replaced" },
           { value: "100%", label: "Clean Tear-Off Standards" },
           { value: "4.9", label: "Average Client Rating" },

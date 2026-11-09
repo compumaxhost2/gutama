@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "About Gutama Home Improvement | Roofing Contractor in Essex County, NJ Since 2008",
+    "About Gutama Home Improvement | Roofing Contractor in Essex County, NJ Since 2000",
 
   description:
-    "Learn why Gutama Home Improvement is the trusted roofing contractor in Essex County, NJ, delivering expert roofing, siding & exterior services since 2008.",
+    "Learn why Gutama Home Improvement is the trusted roofing contractor in Essex County, NJ, delivering expert roofing, siding & exterior services since 2000.",
 
   keywords: [
     "roofing contractor Essex County NJ",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title:
-      "About Gutama Home Improvement | Roofing Contractor in Essex County, NJ Since 2008",
+      "About Gutama Home Improvement | Roofing Contractor in Essex County, NJ Since 2000",
     description:
-      "Meet Gutama Home Improvement, a family-owned roofing contractor serving Essex County, NJ with trusted craftsmanship, honest service, and premium exterior solutions since 2008.",
+      "Meet Gutama Home Improvement, a family-owned roofing contractor serving Essex County, NJ with trusted craftsmanship, honest service, and premium exterior solutions since 2000.",
     url: "https://www.gutamaroofingnj.com/about",
     siteName: "Gutama Home Improvement",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title:
       "About Gutama Home Improvement | Roofing Contractor in Essex County, NJ",
     description:
-      "Trusted roofing contractor serving Essex County, NJ since 2008. Family-owned, licensed, bilingual, and committed to quality craftsmanship.",
+      "Trusted roofing contractor serving Essex County, NJ since 2000. Family-owned, licensed, bilingual, and committed to quality craftsmanship.",
     images: [
       "https://www.gutamaroofingnj.com/images/about-aerial.webp",
     ],

@@ -16,7 +16,7 @@ export function SidingHeroSection() {
         stats: [
           { value: "Same-Day", label: "Consultations" },
           { value: "Vinyl + Fiber", label: "Siding Options" },
-          { value: "20+", label: "Years of Local Service" },
+          { value: "26+", label: "Years of Local Service" },
           { value: "Affordable", label: "Free Estimates" },
         ],
       };

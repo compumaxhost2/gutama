@@ -5,7 +5,7 @@ export const siteConfig = {
     description:
       "Premium roofing and exterior solutions for residential and commercial properties in Essex County, New Jersey.",
     regionLabel: "Essex County, NJ",
-    foundedYear: 2008,
+    foundedYear: 2000,
   },
   phones: {
     english: "973-820-5130",

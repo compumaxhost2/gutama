@@ -1,4 +1,5 @@
-import { Mail, MapPin, Phone, ShieldCheck, Clock, Award } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin, Phone, ShieldCheck, Clock, Award, Star } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 const addressFull = `${siteConfig.address.streetAddress}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
@@ -106,6 +107,43 @@ export function ContactInfoPanel() {
               </p>
             </div>
           </a>
+        </div>
+
+        {/* Google Review QR Card */}
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/4 p-3.5 backdrop-blur-sm">
+          <div className="flex items-center gap-3.5">
+            <a
+              href="https://g.page/r/CZcJLgWQY05CEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/qr shrink-0 rounded-xl bg-white p-2 transition-transform duration-200 hover:scale-105"
+              title="Click to leave a Google Review"
+            >
+              <Image
+                src="/review-barcode.png"
+                alt="Google Review QR Code"
+                width={80}
+                height={80}
+                className="h-16 w-16 object-contain"
+              />
+            </a>
+            <div className="min-w-0">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary">
+                Recent Customer?
+              </span>
+              <p className="text-xs font-bold text-white mt-0.5">
+                Leave a Google Review
+              </p>
+              <a
+                href="https://g.page/r/CZcJLgWQY05CEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-amber-300 hover:text-amber-200 hover:underline"
+              >
+                <Star className="h-3 w-3 fill-amber-300 text-amber-300" /> Click or scan to review &rarr;
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

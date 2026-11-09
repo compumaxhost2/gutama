@@ -50,6 +50,11 @@ export function BookAppointmentForm() {
 
   const handleServiceSelect = useCallback((selectedService: Service) => {
     setService((prev) => (prev === selectedService ? prev : selectedService));
+    setFieldErrors((prev) => {
+      const next = { ...prev };
+      delete next.service;
+      return next;
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,6 +62,12 @@ export function BookAppointmentForm() {
     setLoading(true);
     setError(null);
     setFieldErrors({});
+
+    if (!service) {
+      setFieldErrors({ service: "Please select a service needed from the options above." });
+      setLoading(false);
+      return;
+    }
 
     try {
       const formData = new FormData(e.currentTarget);
@@ -158,9 +169,16 @@ export function BookAppointmentForm() {
               ))}
             </div>
 
-            <span className="mb-2.5 block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-white/60">
-              What service do you need?
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="mb-2.5 block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-white/60">
+                What service do you need?
+              </span>
+              {fieldErrors.service && (
+                <span className="text-[0.7rem] font-medium text-red-400">
+                  {fieldErrors.service}
+                </span>
+              )}
+            </div>
             <div className="mb-7 flex flex-wrap gap-2">
               {SERVICE_OPTIONS.map((s) => (
                 <button
@@ -328,7 +346,7 @@ export function BookAppointmentForm() {
               <div className="mt-2 flex items-center gap-5">
                 <button
                   type="submit"
-                  disabled={loading || !service}
+                  disabled={loading}
                   className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#0f0e0c] px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition-[transform,box-shadow] duration-150 disabled:cursor-not-allowed disabled:opacity-60 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(184,74,46,0.25)] hover:disabled:shadow-none"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0" />

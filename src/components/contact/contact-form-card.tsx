@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, ChevronDown, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User, Wrench } from "lucide-react";
+import { ArrowRight, Check, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User, Wrench } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { SERVICE_OPTIONS, contactSchema, type ContactFormInput } from "@/lib/contact-schema";
-
-type Service = (typeof SERVICE_OPTIONS)[number];
+import { contactSchema, type ContactFormInput } from "@/lib/contact-schema";
+import { ServiceSelectDropdown, type Service } from "@/components/ui/service-select-dropdown";
 
 const INPUT_CLASS =
   "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-stone-500 outline-none transition-all duration-200 focus:border-primary focus:bg-white/[0.07] focus:ring-2 focus:ring-primary/20 disabled:opacity-50";
@@ -144,45 +143,28 @@ export function ContactForm() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            {/* 1. Service Selection Dropdown (Inside Form) */}
+            {/* 1. Custom Styled Service Dropdown (Inside Form) */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="service" className={LABEL_CLASS}>
+              <label htmlFor="service-select" className={LABEL_CLASS}>
                 <Wrench className="h-3.5 w-3.5 text-secondary" />
                 What service do you need? <span className="text-primary">*</span>
               </label>
-              <div className="relative">
-                <select
-                  id="service"
-                  name="service"
-                  value={service}
-                  onChange={(e) => {
-                    setService(e.target.value as Service);
-                    setFieldErrors((prev) => {
-                      const next = { ...prev };
-                      delete next.service;
-                      return next;
-                    });
-                  }}
-                  required
-                  disabled={loading}
-                  className={cn(
-                    INPUT_CLASS,
-                    "appearance-none pr-10 cursor-pointer [color-scheme:dark]",
-                    !service ? "text-stone-500" : "text-white font-medium",
-                    fieldErrors.service && "border-red-500/70 focus:border-red-500"
-                  )}
-                >
-                  <option value="" disabled className="bg-[#14100c] text-stone-500">
-                    -- Select a service (e.g. Roofing, Siding, Gutters...) --
-                  </option>
-                  {SERVICE_OPTIONS.map((s) => (
-                    <option key={s} value={s} className="bg-[#14100c] text-white py-1">
-                      {s === "Emergency" ? "🚨 Emergency Roof Repair" : s}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
-              </div>
+
+              <ServiceSelectDropdown
+                id="service-select"
+                value={service}
+                disabled={loading}
+                error={fieldErrors.service}
+                onChange={(val) => {
+                  setService(val);
+                  setFieldErrors((prev) => {
+                    const next = { ...prev };
+                    delete next.service;
+                    return next;
+                  });
+                }}
+              />
+
               {fieldErrors.service && (
                 <p className="text-[0.7rem] font-medium text-red-400">{fieldErrors.service}</p>
               )}

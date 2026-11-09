@@ -1,13 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, CheckCircle2, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User, Wrench } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { SERVICE_OPTIONS, appointmentSchema, type AppointmentFormInput } from "@/lib/contact-schema";
-
-type Service = (typeof SERVICE_OPTIONS)[number];
+import { appointmentSchema, type AppointmentFormInput } from "@/lib/contact-schema";
+import { ServiceSelectDropdown, type Service } from "@/components/ui/service-select-dropdown";
 
 const INPUT_CLASS =
   "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-stone-500 outline-none transition-all duration-200 focus:border-primary focus:bg-white/[0.07] focus:ring-2 focus:ring-primary/20 disabled:opacity-50";
@@ -152,48 +151,31 @@ export function BookAppointmentForm() {
           )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* Service selector */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 sm:p-5">
-              <div className="flex items-center justify-between gap-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-300">
-                  Select Service Needed <span className="text-primary">*</span>
-                </label>
-                {fieldErrors.service && (
-                  <span className="text-[0.72rem] font-semibold text-red-400">
-                    {fieldErrors.service}
-                  </span>
-                )}
-              </div>
+            {/* 1. Service Selection Dropdown */}
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="service-select" className={LABEL_CLASS}>
+                <Wrench className="h-3.5 w-3.5 text-secondary" />
+                Select Service Needed <span className="text-primary">*</span>
+              </label>
 
-              <div className="mt-3 flex flex-wrap gap-2">
-                {SERVICE_OPTIONS.map((s) => {
-                  const isSelected = service === s;
-                  const isEmergency = s === "Emergency";
+              <ServiceSelectDropdown
+                id="service-select"
+                value={service}
+                disabled={loading}
+                error={fieldErrors.service}
+                onChange={(val) => {
+                  setService(val);
+                  setFieldErrors((prev) => {
+                    const next = { ...prev };
+                    delete next.service;
+                    return next;
+                  });
+                }}
+              />
 
-                  return (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => handleServiceSelect(s)}
-                      className={cn(
-                        "group relative inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all duration-200 cursor-pointer select-none",
-                        isSelected
-                          ? "border-primary bg-primary text-white shadow-lg shadow-primary/25 scale-[1.02]"
-                          : isEmergency
-                          ? "border-red-500/30 bg-red-500/10 text-red-300 hover:border-red-500/60 hover:bg-red-500/20"
-                          : "border-white/10 bg-white/[0.03] text-stone-300 hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
-                      )}
-                    >
-                      {isSelected ? (
-                        <CheckCircle2 className="h-3.5 w-3.5 text-white shrink-0" />
-                      ) : isEmergency ? (
-                        <span className="text-sm">🚨</span>
-                      ) : null}
-                      <span>{isEmergency ? "Emergency Repair" : s}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {fieldErrors.service && (
+                <p className="text-[0.7rem] font-medium text-red-400">{fieldErrors.service}</p>
+              )}
             </div>
 
             {/* Date & Contact Info */}

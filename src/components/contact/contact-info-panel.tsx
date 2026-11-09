@@ -110,39 +110,41 @@ export function ContactInfoPanel() {
         </div>
 
         {/* Google Review QR Card */}
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/4 p-3.5 backdrop-blur-sm">
-          <div className="flex items-center gap-3.5">
+        <div className="mt-8 rounded-2xl border border-white/12 bg-black/40 p-5 text-center shadow-lg backdrop-blur-sm">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
+            Review Us on Google
+          </p>
+          <p className="mt-1 text-xs text-stone-300">
+            Recent customer? Click or scan with your phone camera:
+          </p>
+
+          <a
+            href="https://g.page/r/CZcJLgWQY05CEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group my-3.5 inline-block rounded-2xl bg-white p-3 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-amber-500/20"
+            title="Click or scan to leave a Google Review"
+          >
+            <Image
+              src="/review-barcode.png"
+              alt="Google Review QR Code - Gutama Home Improvement"
+              width={180}
+              height={180}
+              className="h-40 w-40 object-contain sm:h-44 sm:w-44"
+              priority
+            />
+          </a>
+
+          <div>
             <a
               href="https://g.page/r/CZcJLgWQY05CEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/qr shrink-0 rounded-xl bg-white p-2 transition-transform duration-200 hover:scale-105"
-              title="Click to leave a Google Review"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-xs font-bold text-amber-300 transition-colors hover:bg-amber-400/20 hover:text-white"
             >
-              <Image
-                src="/review-barcode.png"
-                alt="Google Review QR Code"
-                width={80}
-                height={80}
-                className="h-16 w-16 object-contain"
-              />
+              <Star className="h-3.5 w-3.5 fill-amber-300 text-amber-300" />
+              Leave a 5-Star Review on Google &rarr;
             </a>
-            <div className="min-w-0">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary">
-                Recent Customer?
-              </span>
-              <p className="text-xs font-bold text-white mt-0.5">
-                Leave a Google Review
-              </p>
-              <a
-                href="https://g.page/r/CZcJLgWQY05CEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-amber-300 hover:text-amber-200 hover:underline"
-              >
-                <Star className="h-3 w-3 fill-amber-300 text-amber-300" /> Click or scan to review &rarr;
-              </a>
-            </div>
           </div>
         </div>
       </div>

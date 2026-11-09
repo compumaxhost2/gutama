@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, Check, Loader2 } from "lucide-react";
+import { ArrowRight, Check, Loader2, PhoneCall } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -10,10 +10,10 @@ import { SERVICE_OPTIONS, contactSchema, type ContactFormInput } from "@/lib/con
 type Service = (typeof SERVICE_OPTIONS)[number];
 
 const INPUT_CLASS =
-  "appearance-none border-0 border-b-[1.5px] border-white/28 bg-transparent pb-3 text-[0.93rem] text-white outline-none transition-colors placeholder:text-white/45 focus:border-secondary";
+  "appearance-none border-0 border-b-[1.5px] border-white/20 bg-transparent pb-2.5 text-[0.93rem] text-white outline-none transition-colors placeholder:text-white/40 focus:border-secondary";
 
 const LABEL_CLASS =
-  "text-[0.7rem] font-medium uppercase tracking-[0.1em] text-white/60";
+  "text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-stone-300";
 
 const NAME_FIELDS = [
   { id: "fn", label: "First name", placeholder: "John" },
@@ -26,25 +26,24 @@ function generateCaptchaCode() {
 
 export function ContactForm() {
   const [service, setService] = useState<Service | null>(null);
-  const [step3, setStep3] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [captchaCode, setCaptchaCode] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");
-  const step2 = Boolean(service);
 
   useEffect(() => {
     setCaptchaCode(generateCaptchaCode());
   }, []);
 
-  const markStep3Started = useCallback(() => {
-    setStep3((prev) => (prev ? prev : true));
-  }, []);
-
   const handleServiceSelect = useCallback((selectedService: Service) => {
     setService((prev) => (prev === selectedService ? prev : selectedService));
+    setFieldErrors((prev) => {
+      const next = { ...prev };
+      delete next.service;
+      return next;
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,11 +52,18 @@ export function ContactForm() {
     setError(null);
     setFieldErrors({});
 
+    // Validate service selection explicitly
+    if (!service) {
+      setFieldErrors({ service: "Please select a service needed from the options above." });
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Get form data
       const formData = new FormData(e.currentTarget);
       const payload: ContactFormInput = {
-        service: formData.get("service") as Service,
+        service: service,
+        formType: "contact",
         fn: (formData.get("fn") as string).trim(),
         ln: (formData.get("ln") as string).trim(),
         em: (formData.get("em") as string).trim(),
@@ -96,7 +102,6 @@ export function ContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        // Handle server validation errors
         if (result.fieldErrors && Object.keys(result.fieldErrors).length > 0) {
           setFieldErrors(result.fieldErrors);
         } else {
@@ -117,7 +122,6 @@ export function ContactForm() {
 
   const handleReset = () => {
     setService(null);
-    setStep3(false);
     setLoading(false);
     setError(null);
     setFieldErrors({});
@@ -127,100 +131,92 @@ export function ContactForm() {
   };
 
   return (
-    <div className="contact-form-bg relative flex min-h-155 flex-col overflow-y-auto border-l border-white/12 bg-[#120d09]/85 backdrop-blur-xl lg:min-h-full">
-      {/* Paper grain texture */}
-      <div className="paper-grain pointer-events-none absolute inset-0 z-0 opacity-40" aria-hidden="true" />
-
-      <div className="relative z-10 flex min-h-full flex-col justify-center px-[clamp(1.75rem,5vw,3.5rem)] py-[clamp(2.3rem,5vw,3.6rem)] max-[900px]:px-7 max-[900px]:py-10">
-        {!submitted ? (
-          <>
-            {/* Header */}
-            <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-primary opacity-0 animate-[fade-up_0.3s_0.05s_ease_both]">
-              Step 01 — Free estimate
-            </p>
-            <h2 className="font-serif text-[clamp(1.75rem,3vw,2.4rem)] font-bold leading-[1.1] text-[#f6f0e9] opacity-0 animate-[fade-up_0.3s_0.1s_ease_both]">
-              Tell us about<br />
-              your <strong className="font-black text-primary">project</strong>
-            </h2>
-
-            {/* Step progress dots */}
-            <div className="mt-4 mb-7 flex gap-1 opacity-0 animate-[fade-in_0.3s_0.15s_ease_both]">
-              {[true, step2, step3].map((active, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "h-0.75 rounded-sm transition-colors duration-300",
-                    i === 0 ? "w-11" : "w-5",
-                    active ? "bg-primary" : "bg-white/20"
-                  )}
-                />
-              ))}
-            </div>
-
-            {/* Service selector */}
-            <span className="mb-2.5 block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-white/60">
-              What service do you need?
+    <div className="relative flex h-full flex-col justify-center bg-[#0e0c0b] p-8 sm:p-10 lg:p-12">
+      {!submitted ? (
+        <>
+          {/* Header */}
+          <div className="mb-6">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+              Online Estimate Form
             </span>
-            <div className="mb-7 flex flex-wrap gap-2">
+            <h2 className="mt-1 font-serif text-2xl font-bold text-white sm:text-3xl">
+              Tell us about your project
+            </h2>
+            <p className="mt-1.5 text-xs text-stone-400">
+              Fill out the details below and we&apos;ll get back to you within 24 business hours.
+            </p>
+          </div>
+
+          {/* Service selector */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-stone-300">
+                What service do you need? <span className="text-primary">*</span>
+              </span>
+              {fieldErrors.service && (
+                <span className="text-[0.7rem] font-medium text-red-400">
+                  {fieldErrors.service}
+                </span>
+              )}
+            </div>
+            <div className="mt-2.5 flex flex-wrap gap-2">
               {SERVICE_OPTIONS.map((s) => (
                 <button
                   key={s}
                   type="button"
                   onClick={() => handleServiceSelect(s)}
                   className={cn(
-                    "whitespace-nowrap rounded-full border-[1.5px] px-3 py-1.5 text-[0.78rem] font-medium transition-all duration-150",
+                    "rounded-full border px-3 py-1.5 text-[0.76rem] font-medium transition-all duration-150 cursor-pointer",
                     service === s
-                      ? "border-primary bg-primary text-white"
-                      : "border-white/25 bg-white/2 text-white/75 hover:border-secondary hover:text-secondary"
+                      ? "border-primary bg-primary text-white shadow-md shadow-primary/20"
+                      : "border-white/20 bg-white/4 text-stone-300 hover:border-secondary hover:text-white"
                   )}
                 >
-                  {s === "Emergency" ? "🚨 Emergency" : s}
+                  {s === "Emergency" ? "🚨 Emergency Repair" : s}
                 </button>
               ))}
             </div>
+          </div>
 
-            {/* Error message */}
-            {error && (
-              <div className="mb-5 rounded-lg border-l-[3px] border-red-500 bg-red-500/10 p-3.5">
-                <p className="text-sm text-red-200">{error}</p>
-              </div>
-            )}
+          {/* Form-level Error Message */}
+          {error && (
+            <div className="mb-5 rounded-lg border-l-4 border-red-500 bg-red-500/10 p-3.5">
+              <p className="text-xs font-medium text-red-200">{error}</p>
+            </div>
+          )}
 
-            {/* Form */}
-            <form
-              onSubmit={handleSubmit}
-              onInput={step3 ? undefined : markStep3Started}
-              className="flex flex-col gap-4"
-            >
-              {/* Hidden service field */}
-              <input type="hidden" name="service" value={service || ""} />
-              <input type="hidden" name="formType" value="contact" />
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            {/* Name row */}
+            <div className="grid grid-cols-2 gap-4 max-[520px]:grid-cols-1">
+              {NAME_FIELDS.map(({ id, label, placeholder }) => (
+                <div key={id} className="flex flex-col gap-1">
+                  <label htmlFor={id} className={LABEL_CLASS}>
+                    {label} <span className="text-primary">*</span>
+                  </label>
+                  <input
+                    id={id}
+                    name={id}
+                    placeholder={placeholder}
+                    required
+                    disabled={loading}
+                    className={cn(INPUT_CLASS, {
+                      "border-red-500/70": fieldErrors[id],
+                    })}
+                  />
+                  {fieldErrors[id] && (
+                    <p className="text-[0.7rem] text-red-400">{fieldErrors[id]}</p>
+                  )}
+                </div>
+              ))}
+            </div>
 
-              {/* Name row */}
-              <div className="grid grid-cols-2 gap-3.5 max-[520px]:grid-cols-1">
-                {NAME_FIELDS.map(({ id, label, placeholder }) => (
-                  <div key={id} className="flex flex-col gap-1">
-                    <label htmlFor={id} className={LABEL_CLASS}>{label}</label>
-                    <input
-                      id={id}
-                      name={id}
-                      placeholder={placeholder}
-                      required
-                      disabled={loading}
-                      className={cn(INPUT_CLASS, {
-                        "border-red-500/60": fieldErrors[id],
-                      })}
-                    />
-                    {fieldErrors[id] && (
-                      <p className="text-[0.7rem] text-red-400">{fieldErrors[id]}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Email */}
+            {/* Email & Phone Row */}
+            <div className="grid grid-cols-2 gap-4 max-[520px]:grid-cols-1">
               <div className="flex flex-col gap-1">
-                <label htmlFor="em" className={LABEL_CLASS}>Email address</label>
+                <label htmlFor="em" className={LABEL_CLASS}>
+                  Email address <span className="text-primary">*</span>
+                </label>
                 <input
                   id="em"
                   name="em"
@@ -229,7 +225,7 @@ export function ContactForm() {
                   required
                   disabled={loading}
                   className={cn(INPUT_CLASS, {
-                    "border-red-500/60": fieldErrors.em,
+                    "border-red-500/70": fieldErrors.em,
                   })}
                 />
                 {fieldErrors.em && (
@@ -237,9 +233,10 @@ export function ContactForm() {
                 )}
               </div>
 
-              {/* Phone */}
               <div className="flex flex-col gap-1">
-                <label htmlFor="ph" className={LABEL_CLASS}>Phone number</label>
+                <label htmlFor="ph" className={LABEL_CLASS}>
+                  Phone number
+                </label>
                 <input
                   id="ph"
                   name="ph"
@@ -249,132 +246,146 @@ export function ContactForm() {
                   className={INPUT_CLASS}
                 />
               </div>
+            </div>
 
-              {/* Message */}
-              <div className="flex flex-col gap-1">
-                <label htmlFor="msg" className={LABEL_CLASS}>Project details</label>
-                <textarea
-                  id="msg"
-                  name="msg"
-                  rows={3}
-                  placeholder="Briefly describe the work…"
-                  disabled={loading}
-                  className="resize-none rounded-lg border-[1.5px] border-white/24 bg-white/2 p-3 text-[0.93rem] leading-relaxed text-white outline-none transition-colors placeholder:text-white/45 focus:border-secondary disabled:opacity-50"
-                />
-              </div>
+            {/* Message */}
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="msg" className={LABEL_CLASS}>
+                Project Details or Questions
+              </label>
+              <textarea
+                id="msg"
+                name="msg"
+                rows={3}
+                placeholder="Tell us about the issue, scope, address, or timeline…"
+                disabled={loading}
+                className="resize-none rounded-lg border border-white/20 bg-white/3 p-3 text-[0.9rem] leading-relaxed text-white outline-none transition-colors placeholder:text-white/40 focus:border-secondary disabled:opacity-50"
+              />
+            </div>
 
-              <div className="flex flex-col gap-2 rounded-xl border border-white/12 bg-black/18 p-3.5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className={LABEL_CLASS}>CAPTCHA</p>
-                    <p className="mt-1 font-mono text-[1.15rem] tracking-[0.32em] text-primary">
-                      {captchaCode}
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCaptchaCode(generateCaptchaCode());
-                      setCaptchaInput("");
-                      setFieldErrors((currentErrors) => {
-                        const nextErrors = { ...currentErrors };
-                        delete nextErrors.captchaInput;
-                        return nextErrors;
-                      });
-                    }}
-                    disabled={loading}
-                    className="rounded-md border border-white/18 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-white/70 transition-colors hover:border-secondary hover:text-secondary disabled:opacity-60"
-                  >
-                    Refresh
-                  </button>
+            {/* Captcha Box */}
+            <div className="rounded-xl border border-white/10 bg-black/40 p-3.5">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className={LABEL_CLASS}>Security Check</p>
+                  <p className="mt-0.5 font-mono text-lg font-bold tracking-[0.3em] text-secondary">
+                    {captchaCode}
+                  </p>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="captchaInput" className={LABEL_CLASS}>Enter the 4-digit code</label>
-                  <input
-                    id="captchaInput"
-                    name="captchaInput"
-                    value={captchaInput}
-                    onChange={(event) => setCaptchaInput(event.target.value)}
-                    inputMode="numeric"
-                    autoComplete="off"
-                    maxLength={4}
-                    placeholder="-- --"
-                    required
-                    disabled={loading}
-                    className={cn(INPUT_CLASS, "w-full", {
-                      "border-red-500/60": fieldErrors.captchaInput,
-                    })}
-                  />
-                  {fieldErrors.captchaInput && (
-                    <p className="text-[0.7rem] text-red-400">{fieldErrors.captchaInput}</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="mt-2 flex items-center gap-5">
                 <button
-                  type="submit"
-                  disabled={loading || !service}
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#0f0e0c] px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition-[transform,box-shadow] duration-150 disabled:opacity-60 disabled:cursor-not-allowed hover:disabled:shadow-none hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(184,74,46,0.25)]"
+                  type="button"
+                  onClick={() => {
+                    setCaptchaCode(generateCaptchaCode());
+                    setCaptchaInput("");
+                    setFieldErrors((currentErrors) => {
+                      const next = { ...currentErrors };
+                      delete next.captchaInput;
+                      return next;
+                    });
+                  }}
+                  disabled={loading}
+                  className="rounded-md border border-white/20 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-wider text-stone-300 transition-colors hover:border-secondary hover:text-secondary cursor-pointer disabled:opacity-50"
                 >
-                  <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0" />
-                  <span className="relative z-10 flex items-center gap-2">
-                    {loading ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Get Free Estimate
-                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                      </>
-                    )}
-                  </span>
+                  Refresh
                 </button>
-                <p className="max-w-37.5 text-xs leading-snug text-white/55">
-                  No obligation. Reply within 24 hrs.
-                </p>
               </div>
-            </form>
+              <div className="mt-2.5 flex flex-col gap-1">
+                <label htmlFor="captchaInput" className="text-[0.68rem] text-stone-400">
+                  Enter the 4-digit code above <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="captchaInput"
+                  name="captchaInput"
+                  value={captchaInput}
+                  onChange={(event) => setCaptchaInput(event.target.value)}
+                  inputMode="numeric"
+                  autoComplete="off"
+                  maxLength={4}
+                  placeholder="••••"
+                  required
+                  disabled={loading}
+                  className={cn(INPUT_CLASS, "w-full tracking-widest", {
+                    "border-red-500/70": fieldErrors.captchaInput,
+                  })}
+                />
+                {fieldErrors.captchaInput && (
+                  <p className="text-[0.7rem] text-red-400">{fieldErrors.captchaInput}</p>
+                )}
+              </div>
+            </div>
 
-            {/* Emergency strip */}
-            <div className="mt-8 flex items-center gap-3.5 rounded-r-lg border-l-[3px] border-secondary bg-black/25 p-4 shadow-[0_10px_26px_rgba(0,0,0,0.3)]">
-              <div>
-                <span className="mb-0.5 block text-[0.68rem] font-semibold uppercase tracking-widest text-primary">
-                  Storm damage or active leak?
-                </span>
+            {/* Submit & Guarantee */}
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                disabled={loading}
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-7 py-3.5 text-sm font-bold tracking-wide text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Sending Request...
+                  </>
+                ) : (
+                  <>
+                    Request Free Estimate
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </>
+                )}
+              </button>
+              <p className="text-xs text-stone-400">
+                100% Free • No obligation • Fast response
+              </p>
+            </div>
+          </form>
+
+          {/* Emergency callout */}
+          <div className="mt-6 flex items-center gap-3 rounded-xl border border-secondary/25 bg-secondary/5 p-3.5">
+            <PhoneCall className="h-5 w-5 text-secondary shrink-0" />
+            <div className="min-w-0 text-xs">
+              <p className="font-semibold text-white">Active roof leak or emergency?</p>
+              <p className="text-stone-300">
+                Call us directly at{" "}
                 <a
                   href={`tel:${siteConfig.phones.english}`}
-                  className="font-serif text-lg font-bold text-[#f6f0e9] transition-colors hover:text-secondary"
+                  className="font-bold text-secondary underline hover:text-white"
                 >
-                  {siteConfig.phones.english} — Call us now
-                </a>
-              </div>
+                  {siteConfig.phones.english}
+                </a>{" "}
+                for immediate assistance.
+              </p>
             </div>
-          </>
-        ) : (
-          /* Success state */
-          <div className="flex flex-col items-center justify-center gap-4 py-12 text-center animate-[fade-up_0.5s_ease_both]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary">
-              <Check className="h-7 w-7 text-white" strokeWidth={2.5} />
-            </div>
-            <h3 className="font-serif text-3xl font-bold text-[#f6f0e9]">
-              Request received!
-            </h3>
-            <p className="max-w-70 text-sm leading-relaxed text-white/65">
-              We&apos;ve received your estimate request and will reach out within 24 business hours to discuss your project.
-            </p>
+          </div>
+        </>
+      ) : (
+        /* Success state */
+        <div className="flex flex-col items-center justify-center gap-4 py-16 text-center animate-in fade-in duration-300">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
+            <Check className="h-8 w-8" strokeWidth={2.5} />
+          </div>
+          <h3 className="font-serif text-3xl font-bold text-white">
+            Thank you! Request received.
+          </h3>
+          <p className="max-w-md text-sm leading-relaxed text-stone-300">
+            We have received your estimate request. One of our project managers will review your project details and follow up within 24 business hours.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
             <button
               onClick={handleReset}
-              className="mt-2 rounded-md border-[1.5px] border-white/25 bg-transparent px-5 py-2.5 text-sm text-white/75 transition-all hover:border-secondary hover:text-secondary"
+              className="rounded-xl border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:border-secondary hover:bg-white/10 cursor-pointer"
             >
-              Submit another request
+              Submit Another Request
             </button>
+            <a
+              href={`tel:${siteConfig.phones.english}`}
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary/90"
+            >
+              <PhoneCall className="h-4 w-4" />
+              Call Now
+            </a>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

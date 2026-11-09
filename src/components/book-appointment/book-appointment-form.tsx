@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, Loader2 } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, CheckCircle2, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -10,15 +10,10 @@ import { SERVICE_OPTIONS, appointmentSchema, type AppointmentFormInput } from "@
 type Service = (typeof SERVICE_OPTIONS)[number];
 
 const INPUT_CLASS =
-  "appearance-none border-0 border-b-[1.5px] border-white/28 bg-transparent pb-3 text-[0.93rem] text-white outline-none transition-colors placeholder:text-white/45 focus:border-secondary";
+  "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-stone-500 outline-none transition-all duration-200 focus:border-primary focus:bg-white/[0.07] focus:ring-2 focus:ring-primary/20 disabled:opacity-50";
 
 const LABEL_CLASS =
-  "text-[0.7rem] font-medium uppercase tracking-[0.1em] text-white/60";
-
-const NAME_FIELDS = [
-  { id: "fn", label: "First name", placeholder: "John" },
-  { id: "ln", label: "Last name", placeholder: "Doe" },
-] as const;
+  "text-xs font-medium text-stone-300 flex items-center gap-1.5";
 
 function generateCaptchaCode() {
   return `${Math.floor(1000 + Math.random() * 9000)}`;
@@ -26,14 +21,12 @@ function generateCaptchaCode() {
 
 export function BookAppointmentForm() {
   const [service, setService] = useState<Service | null>(null);
-  const [step3, setStep3] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [captchaCode, setCaptchaCode] = useState(() => generateCaptchaCode());
   const [captchaInput, setCaptchaInput] = useState("");
-  const step2 = Boolean(service);
 
   const todayValue = useMemo(() => {
     const now = new Date();
@@ -42,10 +35,6 @@ export function BookAppointmentForm() {
     const day = `${now.getDate()}`.padStart(2, "0");
 
     return `${year}-${month}-${day}`;
-  }, []);
-
-  const markStep3Started = useCallback(() => {
-    setStep3((prev) => (prev ? prev : true));
   }, []);
 
   const handleServiceSelect = useCallback((selectedService: Service) => {
@@ -73,7 +62,7 @@ export function BookAppointmentForm() {
       const formData = new FormData(e.currentTarget);
       const payload: AppointmentFormInput = {
         formType: "appointment",
-        service: formData.get("service") as Service,
+        service: service,
         appointmentDate: (formData.get("appointmentDate") as string).trim(),
         fn: (formData.get("fn") as string).trim(),
         ln: (formData.get("ln") as string).trim(),
@@ -122,9 +111,9 @@ export function BookAppointmentForm() {
       }
 
       setSubmitted(true);
-    } catch (submissionError) {
-      console.error("Appointment form error:", submissionError);
-      setError("Unable to send your appointment request. Please try again later.");
+    } catch (err) {
+      console.error("Appointment submission error:", err);
+      setError("Unable to schedule appointment right now. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -132,7 +121,6 @@ export function BookAppointmentForm() {
 
   const handleReset = () => {
     setService(null);
-    setStep3(false);
     setLoading(false);
     setError(null);
     setFieldErrors({});
@@ -142,119 +130,143 @@ export function BookAppointmentForm() {
   };
 
   return (
-    <div className="contact-form-bg relative flex min-h-155 flex-col overflow-y-auto border-l border-white/12 bg-[#120d09]/85 backdrop-blur-xl lg:min-h-full">
-      <div className="paper-grain pointer-events-none absolute inset-0 z-0 opacity-40" aria-hidden="true" />
-
-      <div className="relative z-10 flex min-h-full flex-col justify-center px-[clamp(1.75rem,5vw,3.5rem)] py-[clamp(2.3rem,5vw,3.6rem)] max-[900px]:px-7 max-[900px]:py-10">
-        {!submitted ? (
-          <>
-            <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-primary opacity-0 animate-[fade-up_0.3s_0.05s_ease_both]">
-              Step 01 — Appointment request
-            </p>
-            <h2 className="font-serif text-[clamp(1.75rem,3vw,2.4rem)] font-bold leading-[1.1] text-[#f6f0e9] opacity-0 animate-[fade-up_0.3s_0.1s_ease_both]">
-              Tell us about<br />
-              your <strong className="font-black text-primary">project</strong>
+    <div className="relative flex flex-col justify-center bg-[#0d0b0a] p-8 sm:p-10 lg:p-14">
+      {!submitted ? (
+        <>
+          <div className="mb-7">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+              Online Scheduling
+            </span>
+            <h2 className="mt-1 font-serif text-2xl font-bold text-white sm:text-3xl">
+              Choose your service &amp; preferred date
             </h2>
+            <p className="mt-1.5 text-xs text-stone-400">
+              Pick a convenient date and we will confirm your evaluation within 24 business hours.
+            </p>
+          </div>
 
-            <div className="mt-4 mb-7 flex gap-1 opacity-0 animate-[fade-in_0.3s_0.15s_ease_both]">
-              {[true, step2, step3].map((active, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "h-0.75 rounded-sm transition-colors duration-300",
-                    i === 0 ? "w-11" : "w-5",
-                    active ? "bg-primary" : "bg-white/20"
-                  )}
-                />
-              ))}
+          {error && (
+            <div className="mb-5 rounded-xl border border-red-500/40 bg-red-500/10 p-3.5">
+              <p className="text-xs font-medium text-red-200">{error}</p>
             </div>
+          )}
 
-            <div className="flex items-center justify-between">
-              <span className="mb-2.5 block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-white/60">
-                What service do you need?
-              </span>
-              {fieldErrors.service && (
-                <span className="text-[0.7rem] font-medium text-red-400">
-                  {fieldErrors.service}
-                </span>
-              )}
-            </div>
-            <div className="mb-7 flex flex-wrap gap-2">
-              {SERVICE_OPTIONS.map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  onClick={() => handleServiceSelect(s)}
-                  className={cn(
-                    "whitespace-nowrap rounded-full border-[1.5px] px-3 py-1.5 text-[0.78rem] font-medium transition-all duration-150",
-                    service === s
-                      ? "border-primary bg-primary text-white"
-                      : "border-white/25 bg-white/2 text-white/75 hover:border-secondary hover:text-secondary"
-                  )}
-                >
-                  {s === "Emergency" ? "🚨 Emergency" : s}
-                </button>
-              ))}
-            </div>
-
-            {error && (
-              <div className="mb-5 rounded-lg border-l-[3px] border-red-500 bg-red-500/10 p-3.5">
-                <p className="text-sm text-red-200">{error}</p>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            {/* Service selector */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 sm:p-5">
+              <div className="flex items-center justify-between gap-2">
+                <label className="text-xs font-semibold uppercase tracking-wider text-stone-300">
+                  Select Service Needed <span className="text-primary">*</span>
+                </label>
+                {fieldErrors.service && (
+                  <span className="text-[0.72rem] font-semibold text-red-400">
+                    {fieldErrors.service}
+                  </span>
+                )}
               </div>
-            )}
 
-            <form
-              onSubmit={handleSubmit}
-              onInput={step3 ? undefined : markStep3Started}
-              className="flex flex-col gap-4"
-            >
-              <input type="hidden" name="service" value={service || ""} />
-              <input type="hidden" name="formType" value="appointment" />
+              <div className="mt-3 flex flex-wrap gap-2">
+                {SERVICE_OPTIONS.map((s) => {
+                  const isSelected = service === s;
+                  const isEmergency = s === "Emergency";
 
-              <div className="flex flex-col gap-1">
-                <label htmlFor="appointmentDate" className={LABEL_CLASS}>Preferred appointment date</label>
-                <div className="relative">
-                  <input
-                    id="appointmentDate"
-                    name="appointmentDate"
-                    type="date"
-                    min={todayValue}
-                    required
-                    disabled={loading}
-                    className={cn(INPUT_CLASS, "pr-10", {
-                      "border-red-500/60": fieldErrors.appointmentDate,
-                    })}
-                  />
-                  <CalendarDays className="pointer-events-none absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 text-white/45" />
-                </div>
+                  return (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => handleServiceSelect(s)}
+                      className={cn(
+                        "group relative inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all duration-200 cursor-pointer select-none",
+                        isSelected
+                          ? "border-primary bg-primary text-white shadow-lg shadow-primary/25 scale-[1.02]"
+                          : isEmergency
+                          ? "border-red-500/30 bg-red-500/10 text-red-300 hover:border-red-500/60 hover:bg-red-500/20"
+                          : "border-white/10 bg-white/[0.03] text-stone-300 hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+                      )}
+                    >
+                      {isSelected ? (
+                        <CheckCircle2 className="h-3.5 w-3.5 text-white shrink-0" />
+                      ) : isEmergency ? (
+                        <span className="text-sm">🚨</span>
+                      ) : null}
+                      <span>{isEmergency ? "Emergency Repair" : s}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Date & Contact Info */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="appointmentDate" className={LABEL_CLASS}>
+                  <CalendarDays className="h-3.5 w-3.5 text-secondary" />
+                  Preferred Date <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="appointmentDate"
+                  name="appointmentDate"
+                  type="date"
+                  min={todayValue}
+                  required
+                  disabled={loading}
+                  className={cn(INPUT_CLASS, "cursor-pointer [color-scheme:dark]", {
+                    "border-red-500/70 focus:border-red-500": fieldErrors.appointmentDate,
+                  })}
+                />
                 {fieldErrors.appointmentDate && (
                   <p className="text-[0.7rem] text-red-400">{fieldErrors.appointmentDate}</p>
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-3.5 max-[520px]:grid-cols-1">
-                {NAME_FIELDS.map(({ id, label, placeholder }) => (
-                  <div key={id} className="flex flex-col gap-1">
-                    <label htmlFor={id} className={LABEL_CLASS}>{label}</label>
-                    <input
-                      id={id}
-                      name={id}
-                      placeholder={placeholder}
-                      required
-                      disabled={loading}
-                      className={cn(INPUT_CLASS, {
-                        "border-red-500/60": fieldErrors[id],
-                      })}
-                    />
-                    {fieldErrors[id] && (
-                      <p className="text-[0.7rem] text-red-400">{fieldErrors[id]}</p>
-                    )}
-                  </div>
-                ))}
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="fn" className={LABEL_CLASS}>
+                  <User className="h-3.5 w-3.5 text-stone-400" />
+                  First name <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="fn"
+                  name="fn"
+                  placeholder="John"
+                  required
+                  disabled={loading}
+                  className={cn(INPUT_CLASS, {
+                    "border-red-500/70 focus:border-red-500": fieldErrors.fn,
+                  })}
+                />
+                {fieldErrors.fn && (
+                  <p className="text-[0.7rem] text-red-400">{fieldErrors.fn}</p>
+                )}
               </div>
 
-              <div className="flex flex-col gap-1">
-                <label htmlFor="em" className={LABEL_CLASS}>Email address</label>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="ln" className={LABEL_CLASS}>
+                  <User className="h-3.5 w-3.5 text-stone-400" />
+                  Last name <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="ln"
+                  name="ln"
+                  placeholder="Doe"
+                  required
+                  disabled={loading}
+                  className={cn(INPUT_CLASS, {
+                    "border-red-500/70 focus:border-red-500": fieldErrors.ln,
+                  })}
+                />
+                {fieldErrors.ln && (
+                  <p className="text-[0.7rem] text-red-400">{fieldErrors.ln}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Email & Phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="em" className={LABEL_CLASS}>
+                  <Mail className="h-3.5 w-3.5 text-stone-400" />
+                  Email address <span className="text-primary">*</span>
+                </label>
                 <input
                   id="em"
                   name="em"
@@ -263,7 +275,7 @@ export function BookAppointmentForm() {
                   required
                   disabled={loading}
                   className={cn(INPUT_CLASS, {
-                    "border-red-500/60": fieldErrors.em,
+                    "border-red-500/70 focus:border-red-500": fieldErrors.em,
                   })}
                 />
                 {fieldErrors.em && (
@@ -271,8 +283,11 @@ export function BookAppointmentForm() {
                 )}
               </div>
 
-              <div className="flex flex-col gap-1">
-                <label htmlFor="ph" className={LABEL_CLASS}>Phone number</label>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="ph" className={LABEL_CLASS}>
+                  <Phone className="h-3.5 w-3.5 text-stone-400" />
+                  Phone number <span className="text-stone-500 font-normal">(Optional)</span>
+                </label>
                 <input
                   id="ph"
                   name="ph"
@@ -282,128 +297,152 @@ export function BookAppointmentForm() {
                   className={INPUT_CLASS}
                 />
               </div>
+            </div>
 
-              <div className="flex flex-col gap-1">
-                <label htmlFor="msg" className={LABEL_CLASS}>Project details</label>
-                <textarea
-                  id="msg"
-                  name="msg"
-                  rows={3}
-                  placeholder="Briefly describe the work…"
-                  disabled={loading}
-                  className="resize-none rounded-lg border-[1.5px] border-white/24 bg-white/2 p-3 text-[0.93rem] leading-relaxed text-white outline-none transition-colors placeholder:text-white/45 focus:border-secondary disabled:opacity-50"
-                />
-              </div>
+            {/* Message */}
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="msg" className={LABEL_CLASS}>
+                <MessageSquare className="h-3.5 w-3.5 text-stone-400" />
+                Project notes or specific requests
+              </label>
+              <textarea
+                id="msg"
+                name="msg"
+                rows={3}
+                placeholder="Share any details about your property, address, or timeline…"
+                disabled={loading}
+                className={cn(
+                  INPUT_CLASS,
+                  "resize-none leading-relaxed py-3"
+                )}
+              />
+            </div>
 
-              <div className="flex flex-col gap-2 rounded-xl border border-white/12 bg-black/18 p-3.5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className={LABEL_CLASS}>Security check</p>
-                    <p className="mt-1 font-mono text-[1.15rem] tracking-[0.32em] text-primary">
-                      {captchaCode}
-                    </p>
-                  </div>
+            {/* Captcha */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-secondary" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-300">
+                    Security verification
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="font-mono text-base font-bold tracking-[0.25em] text-secondary bg-white/5 border border-white/10 px-3 py-1 rounded-lg">
+                    {captchaCode}
+                  </span>
                   <button
                     type="button"
                     onClick={() => {
                       setCaptchaCode(generateCaptchaCode());
                       setCaptchaInput("");
                       setFieldErrors((currentErrors) => {
-                        const nextErrors = { ...currentErrors };
-                        delete nextErrors.captchaInput;
-                        return nextErrors;
+                        const next = { ...currentErrors };
+                        delete next.captchaInput;
+                        return next;
                       });
                     }}
                     disabled={loading}
-                    className="rounded-md border border-white/18 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-white/70 transition-colors hover:border-secondary hover:text-secondary disabled:opacity-60"
+                    className="rounded-lg border border-white/15 px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider text-stone-300 transition-colors hover:border-secondary hover:text-secondary cursor-pointer disabled:opacity-50"
                   >
                     Refresh
                   </button>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="captchaInput" className={LABEL_CLASS}>Enter the 4-digit code</label>
-                  <input
-                    id="captchaInput"
-                    name="captchaInput"
-                    value={captchaInput}
-                    onChange={(event) => setCaptchaInput(event.target.value)}
-                    inputMode="numeric"
-                    autoComplete="off"
-                    maxLength={4}
-                    placeholder="1234"
-                    required
-                    disabled={loading}
-                    className={cn(INPUT_CLASS, "w-full", {
-                      "border-red-500/60": fieldErrors.captchaInput,
-                    })}
-                  />
-                  {fieldErrors.captchaInput && (
-                    <p className="text-[0.7rem] text-red-400">{fieldErrors.captchaInput}</p>
-                  )}
-                </div>
               </div>
 
-              <div className="mt-2 flex items-center gap-5">
-                <button
-                  type="submit"
+              <div className="mt-3 flex flex-col gap-1">
+                <input
+                  id="captchaInput"
+                  name="captchaInput"
+                  value={captchaInput}
+                  onChange={(event) => setCaptchaInput(event.target.value)}
+                  inputMode="numeric"
+                  autoComplete="off"
+                  maxLength={4}
+                  placeholder="Enter the 4-digit code above *"
+                  required
                   disabled={loading}
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#0f0e0c] px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition-[transform,box-shadow] duration-150 disabled:cursor-not-allowed disabled:opacity-60 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(184,74,46,0.25)] hover:disabled:shadow-none"
-                >
-                  <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0" />
-                  <span className="relative z-10 flex items-center gap-2">
-                    {loading ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Request Appointment
-                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                      </>
-                    )}
-                  </span>
-                </button>
-                <p className="max-w-37.5 text-xs leading-snug text-white/55">
-                  No obligation. Reply within 24 hrs.
-                </p>
+                  className={cn(INPUT_CLASS, "tracking-widest", {
+                    "border-red-500/70 focus:border-red-500": fieldErrors.captchaInput,
+                  })}
+                />
+                {fieldErrors.captchaInput && (
+                  <p className="text-[0.7rem] text-red-400">{fieldErrors.captchaInput}</p>
+                )}
               </div>
-            </form>
+            </div>
 
-            <div className="mt-8 flex items-center gap-3.5 rounded-r-lg border-l-[3px] border-secondary bg-black/25 p-4 shadow-[0_10px_26px_rgba(0,0,0,0.3)]">
-              <div>
-                <span className="mb-0.5 block text-[0.68rem] font-semibold uppercase tracking-widest text-primary">
-                  Storm damage or active leak?
-                </span>
+            {/* Submit */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-1">
+              <button
+                type="submit"
+                disabled={loading}
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-3.5 text-sm font-bold tracking-wide text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Booking Appointment...
+                  </>
+                ) : (
+                  <>
+                    Request Appointment
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </>
+                )}
+              </button>
+              <p className="text-xs text-stone-400">
+                100% Free Consultation • No Obligation
+              </p>
+            </div>
+          </form>
+
+          {/* Emergency callout */}
+          <div className="mt-6 flex items-center gap-3 rounded-xl border border-secondary/25 bg-secondary/5 p-3.5">
+            <PhoneCall className="h-5 w-5 text-secondary shrink-0" />
+            <div className="min-w-0 text-xs">
+              <p className="font-semibold text-white">Need emergency same-day dispatch?</p>
+              <p className="text-stone-300">
+                Call our direct line at{" "}
                 <a
                   href={`tel:${siteConfig.phones.english}`}
-                  className="font-serif text-lg font-bold text-[#f6f0e9] transition-colors hover:text-secondary"
+                  className="font-bold text-secondary underline hover:text-white"
                 >
-                  {siteConfig.phones.english} — Call us now
+                  {siteConfig.phones.english}
                 </a>
-              </div>
+              </p>
             </div>
-          </>
-        ) : (
-          <div className="flex flex-col items-center justify-center gap-4 py-12 text-center animate-[fade-up_0.5s_ease_both]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary">
-              <Check className="h-7 w-7 text-white" strokeWidth={2.5} />
-            </div>
-            <h3 className="font-serif text-3xl font-bold text-[#f6f0e9]">
-              Request received!
-            </h3>
-            <p className="max-w-70 text-sm leading-relaxed text-white/65">
-              We&apos;ve received your appointment request and will reach out within 24 business hours to confirm the date.
-            </p>
+          </div>
+        </>
+      ) : (
+        /* Success state */
+        <div className="flex flex-col items-center justify-center gap-4 py-16 text-center animate-in fade-in duration-300">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
+            <Check className="h-8 w-8" strokeWidth={2.5} />
+          </div>
+          <h3 className="font-serif text-3xl font-bold text-white">
+            Appointment Request Received!
+          </h3>
+          <p className="max-w-md text-sm leading-relaxed text-stone-300">
+            Thank you for scheduling with us. Our team will review our calendar and reach out within 24 business hours to confirm your appointment.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
             <button
               onClick={handleReset}
-              className="mt-2 rounded-md border-[1.5px] border-white/25 bg-transparent px-5 py-2.5 text-sm text-white/75 transition-all hover:border-secondary hover:text-secondary"
+              className="rounded-xl border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:border-secondary hover:bg-white/10 cursor-pointer"
             >
-              Submit another request
+              Book Another Appointment
             </button>
+            <a
+              href={`tel:${siteConfig.phones.english}`}
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary/90"
+            >
+              <PhoneCall className="h-4 w-4" />
+              Call Now
+            </a>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

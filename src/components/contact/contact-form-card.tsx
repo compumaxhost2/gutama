@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, Check, CheckCircle2, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Check, ChevronDown, Loader2, Mail, MessageSquare, Phone, PhoneCall, ShieldCheck, User, Wrench } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ function generateCaptchaCode() {
 }
 
 export function ContactForm() {
-  const [service, setService] = useState<Service | null>(null);
+  const [service, setService] = useState<Service | "">("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -32,32 +32,25 @@ export function ContactForm() {
     setCaptchaCode(generateCaptchaCode());
   }, []);
 
-  const handleServiceSelect = useCallback((selectedService: Service) => {
-    setService((prev) => (prev === selectedService ? prev : selectedService));
-    setFieldErrors((prev) => {
-      const next = { ...prev };
-      delete next.service;
-      return next;
-    });
-  }, []);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setFieldErrors({});
 
+    const formData = new FormData(e.currentTarget);
+    const selectedService = (formData.get("service") as Service) || service;
+
     // Validate service selection explicitly
-    if (!service) {
-      setFieldErrors({ service: "Please select a service needed from the options above." });
+    if (!selectedService) {
+      setFieldErrors({ service: "Please select a service from the dropdown." });
       setLoading(false);
       return;
     }
 
     try {
-      const formData = new FormData(e.currentTarget);
       const payload: ContactFormInput = {
-        service: service,
+        service: selectedService,
         formType: "contact",
         fn: (formData.get("fn") as string).trim(),
         ln: (formData.get("ln") as string).trim(),
@@ -116,7 +109,7 @@ export function ContactForm() {
   };
 
   const handleReset = () => {
-    setService(null);
+    setService("");
     setLoading(false);
     setError(null);
     setFieldErrors({});
@@ -150,49 +143,49 @@ export function ContactForm() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* 1. Service Selector */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 sm:p-5">
-              <div className="flex items-center justify-between gap-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-300">
-                  What service do you need? <span className="text-primary">*</span>
-                </label>
-                {fieldErrors.service && (
-                  <span className="text-[0.72rem] font-semibold text-red-400">
-                    {fieldErrors.service}
-                  </span>
-                )}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            {/* 1. Service Selection Dropdown (Inside Form) */}
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="service" className={LABEL_CLASS}>
+                <Wrench className="h-3.5 w-3.5 text-secondary" />
+                What service do you need? <span className="text-primary">*</span>
+              </label>
+              <div className="relative">
+                <select
+                  id="service"
+                  name="service"
+                  value={service}
+                  onChange={(e) => {
+                    setService(e.target.value as Service);
+                    setFieldErrors((prev) => {
+                      const next = { ...prev };
+                      delete next.service;
+                      return next;
+                    });
+                  }}
+                  required
+                  disabled={loading}
+                  className={cn(
+                    INPUT_CLASS,
+                    "appearance-none pr-10 cursor-pointer [color-scheme:dark]",
+                    !service ? "text-stone-500" : "text-white font-medium",
+                    fieldErrors.service && "border-red-500/70 focus:border-red-500"
+                  )}
+                >
+                  <option value="" disabled className="bg-[#14100c] text-stone-500">
+                    -- Select a service (e.g. Roofing, Siding, Gutters...) --
+                  </option>
+                  {SERVICE_OPTIONS.map((s) => (
+                    <option key={s} value={s} className="bg-[#14100c] text-white py-1">
+                      {s === "Emergency" ? "🚨 Emergency Roof Repair" : s}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
               </div>
-
-              <div className="mt-3 flex flex-wrap gap-2">
-                {SERVICE_OPTIONS.map((s) => {
-                  const isSelected = service === s;
-                  const isEmergency = s === "Emergency";
-
-                  return (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => handleServiceSelect(s)}
-                      className={cn(
-                        "group relative inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all duration-200 cursor-pointer select-none",
-                        isSelected
-                          ? "border-primary bg-primary text-white shadow-lg shadow-primary/25 scale-[1.02]"
-                          : isEmergency
-                          ? "border-red-500/30 bg-red-500/10 text-red-300 hover:border-red-500/60 hover:bg-red-500/20"
-                          : "border-white/10 bg-white/[0.03] text-stone-300 hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
-                      )}
-                    >
-                      {isSelected ? (
-                        <CheckCircle2 className="h-3.5 w-3.5 text-white shrink-0" />
-                      ) : isEmergency ? (
-                        <span className="text-sm">🚨</span>
-                      ) : null}
-                      <span>{isEmergency ? "Emergency Repair" : s}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {fieldErrors.service && (
+                <p className="text-[0.7rem] font-medium text-red-400">{fieldErrors.service}</p>
+              )}
             </div>
 
             {/* 2. Client Details (First Name & Last Name) */}

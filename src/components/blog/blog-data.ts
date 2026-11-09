@@ -106,7 +106,21 @@ export const BLOG_PROJECTS: BlogProject[] = [
     href: "/blog/gutter-installation-essex-county-nj-2026",
     date: "19th October 2026",
   },
+  {
+    title: "Common Causes of Roof Leaks in New Jersey Homes and How to Fix Them",
+    shortDesc:
+      "Discover common causes of roof leaks in New Jersey homes, warning signs, repair options, and expert tips to protect your home from water damage.",
+    image: "/blog/roof-leak-repair-new-jersey.webp",
+    href: "/blog/common-causes-roof-leaks-new-jersey-homes",
+    date: "27th October 2026",
+  },
+  {
+    title:
+      "What Distinguishes Hometown Roofing Companies from Larger National Contractors for Roof Replacement?",
+    shortDesc:
+      "Compare local roofing companies vs. national contractors for roof replacement in Essex County, NJ. Discover the benefits of local roofing expertise.",
+    image: "/blog/local-vs-national-roofing-companies.webp",
+    href: "/blog/local-vs-national-roofing-companies",
+    date: "4th November 2026",
+  },
 ];
-
-
-

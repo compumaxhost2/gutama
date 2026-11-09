@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
@@ -57,9 +57,9 @@ export function AdditionsHeroSection() {
           </span>
         </div>
 
-        <h1 className="mb-3 font-serif text-[clamp(52px,8vw,96px)] leading-none tracking-[-0.01em] text-white">
-          Home
-          <span className="block italic text-secondary">Additions</span>
+        <h1 className="mb-3 font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.08] tracking-[-0.01em] text-white">
+          Home Addition Contractors
+          <span className="block italic text-secondary">in Essex County, NJ</span>
         </h1>
 
         <div className="mb-7 h-px w-45 origin-left bg-linear-to-r from-secondary to-secondary/20" />

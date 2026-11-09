@@ -104,8 +104,8 @@ export function AboutHero() {
           <div className="mt-16 flex flex-wrap gap-x-12 gap-y-8 border-t border-secondary/25 pt-10">
             {[
               { value: String(siteConfig.business.foundedYear), label: "Year Founded" },
-              { value: "17+", label: "Years of Excellence" },
-              { value: "1,000+", label: "Projects Completed" },
+              { value: "18+", label: "Years of Excellence" },
+              { value: "1,200+", label: "Projects Completed" },
               { value: "19", label: "Municipalities Served" },
             ].map((stat) => (
               <div key={stat.label}>

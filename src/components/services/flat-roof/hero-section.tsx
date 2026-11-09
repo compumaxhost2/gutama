@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
@@ -8,8 +8,8 @@ import { siteConfig } from "@/config/site";
 export function FlatRoofHeroSection() {
   const content = {
         label: "Flat Roof",
-        title: "Flat Roof",
-        accent: "Solutions",
+        title: "Flat Roof Installation & Repair",
+        accent: "in Essex County, NJ",
         image: "/images/service-flat-roof.webp",
         imageAlt: "Flat roof installation and repair",
         description: "Specialized flat roofing systems including TPO, EPDM, and modified bitumen installed with precise drainage and seam detailing.",
@@ -51,7 +51,7 @@ export function FlatRoofHeroSection() {
           <span className="text-[11px] font-medium tracking-[0.22em] uppercase text-secondary">Premium Craftsmanship - {siteConfig.business.regionLabel}</span>
         </div>
 
-        <h1 className="mb-3 font-serif text-[clamp(52px,8vw,96px)] leading-none tracking-[-0.01em] text-white">
+        <h1 className="mb-3 font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.08] tracking-[-0.01em] text-white">
           {content.title}
           <span className="block italic text-secondary">{content.accent}</span>
         </h1>

@@ -72,9 +72,9 @@ export function HeroSection() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.35rem] font-bold uppercase leading-[1.12] tracking-[0.02em] text-white drop-shadow-sm"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Trusted Roofing Experts
+              Roof Repair &amp; Replacement
               <br />
-              <span className="tracking-[0.03em] text-white">in New Jersey</span>
+              <span className="tracking-[0.03em] text-white">in Essex County, NJ</span>
               <br />
               <span className="text-red-500 mt-2.5 block text-[0.52em] font-semibold normal-case leading-[1.35] tracking-[0.05em]">
                 Free Inspections &amp; Quality Work

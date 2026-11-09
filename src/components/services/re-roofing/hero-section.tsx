@@ -5,11 +5,19 @@ import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
-export function ReRoofingHeroSection() {
+interface ReRoofingHeroSectionProps {
+  title?: string;
+  accent?: string;
+}
+
+export function ReRoofingHeroSection({
+  title = "Re-Roofing Services",
+  accent = "in Essex County, NJ",
+}: ReRoofingHeroSectionProps = {}) {
   const content = {
         label: "Re-Roofing",
-        title: "Expert",
-        accent: "Re-Roofing",
+        title,
+        accent,
         image: "/images/gutama new images/roof replacement.jpg",
         imageAlt: "Re-roofing services",
         description: "Premium re-roofing services using top-quality materials and disciplined installation for lasting protection and stronger curb appeal.",
@@ -51,7 +59,7 @@ export function ReRoofingHeroSection() {
           <span className="text-[11px] font-medium tracking-[0.22em] uppercase text-secondary">Premium Craftsmanship - {siteConfig.business.regionLabel}</span>
         </div>
 
-        <h1 className="mb-3 font-serif text-[clamp(52px,8vw,96px)] leading-none tracking-[-0.01em] text-white">
+        <h1 className="mb-3 font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.08] tracking-[-0.01em] text-white">
           {content.title}
           <span className="block italic text-secondary">{content.accent}</span>
         </h1>

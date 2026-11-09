@@ -8,8 +8,8 @@ import { siteConfig } from "@/config/site";
 export function RoofingHeroSection() {
   const content = {
     label: "Roofing",
-    title: "Roofing Services in",
-    accent: "Essex County, NJ",
+    title: "Roof Repair & Replacement",
+    accent: "Services in Essex County, NJ",
     image: "/images/gutama new images/roofing.jpg",
     imageAlt: "Gutama Roofing Solutions in Essex County NJ",
     stats: [
@@ -75,7 +75,7 @@ export function RoofingHeroSection() {
         </div>
 
         {/* Hero Title */}
-        <h1 className="mb-4 font-serif text-[clamp(40px,6.5vw,82px)] leading-none tracking-[-0.01em] text-foreground">
+        <h1 className="mb-4 font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.08] tracking-[-0.01em] text-foreground">
           {content.title}
           <span className="block italic text-secondary">{content.accent}</span>
         </h1>

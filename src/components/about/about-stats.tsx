@@ -2,8 +2,8 @@ import { Container } from "@/components/ui/container";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 
 const STATS = [
-  { value: "2008", label: "Year Founded", note: "Over 17 years in business" },
-  { value: "1,000+", label: "Projects Completed", note: "Residential & commercial" },
+  { value: "2008", label: "Year Founded", note: "Over 18 years in business" },
+  { value: "1,200+", label: "Projects Completed", note: "Residential & commercial" },
   { value: "19", label: "Municipalities", note: "Across Essex County, NJ" },
   { value: "5★", label: "Client Rating", note: "Consistent 5-star reviews" },
   { value: "100%", label: "Insured & Licensed", note: "Fully certified in NJ" },

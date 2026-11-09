@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
@@ -8,8 +8,8 @@ import { siteConfig } from "@/config/site";
 export function SidingHeroSection() {
   const content = {
     label: "Siding",
-    title: "Premium",
-    accent: "Siding",
+    title: "Siding Installation, Repair & Replacement",
+    accent: "in Essex County, NJ",
     image: "/images/gutama new images/siding.jpg",
     imageAlt: "Siding installation services",
     description: "Transform your exterior with premium siding installation, moisture-conscious detailing, and finish work that sharpens curb appeal.",
@@ -51,7 +51,7 @@ export function SidingHeroSection() {
           <span className="text-[11px] font-medium tracking-[0.22em] uppercase text-secondary">Premium Craftsmanship - {siteConfig.business.regionLabel}</span>
         </div>
 
-        <h1 className="mb-3 font-serif text-[clamp(52px,8vw,96px)] leading-none tracking-[-0.01em] text-white">
+        <h1 className="mb-3 font-serif text-[clamp(34px,5.2vw,68px)] leading-[1.08] tracking-[-0.01em] text-white">
           {content.title}
           <span className="block italic text-secondary">{content.accent}</span>
         </h1>

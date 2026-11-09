@@ -88,6 +88,14 @@ export function Footer() {
             </a>
 
             <a
+              href={`tel:${siteConfig.phones.spanish}`}
+              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Phone className="h-4 w-4 text-secondary" />
+              Español: {siteConfig.phones.spanish}
+            </a>
+
+            <a
               href={`mailto:${siteConfig.email}`}
               className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
             >

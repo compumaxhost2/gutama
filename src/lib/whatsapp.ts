@@ -64,3 +64,4 @@ export function generateAppointmentWhatsAppMessage(data: AppointmentFormInput): 
 export function buildWhatsAppUrl(message: string): string {
   return `https://wa.me/${siteConfig.phones.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+

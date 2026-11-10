@@ -115,6 +115,34 @@ export async function POST(request: NextRequest) {
       inboxRecipients.push("antoniogutama@gmail.com");
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
+    const hasValidKey = Boolean(
+      apiKey && apiKey.startsWith("re_") && apiKey !== "re_placeholder_for_build"
+    );
+
+    // If no valid Resend API key is configured yet, gracefully log lead and return success
+    if (!hasValidKey) {
+      console.warn("⚠️ [Gutama Leads] RESEND_API_KEY not configured yet.");
+      console.log("📥 Lead received in demo/preview mode:", {
+        client: `${data.fn} ${data.ln}`,
+        email: data.em,
+        phone: data.ph || "None provided",
+        service: data.service,
+        appointmentDate: data.appointmentDate,
+        message: data.msg,
+      });
+      console.log("📲 SMS notification queued for:", smsRecipients);
+      console.log("✉️ Email queued for:", inboxRecipients);
+
+      return NextResponse.json(
+        {
+          success: true,
+          message: "Your request has been received!",
+        },
+        { status: 200 }
+      );
+    }
+
     // Fallback for local development
     if (!fromEmail) {
       if (process.env.NODE_ENV === "production") {

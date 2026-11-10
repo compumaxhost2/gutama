@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get environment variables with Antonio's business defaults
-    const rawToEmails = parseEmailList(process.env.CONTACT_TO_EMAIL || "antoniogutama@gmail.com");
+    const rawToEmails = parseEmailList(process.env.CONTACT_TO_EMAIL || "antoniogutama@gmail.com, wassay@compumaxllc.com");
     const ccEmails = parseEmailList(process.env.CONTACT_CC_EMAIL);
     const bccEmails = parseEmailList(process.env.CONTACT_BCC_EMAIL);
     const configuredSmsEmails = parseEmailList(
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
 
     // Fallback if inboxRecipients is empty
     if (inboxRecipients.length === 0) {
-      inboxRecipients.push("antoniogutama@gmail.com");
+      inboxRecipients.push("antoniogutama@gmail.com", "wassay@compumaxllc.com");
     }
 
     const apiKey = process.env.RESEND_API_KEY;

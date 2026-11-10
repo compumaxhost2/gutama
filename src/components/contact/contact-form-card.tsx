@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { contactSchema, type ContactFormInput } from "@/lib/contact-schema";
 import { ServiceSelectDropdown, type Service } from "@/components/ui/service-select-dropdown";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { generateContactWhatsAppMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const INPUT_CLASS =
   "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-stone-500 outline-none transition-all duration-200 focus:border-primary focus:bg-white/[0.07] focus:ring-2 focus:ring-primary/20 disabled:opacity-50";
@@ -99,15 +100,9 @@ export function ContactForm() {
         return;
       }
 
-      // Success
-      const waText = `*New Estimate Request - Gutama Home Improvement*
-👤 *Client:* ${payload.fn} ${payload.ln}
-📞 *Phone:* ${payload.ph || "Not provided"}
-✉️ *Email:* ${payload.em}
-🔨 *Service:* ${payload.service}
-${payload.msg ? `📝 *Project Details:* ${payload.msg}` : ""}`.trim();
-
-      const waUrl = `https://wa.me/${siteConfig.phones.whatsapp}?text=${encodeURIComponent(waText)}`;
+      // Success - generate beautifully formatted WhatsApp message
+      const waText = generateContactWhatsAppMessage(payload);
+      const waUrl = buildWhatsAppUrl(waText);
       setWhatsAppUrl(waUrl);
 
       // Attempt automatic redirect to WhatsApp in a new tab

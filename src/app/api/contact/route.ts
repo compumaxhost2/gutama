@@ -3,8 +3,9 @@ import { Resend } from "resend";
 import { contactSchema, mapZodErrorsToFieldErrors, type ContactFormInput } from "@/lib/contact-schema";
 import { generateContactEmailHtml } from "@/lib/email-template";
 
-// Initialize Resend safely (fallback to dummy key during build time if env var not set)
-const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder_for_build");
+// Default sender and recipients
+const DEFAULT_FROM_EMAIL = "Gutama Home Improvement <estimates@gutamaroofingnj.com>";
+const DEFAULT_TO_EMAILS = "antoniogutama@gmail.com, wassay@compumaxllc.com";
 
 // Known mobile carrier SMS / MMS gateway domains
 const CARRIER_GATEWAY_PATTERNS = [
@@ -93,13 +94,28 @@ export async function POST(request: NextRequest) {
     }
 
     // Get environment variables with Antonio's business defaults
-    const rawToEmails = parseEmailList(process.env.CONTACT_TO_EMAIL || "antoniogutama@gmail.com, wassay@compumaxllc.com");
+    const rawToEmails = parseEmailList(process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAILS);
     const ccEmails = parseEmailList(process.env.CONTACT_CC_EMAIL);
     const bccEmails = parseEmailList(process.env.CONTACT_BCC_EMAIL);
     const configuredSmsEmails = parseEmailList(
       process.env.CONTACT_SMS_EMAIL || "9738205130@vtext.com"
     );
-    let fromEmail = process.env.CONTACT_FROM_EMAIL;
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || DEFAULT_FROM_EMAIL;
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      console.error("RESEND_API_KEY environment variable is missing");
+      return NextResponse.json(
+        {
+          error: "Unable to send message right now. Please try again later.",
+          fieldErrors: {},
+        },
+        { status: 500 }
+      );
+    }
+
+    // Initialize Resend with active key
+    const resend = new Resend(apiKey);
 
     // Separate standard email inbox recipients from mobile SMS gateway addresses
     const inboxRecipients = rawToEmails.filter((email) => !isSmsGatewayEmail(email));
@@ -113,49 +129,6 @@ export async function POST(request: NextRequest) {
     // Fallback if inboxRecipients is empty
     if (inboxRecipients.length === 0) {
       inboxRecipients.push("antoniogutama@gmail.com", "wassay@compumaxllc.com");
-    }
-
-    const apiKey = process.env.RESEND_API_KEY;
-    const hasValidKey = Boolean(
-      apiKey && apiKey.startsWith("re_") && apiKey !== "re_placeholder_for_build"
-    );
-
-    // If no valid Resend API key is configured yet, gracefully log lead and return success
-    if (!hasValidKey) {
-      console.warn("⚠️ [Gutama Leads] RESEND_API_KEY not configured yet.");
-      console.log("📥 Lead received in demo/preview mode:", {
-        client: `${data.fn} ${data.ln}`,
-        email: data.em,
-        phone: data.ph || "None provided",
-        service: data.service,
-        appointmentDate: data.appointmentDate,
-        message: data.msg,
-      });
-      console.log("📲 SMS notification queued for:", smsRecipients);
-      console.log("✉️ Email queued for:", inboxRecipients);
-
-      return NextResponse.json(
-        {
-          success: true,
-          message: "Your request has been received!",
-        },
-        { status: 200 }
-      );
-    }
-
-    // Fallback for local development
-    if (!fromEmail) {
-      if (process.env.NODE_ENV === "production") {
-        console.error("CONTACT_FROM_EMAIL not configured in production");
-        return NextResponse.json(
-          {
-            error: "Unable to send message right now. Please try again later.",
-            fieldErrors: {},
-          },
-          { status: 500 }
-        );
-      }
-      fromEmail = "onboarding@resend.dev"; // Local dev fallback
     }
 
     // Generate email template for inbox

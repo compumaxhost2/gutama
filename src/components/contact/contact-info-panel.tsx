@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Mail, MapPin, Phone, ShieldCheck, Clock, Award, Star } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 const addressFull = `${siteConfig.address.streetAddress}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
 
@@ -66,6 +67,33 @@ export function ContactInfoPanel() {
               </p>
               <p className="text-sm font-semibold text-white group-hover:text-secondary sm:text-base">
                 {siteConfig.phones.spanish}
+              </p>
+            </div>
+          </a>
+
+          {/* WhatsApp Direct Chat */}
+          <a
+            href={`https://wa.me/${siteConfig.phones.whatsapp}?text=${encodeURIComponent(
+              "Hi Antonio, I'm reaching out from your website for a free roofing/exterior estimate."
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 transition-all duration-200 hover:border-emerald-500/70 hover:bg-emerald-500/20"
+          >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+              <WhatsAppIcon className="h-5 w-5" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+                  Chat on WhatsApp
+                </p>
+                <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[9px] font-bold text-emerald-300">
+                  Fast Reply
+                </span>
+              </div>
+              <p className="text-sm font-semibold text-white group-hover:text-emerald-300 sm:text-base">
+                {siteConfig.phones.whatsappFormatted}
               </p>
             </div>
           </a>

@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { appointmentSchema, type AppointmentFormInput } from "@/lib/contact-schema";
 import { ServiceSelectDropdown, type Service } from "@/components/ui/service-select-dropdown";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 const INPUT_CLASS =
   "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-stone-500 outline-none transition-all duration-200 focus:border-primary focus:bg-white/[0.07] focus:ring-2 focus:ring-primary/20 disabled:opacity-50";
@@ -20,6 +21,7 @@ function generateCaptchaCode() {
 
 export function BookAppointmentForm() {
   const [service, setService] = useState<Service | null>(null);
+  const [whatsAppUrl, setWhatsAppUrl] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -109,6 +111,25 @@ export function BookAppointmentForm() {
         return;
       }
 
+      // Success
+      const waText = `*New Appointment Request - Gutama Home Improvement*
+👤 *Client:* ${payload.fn} ${payload.ln}
+📅 *Preferred Date:* ${payload.appointmentDate}
+📞 *Phone:* ${payload.ph || "Not provided"}
+✉️ *Email:* ${payload.em}
+🔨 *Service:* ${payload.service}
+${payload.msg ? `📝 *Notes:* ${payload.msg}` : ""}`.trim();
+
+      const waUrl = `https://wa.me/${siteConfig.phones.whatsapp}?text=${encodeURIComponent(waText)}`;
+      setWhatsAppUrl(waUrl);
+
+      // Attempt automatic redirect to WhatsApp in a new tab
+      try {
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+      } catch (err) {
+        console.warn("Popup blocked or not supported:", err);
+      }
+
       setSubmitted(true);
     } catch (err) {
       console.error("Appointment submission error:", err);
@@ -120,6 +141,7 @@ export function BookAppointmentForm() {
 
   const handleReset = () => {
     setService(null);
+    setWhatsAppUrl("");
     setLoading(false);
     setError(null);
     setFieldErrors({});
@@ -354,6 +376,24 @@ export function BookAppointmentForm() {
               </div>
             </div>
 
+            {/* Quick WhatsApp option */}
+            <div className="flex items-center justify-between gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/5 px-4 py-3 text-xs">
+              <div className="flex items-center gap-2 text-emerald-300">
+                <WhatsAppIcon className="h-4 w-4 shrink-0 text-emerald-400" />
+                <span>Prefer to schedule on WhatsApp?</span>
+              </div>
+              <a
+                href={`https://wa.me/${siteConfig.phones.whatsapp}?text=${encodeURIComponent(
+                  "Hi Antonio, I'd like to schedule a roofing inspection/appointment."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-emerald-400 underline hover:text-white"
+              >
+                Chat on WhatsApp &rarr;
+              </a>
+            </div>
+
             {/* Submit */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-1">
               <button
@@ -398,7 +438,7 @@ export function BookAppointmentForm() {
         </>
       ) : (
         /* Success state */
-        <div className="flex flex-col items-center justify-center gap-4 py-16 text-center animate-in fade-in duration-300">
+        <div className="flex flex-col items-center justify-center gap-4 py-12 text-center animate-in fade-in duration-300">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
             <Check className="h-8 w-8" strokeWidth={2.5} />
           </div>
@@ -408,7 +448,30 @@ export function BookAppointmentForm() {
           <p className="max-w-md text-sm leading-relaxed text-stone-300">
             Thank you for scheduling with us. Our team will review our calendar and reach out within 24 business hours to confirm your appointment.
           </p>
-          <div className="mt-4 flex flex-wrap gap-3">
+
+          {/* WhatsApp Direct Connect Card */}
+          <div className="w-full max-w-md rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 text-center my-2">
+            <div className="flex items-center justify-center gap-2 text-emerald-400 mb-1">
+              <WhatsAppIcon className="h-5 w-5" />
+              <p className="text-xs font-bold uppercase tracking-wider">
+                Instant WhatsApp Confirmation
+              </p>
+            </div>
+            <p className="text-xs text-stone-300 leading-relaxed">
+              We opened WhatsApp with your requested date and service details. If it didn&apos;t open automatically, tap below:
+            </p>
+            <a
+              href={whatsAppUrl || `https://wa.me/${siteConfig.phones.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3.5 inline-flex items-center justify-center gap-2.5 w-full rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              Send Details to Antonio on WhatsApp
+            </a>
+          </div>
+
+          <div className="mt-2 flex flex-wrap gap-3 justify-center">
             <button
               onClick={handleReset}
               className="rounded-xl border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:border-secondary hover:bg-white/10 cursor-pointer"

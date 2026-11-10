@@ -10,6 +10,8 @@ export const siteConfig = {
   phones: {
     english: "973-820-5130",
     spanish: "973-342-4134",
+    whatsapp: "19738205130",
+    whatsappFormatted: "+1 (973) 820-5130",
   },
   email: "antoniogutama@gmail.com",
   address: {

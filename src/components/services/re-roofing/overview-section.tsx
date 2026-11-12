@@ -12,7 +12,7 @@ export function ReRoofingOverviewSection() {
           </p>
 
           <h2 className="mb-6 font-serif text-[clamp(36px,4vw,56px)] leading-snug font-bold text-black">
-            Re-Roofing Services in
+            Roof Replacement Services in
             <br />
             <em className="text-primary italic">Essex County, NJ</em>
           </h2>

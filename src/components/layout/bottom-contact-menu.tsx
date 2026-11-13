@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone, Briefcase, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { siteConfig } from "@/config/site";
+import { SERVICE_CATEGORIES } from "@/config/navigation-services";
 
 const addressLabel = `${siteConfig.address.streetAddress}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
 
@@ -24,21 +25,6 @@ const contactItems = [
     href: `https://maps.app.goo.gl/Ft48fUmJwB71CMAk9`,
     icon: MapPin,
   },
-] as const;
-
-const services = [
-{ label: "Roofing", href: "/services/roofing" },
-{ label: "Roof Removal", href: "/services/roof-removal" },
-{ label: "Re-Roofing", href: "/services/re-roofing" },
-{ label: "Flat Roof", href: "/services/flat-roof" },
-{ label: "Slate Roof", href: "/services/slate-roof" },
-{ label: "Chimney", href: "/services/chimney" },
-{ label: "Siding", href: "/services/siding" },
-{ label: "Carpentry", href: "/services/carpentry" },
-{ label: "Dormers", href: "/services/dormers" },
-{ label: "Home Additions", href: "/services/additions" },
-{ label: "Gutters", href: "/services/gutters" },
-{ label: "Emergency Repair", href: "/services/emergency-repair" },
 ] as const;
 
 export function BottomContactMenu() {
@@ -175,16 +161,25 @@ return (
                 Our Services
               </h2>
 
-              <div className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto">
-                {services.map((service) => (
-                  <a
-                    key={service.label}
-                    href={service.href}
-                    onClick={() => setIsServicesOpen(false)}
-                    className="rounded-md p-2 text-foreground transition-colors duration-200 hover:bg-muted"
-                  >
-                    {service.label}
-                  </a>
+              <div className="flex max-h-[70vh] flex-col gap-3 overflow-y-auto pr-1">
+                {SERVICE_CATEGORIES.map((category) => (
+                  <div key={category.category} className="rounded-lg bg-muted/40 p-2.5">
+                    <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-secondary">
+                      {category.category}
+                    </p>
+                    <div className="flex flex-col gap-1">
+                      {category.items.map((service) => (
+                        <a
+                          key={service.href}
+                          href={service.href}
+                          onClick={() => setIsServicesOpen(false)}
+                          className="rounded-md px-2 py-1.5 text-sm text-foreground transition-colors duration-200 hover:bg-muted"
+                        >
+                          {service.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

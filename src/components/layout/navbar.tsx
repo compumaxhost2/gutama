@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { GoogleTranslateWidget } from "@/components/layout/google-translate-widget";
 import { MobileNavMenu } from "@/components/layout/mobile-nav-menu";
 import { cn } from "@/lib/utils";
+import { SERVICE_CATEGORIES } from "@/config/navigation-services";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -21,20 +22,6 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-const SERVICE_LINKS = [
-  { label: "Roofing", href: "/services/roofing" },
-  { label: "Roof Removal", href: "/services/roof-removal" },
-  { label: "Re-Roofing", href: "/services/re-roofing" },
-  { label: "Flat Roof", href: "/services/flat-roof" },
-  { label: "Slate Roof", href: "/services/slate-roof" },
-  { label: "Chimney", href: "/services/chimney" },
-  { label: "Siding", href: "/services/siding" },
-  { label: "Carpentry", href: "/services/carpentry" },
-  { label: "Dormers", href: "/services/dormers" },
-  { label: "Home Additions", href: "/services/additions" },
-  { label: "Gutters", href: "/services/gutters" },
-  { label: "Emergency Repair", href: "/services/emergency-repair" },
-] as const;
 
 type NavLink = {
   label: string;
@@ -78,34 +65,96 @@ const ServicesMenu = memo(function ServicesMenu({
 
       <div
         className={cn(
-          "absolute left-1/2 top-full z-60 w-96 -translate-x-1/2 pt-2.5 transition-all duration-200",
+          "absolute left-1/2 top-full z-60 w-[580px] -translate-x-1/2 pt-2.5 transition-all duration-200",
           isOpen ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-1"
         )}
       >
-        <div className="rounded-xl border border-white/15 bg-[#0c0c0e] p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-md">
-          <div className="mb-2.5 flex items-center justify-between border-b border-white/10 px-1 pb-2">
-            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-secondary">Services</p>
-            <Link href="/services" onClick={onClose} className="text-[11px] text-stone-400 transition-colors hover:text-white">View All →</Link>
+        <div className="rounded-2xl border border-white/15 bg-[#0c0c0e]/98 p-5 shadow-[0_25px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl">
+          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-2.5">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-secondary">
+                Our Services
+              </p>
+            </div>
+            <Link
+              href="/services"
+              onClick={onClose}
+              className="text-xs font-semibold text-stone-400 transition-colors hover:text-secondary"
+            >
+              View All Services →
+            </Link>
           </div>
-          <div className="grid grid-cols-2 gap-1.5">
-            {SERVICE_LINKS.map((service) => {
-              const isServiceActive = pathname === service.href;
+
+          <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+            {SERVICE_CATEGORIES.map((group) => {
+              const isGroupActive = group.items.some((item) => pathname === item.href);
+              const isEmergency = group.category === "Emergency Repairs";
+
               return (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  onClick={onClose}
+                <div
+                  key={group.category}
                   className={cn(
-                    "rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all duration-150",
-                    isServiceActive
-                      ? "bg-secondary/15 font-bold text-secondary"
-                      : "text-stone-300 hover:bg-white/10 hover:text-white"
+                    "rounded-xl p-2.5 transition-colors",
+                    isEmergency ? "bg-red-500/10 border border-red-500/25" : "bg-white/[0.02] border border-white/5 hover:border-white/10"
                   )}
                 >
-                  {service.label}
-                </Link>
+                  <div className="mb-1.5 flex items-center gap-1.5">
+                    <span className={cn(
+                      "h-1 w-2.5 rounded-full",
+                      isEmergency ? "bg-red-400" : "bg-primary"
+                    )} />
+                    <h3 className={cn(
+                      "text-xs font-bold uppercase tracking-wider",
+                      isEmergency ? "text-red-300" : isGroupActive ? "text-secondary" : "text-stone-200"
+                    )}>
+                      {group.category}
+                    </h3>
+                  </div>
+
+                  <ul className="space-y-0.5">
+                    {group.items.map((service) => {
+                      const isServiceActive = pathname === service.href;
+
+                      return (
+                        <li key={service.href}>
+                          <Link
+                            href={service.href}
+                            onClick={onClose}
+                            className={cn(
+                              "group flex items-center justify-between rounded-lg px-2 py-1 text-xs transition-all duration-150",
+                              isServiceActive
+                                ? "bg-secondary/20 font-bold text-secondary shadow-sm"
+                                : isEmergency
+                                ? "text-red-200 hover:bg-red-500/20 hover:text-white"
+                                : "text-stone-300 hover:bg-white/10 hover:text-white"
+                            )}
+                          >
+                            <span className="truncate">{service.label}</span>
+                            <span className="text-[10px] text-stone-500 opacity-0 transition-opacity group-hover:opacity-100">
+                              →
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               );
             })}
+          </div>
+
+          <div className="mt-4 flex items-center justify-between rounded-xl border border-secondary/20 bg-secondary/5 px-3.5 py-2 text-xs">
+            <span className="text-stone-300">
+              Need a custom estimate or inspection?
+            </span>
+            <Link
+              href="/contact"
+              onClick={onClose}
+              className="font-bold text-secondary underline hover:text-white"
+            >
+              Get Free Estimate &rarr;
+            </Link>
           </div>
         </div>
       </div>

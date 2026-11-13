@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { SERVICE_CATEGORIES } from "@/config/navigation-services";
 
 type NavLink = {
   label: string;
@@ -14,25 +15,6 @@ type NavLink = {
   isActive: boolean;
 };
 
-type ServiceLink = {
-  label: string;
-  href: string;
-};
-
-const MOBILE_SERVICE_LINKS: readonly ServiceLink[] = [
-  { label: "Roofing", href: "/services/roofing" },
-  { label: "Roof Removal", href: "/services/roof-removal" },
-  { label: "Re-Roofing", href: "/services/re-roofing" },
-  { label: "Flat Roof", href: "/services/flat-roof" },
-  { label: "Slate Roof", href: "/services/slate-roof" },
-  { label: "Chimney", href: "/services/chimney" },
-  { label: "Siding", href: "/services/siding" },
-  { label: "Carpentry", href: "/services/carpentry" },
-  { label: "Dormers", href: "/services/dormers" },
-  { label: "Home Additions", href: "/services/additions" },
-  { label: "Gutters", href: "/services/gutters" },
-  { label: "Emergency Repair", href: "/services/emergency-repair" },
-];
 
 type MobileNavMenuProps = {
   isOpen: boolean;
@@ -131,25 +113,54 @@ export function MobileNavMenu({
                     )}
                   >
                     <div className="overflow-hidden">
-                      <div className="mb-3 ml-8 mr-2 mt-1 rounded-md border border-border/50 bg-card/40 p-2.5">
+                      <div className="mb-3 ml-6 mr-2 mt-1 rounded-xl border border-border/50 bg-card/60 p-3 space-y-3">
                         <Link
                           href="/services"
                           onClick={close}
-                          className="block rounded-sm px-2 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] text-secondary"
+                          className="flex items-center justify-between rounded-md bg-secondary/10 px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary"
                         >
-                          View All Services
+                          <span>All Services</span>
+                          <span>View All →</span>
                         </Link>
-                        <div className="mt-1 grid grid-cols-1 gap-0.5">
-                          {MOBILE_SERVICE_LINKS.map((service) => (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              onClick={close}
-                              className="rounded-sm px-2 py-1.5 text-[12px] text-foreground/75 transition-colors hover:bg-secondary/10 hover:text-foreground"
-                            >
-                              {service.label}
-                            </Link>
-                          ))}
+
+                        <div className="space-y-2.5">
+                          {SERVICE_CATEGORIES.map((group) => {
+                            const isEmergency = group.category === "Emergency Repairs";
+
+                            return (
+                              <div
+                                key={group.category}
+                                className={cn(
+                                  "rounded-lg p-2 border",
+                                  isEmergency ? "bg-red-500/10 border-red-500/30" : "bg-black/30 border-white/5"
+                                )}
+                              >
+                                <p className={cn(
+                                  "text-[10px] font-bold uppercase tracking-wider mb-1",
+                                  isEmergency ? "text-red-300" : "text-stone-300"
+                                )}>
+                                  {group.category}
+                                </p>
+                                <div className="grid grid-cols-1 gap-0.5">
+                                  {group.items.map((service) => (
+                                    <Link
+                                      key={service.href}
+                                      href={service.href}
+                                      onClick={close}
+                                      className={cn(
+                                        "rounded px-2 py-1 text-[12px] transition-colors",
+                                        isEmergency
+                                          ? "text-red-200 hover:bg-red-500/20 hover:text-white"
+                                          : "text-foreground/80 hover:bg-secondary/15 hover:text-foreground"
+                                      )}
+                                    >
+                                      {service.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>

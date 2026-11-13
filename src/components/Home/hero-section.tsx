@@ -17,7 +17,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden bg-gradient-to-br from-neutral-950 via-zinc-950 to-neutral-900"
+      className="relative w-full overflow-hidden bg-gradient-to-br from-zinc-800 via-neutral-800 to-zinc-850"
     >
       {/* Subtle ambient light gradient glows */}
       <div
@@ -35,7 +35,7 @@ export function HeroSection() {
       {/* Split Screen Grid: Left Content (Mobile: Image as background | Desktop: Left Column) */}
       <div className="grid min-h-[auto] lg:min-h-[70vh] xl:min-h-[74vh] grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Content */}
-        <div className="relative z-10 flex flex-col justify-center overflow-hidden px-6 py-12 sm:px-10 md:px-12 lg:py-12 xl:py-14 lg:pl-[max(2rem,calc((100vw-1280px)/2+1.5rem))] lg:pr-10 xl:pr-14 lg:bg-gradient-to-br lg:from-neutral-950/95 lg:via-[#141417]/95 lg:to-neutral-900/90">
+        <div className="relative z-10 flex flex-col justify-center overflow-hidden px-6 py-12 sm:px-10 md:px-12 lg:py-12 xl:py-14 lg:pl-[max(2rem,calc((100vw-1280px)/2+1.5rem))] lg:pr-10 xl:pr-14 lg:bg-gradient-to-br lg:from-zinc-800/98 lg:via-[#2b2d35]/98 lg:to-zinc-850/95">
           {/* Mobile-Only Background Image (Behind Content) */}
           <div className="absolute inset-0 z-0 lg:hidden pointer-events-none" aria-hidden="true">
             <Image
@@ -47,9 +47,9 @@ export function HeroSection() {
               quality={90}
               className="object-cover object-center brightness-105"
             />
-            {/* Dark gradient overlays for high contrast and readability on mobile */}
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/95 via-black/60 to-neutral-950/95" />
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px]" />
+            {/* Dark gray gradient overlays for high contrast and readability on mobile */}
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/95 via-zinc-800/85 to-zinc-900/95" />
+            <div className="absolute inset-0 bg-black/25 backdrop-blur-[0.5px]" />
           </div>
 
           {/* Vertical gradient divider at split boundary on desktop */}
@@ -168,7 +168,7 @@ export function HeroSection() {
         </div>
 
         {/* Right Side: Bright, Clear Image (Desktop Only - on mobile it is positioned behind content) */}
-        <div className="relative hidden lg:block lg:min-h-full w-full overflow-hidden bg-neutral-900">
+        <div className="relative hidden lg:block lg:min-h-full w-full overflow-hidden bg-zinc-800">
           <Image
             src="/images/gutama new images/hero 4k.jpg"
             alt="Roofing contractor working on residential roof in Essex County NJ"

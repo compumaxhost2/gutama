@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, Phone, X } from "lucide-react";
 import { memo, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -44,6 +44,15 @@ const ServicesMenu = memo(function ServicesMenu({
   onToggle,
   onClose,
 }: ServicesMenuProps) {
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
+  // Reset hovered category when main menu closes
+  useEffect(() => {
+    if (!isOpen) {
+      setHoveredCategory(null);
+    }
+  }, [isOpen]);
+
   return (
     <div className="relative">
       <button
@@ -52,7 +61,7 @@ const ServicesMenu = memo(function ServicesMenu({
         aria-haspopup="menu"
         onClick={onToggle}
         className={cn(
-          "relative inline-flex items-center gap-1 text-sm font-medium transition-colors",
+          "relative inline-flex items-center gap-1 text-sm font-medium transition-colors cursor-pointer",
           "after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all",
           isActive
             ? "text-foreground after:w-full"
@@ -65,95 +74,137 @@ const ServicesMenu = memo(function ServicesMenu({
 
       <div
         className={cn(
-          "absolute left-1/2 top-full z-60 w-[580px] -translate-x-1/2 pt-2.5 transition-all duration-200",
+          "absolute left-0 top-full z-60 w-64 pt-2.5 transition-all duration-200",
           isOpen ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-1"
         )}
+        onMouseLeave={() => setHoveredCategory(null)}
       >
-        <div className="rounded-2xl border border-white/15 bg-[#0c0c0e]/98 p-5 shadow-[0_25px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl">
-          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-2.5">
-            <div className="flex items-center gap-2">
+        <div className="rounded-2xl border border-white/15 bg-[#0c0c0e]/98 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-xl">
+          <div className="mb-1.5 flex items-center justify-between border-b border-white/10 px-2.5 pb-2 pt-0.5">
+            <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-secondary">
-                Our Services
+              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-secondary">
+                Services
               </p>
             </div>
             <Link
               href="/services"
               onClick={onClose}
-              className="text-xs font-semibold text-stone-400 transition-colors hover:text-secondary"
+              className="text-[11px] font-semibold text-stone-400 transition-colors hover:text-white"
             >
-              View All Services →
+              View All →
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+          <div className="space-y-1">
             {SERVICE_CATEGORIES.map((group) => {
               const isGroupActive = group.items.some((item) => pathname === item.href);
               const isEmergency = group.category === "Emergency Repairs";
+              const isHovered = hoveredCategory === group.category;
 
               return (
                 <div
                   key={group.category}
-                  className={cn(
-                    "rounded-xl p-2.5 transition-colors",
-                    isEmergency ? "bg-red-500/10 border border-red-500/25" : "bg-white/[0.02] border border-white/5 hover:border-white/10"
-                  )}
+                  className="relative"
+                  onMouseEnter={() => setHoveredCategory(group.category)}
                 >
-                  <div className="mb-1.5 flex items-center gap-1.5">
-                    <span className={cn(
-                      "h-1 w-2.5 rounded-full",
-                      isEmergency ? "bg-red-400" : "bg-primary"
-                    )} />
-                    <h3 className={cn(
-                      "text-xs font-bold uppercase tracking-wider",
-                      isEmergency ? "text-red-300" : isGroupActive ? "text-secondary" : "text-stone-200"
-                    )}>
-                      {group.category}
-                    </h3>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setHoveredCategory((prev) => (prev === group.category ? null : group.category))
+                    }
+                    className={cn(
+                      "group/category flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-xs font-semibold transition-all duration-150 text-left cursor-pointer",
+                      isHovered || isGroupActive
+                        ? isEmergency
+                          ? "bg-red-500/25 text-red-200 shadow-sm"
+                          : "bg-secondary/20 text-secondary shadow-sm"
+                        : isEmergency
+                        ? "text-red-300 hover:bg-red-500/15 hover:text-red-200"
+                        : "text-stone-300 hover:bg-white/10 hover:text-white"
+                    )}
+                  >
+                    <div className="flex items-center gap-2 truncate pr-2">
+                      <span
+                        className={cn(
+                          "h-1.5 w-1.5 rounded-full shrink-0",
+                          isEmergency ? "bg-red-400" : isGroupActive ? "bg-secondary" : "bg-stone-500"
+                        )}
+                      />
+                      <span className="truncate">{group.category}</span>
+                    </div>
+                    <ChevronRight
+                      className={cn(
+                        "h-3.5 w-3.5 shrink-0 transition-transform duration-150",
+                        isHovered ? "translate-x-0.5 text-secondary" : "text-stone-500 group-hover/category:text-stone-300"
+                      )}
+                    />
+                  </button>
+
+                  {/* Flyout Sub-dropdown (Nested Dropdown in Dropdown) */}
+                  <div
+                    className={cn(
+                      "absolute left-full top-0 z-70 pl-2 transition-all duration-150",
+                      isHovered
+                        ? "pointer-events-auto opacity-100 translate-x-0"
+                        : "pointer-events-none opacity-0 -translate-x-1"
+                    )}
+                    onMouseEnter={() => setHoveredCategory(group.category)}
+                  >
+                    <div className="w-56 rounded-xl border border-white/15 bg-[#0c0c0e]/98 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-xl">
+                      <div className="mb-1.5 border-b border-white/10 px-2 py-1 flex items-center justify-between">
+                        <span className={cn(
+                          "text-[10px] font-bold uppercase tracking-wider",
+                          isEmergency ? "text-red-300" : "text-secondary"
+                        )}>
+                          {group.category}
+                        </span>
+                        <span className="text-[10px] font-mono text-stone-500">
+                          {group.items.length} {group.items.length === 1 ? "service" : "services"}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col gap-0.5">
+                        {group.items.map((service) => {
+                          const isServiceActive = pathname === service.href;
+
+                          return (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              onClick={onClose}
+                              className={cn(
+                                "group/sub flex items-center justify-between rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all duration-150",
+                                isServiceActive
+                                  ? "bg-secondary/20 font-bold text-secondary shadow-sm"
+                                  : isEmergency
+                                  ? "text-red-200 hover:bg-red-500/20 hover:text-white"
+                                  : "text-stone-300 hover:bg-white/10 hover:text-white"
+                              )}
+                            >
+                              <span className="truncate">{service.label}</span>
+                              <span className="text-[10px] text-stone-500 opacity-0 transition-opacity group-hover/sub:opacity-100">
+                                →
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-
-                  <ul className="space-y-0.5">
-                    {group.items.map((service) => {
-                      const isServiceActive = pathname === service.href;
-
-                      return (
-                        <li key={service.href}>
-                          <Link
-                            href={service.href}
-                            onClick={onClose}
-                            className={cn(
-                              "group flex items-center justify-between rounded-lg px-2 py-1 text-xs transition-all duration-150",
-                              isServiceActive
-                                ? "bg-secondary/20 font-bold text-secondary shadow-sm"
-                                : isEmergency
-                                ? "text-red-200 hover:bg-red-500/20 hover:text-white"
-                                : "text-stone-300 hover:bg-white/10 hover:text-white"
-                            )}
-                          >
-                            <span className="truncate">{service.label}</span>
-                            <span className="text-[10px] text-stone-500 opacity-0 transition-opacity group-hover:opacity-100">
-                              →
-                            </span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-4 flex items-center justify-between rounded-xl border border-secondary/20 bg-secondary/5 px-3.5 py-2 text-xs">
-            <span className="text-stone-300">
-              Need a custom estimate or inspection?
-            </span>
+          <div className="mt-2 border-t border-white/10 px-2 pt-2">
             <Link
               href="/contact"
               onClick={onClose}
-              className="font-bold text-secondary underline hover:text-white"
+              className="flex items-center justify-between text-[11px] font-semibold text-stone-400 transition-colors hover:text-secondary"
             >
-              Get Free Estimate &rarr;
+              <span>Get Free Estimate</span>
+              <span>→</span>
             </Link>
           </div>
         </div>

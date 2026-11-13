@@ -32,6 +32,7 @@ export function MobileNavMenu({
   phone,
 }: MobileNavMenuProps) {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   return (
     <>
@@ -123,40 +124,79 @@ export function MobileNavMenu({
                           <span>View All →</span>
                         </Link>
 
-                        <div className="space-y-2.5">
+                        <div className="space-y-1.5">
                           {SERVICE_CATEGORIES.map((group) => {
                             const isEmergency = group.category === "Emergency Repairs";
+                            const isCatOpen = openCategory === group.category;
 
                             return (
                               <div
                                 key={group.category}
                                 className={cn(
-                                  "rounded-lg p-2 border",
-                                  isEmergency ? "bg-red-500/10 border-red-500/30" : "bg-black/30 border-white/5"
+                                  "rounded-lg border transition-colors overflow-hidden",
+                                  isEmergency
+                                    ? "bg-red-500/10 border-red-500/30"
+                                    : "bg-black/30 border-white/5"
                                 )}
                               >
-                                <p className={cn(
-                                  "text-[10px] font-bold uppercase tracking-wider mb-1",
-                                  isEmergency ? "text-red-300" : "text-stone-300"
-                                )}>
-                                  {group.category}
-                                </p>
-                                <div className="grid grid-cols-1 gap-0.5">
-                                  {group.items.map((service) => (
-                                    <Link
-                                      key={service.href}
-                                      href={service.href}
-                                      onClick={close}
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setOpenCategory((prev) => (prev === group.category ? null : group.category))
+                                  }
+                                  className="flex w-full items-center justify-between p-2 text-left cursor-pointer"
+                                  aria-expanded={isCatOpen}
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <span
                                       className={cn(
-                                        "rounded px-2 py-1 text-[12px] transition-colors",
-                                        isEmergency
-                                          ? "text-red-200 hover:bg-red-500/20 hover:text-white"
-                                          : "text-foreground/80 hover:bg-secondary/15 hover:text-foreground"
+                                        "h-1.5 w-1.5 rounded-full shrink-0",
+                                        isEmergency ? "bg-red-400" : "bg-primary"
+                                      )}
+                                    />
+                                    <span
+                                      className={cn(
+                                        "text-xs font-bold uppercase tracking-wider",
+                                        isEmergency ? "text-red-300" : "text-stone-200"
                                       )}
                                     >
-                                      {service.label}
-                                    </Link>
-                                  ))}
+                                      {group.category}
+                                    </span>
+                                  </div>
+                                  <ChevronDown
+                                    className={cn(
+                                      "h-3.5 w-3.5 transition-transform duration-200",
+                                      isCatOpen ? "rotate-180 text-secondary" : "text-stone-500"
+                                    )}
+                                  />
+                                </button>
+
+                                <div
+                                  className={cn(
+                                    "grid transition-all duration-200 ease-out",
+                                    isCatOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                  )}
+                                >
+                                  <div className="overflow-hidden">
+                                    <div className="flex flex-col gap-0.5 border-t border-white/5 px-2 pb-2 pt-1">
+                                      {group.items.map((service) => (
+                                        <Link
+                                          key={service.href}
+                                          href={service.href}
+                                          onClick={close}
+                                          className={cn(
+                                            "flex items-center justify-between rounded px-2 py-1.5 text-xs font-medium transition-colors",
+                                            isEmergency
+                                              ? "text-red-200 hover:bg-red-500/20 hover:text-white"
+                                              : "text-stone-300 hover:bg-secondary/15 hover:text-white"
+                                          )}
+                                        >
+                                          <span>{service.label}</span>
+                                          <span className="text-[10px] text-stone-500">→</span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             );

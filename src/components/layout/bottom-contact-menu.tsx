@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, Briefcase, X } from "lucide-react";
+import { Mail, MapPin, Phone, Briefcase, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { siteConfig } from "@/config/site";
 import { SERVICE_CATEGORIES } from "@/config/navigation-services";
+import { cn } from "@/lib/utils";
 
 const addressLabel = `${siteConfig.address.streetAddress}, ${siteConfig.address.locality}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`;
 
@@ -29,6 +30,7 @@ const contactItems = [
 
 export function BottomContactMenu() {
 const [isServicesOpen, setIsServicesOpen] = useState(false);
+const [openCategory, setOpenCategory] = useState<string | null>(null);
 
 return (
   <>
@@ -161,26 +163,51 @@ return (
                 Our Services
               </h2>
 
-              <div className="flex max-h-[70vh] flex-col gap-3 overflow-y-auto pr-1">
-                {SERVICE_CATEGORIES.map((category) => (
-                  <div key={category.category} className="rounded-lg bg-muted/40 p-2.5">
-                    <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-secondary">
-                      {category.category}
-                    </p>
-                    <div className="flex flex-col gap-1">
-                      {category.items.map((service) => (
-                        <a
-                          key={service.href}
-                          href={service.href}
-                          onClick={() => setIsServicesOpen(false)}
-                          className="rounded-md px-2 py-1.5 text-sm text-foreground transition-colors duration-200 hover:bg-muted"
-                        >
-                          {service.label}
-                        </a>
-                      ))}
+              <div className="flex max-h-[70vh] flex-col gap-2 overflow-y-auto pr-1">
+                {SERVICE_CATEGORIES.map((category) => {
+                  const isCatOpen = openCategory === category.category;
+
+                  return (
+                    <div
+                      key={category.category}
+                      className="rounded-lg bg-muted/40 transition-colors overflow-hidden"
+                    >
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenCategory((prev) => (prev === category.category ? null : category.category))
+                        }
+                        className="flex w-full items-center justify-between p-2.5 text-left cursor-pointer"
+                        aria-expanded={isCatOpen}
+                      >
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-secondary">
+                          {category.category}
+                        </span>
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 transition-transform duration-200 text-muted-foreground",
+                            isCatOpen && "rotate-180 text-secondary"
+                          )}
+                        />
+                      </button>
+
+                      {isCatOpen && (
+                        <div className="flex flex-col gap-1 border-t border-border/40 px-2.5 pb-2 pt-1">
+                          {category.items.map((service) => (
+                            <a
+                              key={service.href}
+                              href={service.href}
+                              onClick={() => setIsServicesOpen(false)}
+                              className="rounded-md px-2 py-1.5 text-sm text-foreground transition-colors duration-200 hover:bg-muted"
+                            >
+                              {service.label}
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </motion.div>

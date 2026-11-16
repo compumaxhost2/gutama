@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 export function RoofRemovalFaqSection() {
   const content = {
@@ -56,7 +57,7 @@ export function RoofRemovalFaqSection() {
 
             <div className="mx-0 mb-7 h-px w-24 bg-linear-to-r from-secondary to-secondary/30" />
 
-            <p className="mb-8 text-sm leading-loose text-stone-600">
+            <p className="mb-8 text-sm leading-loose text-stone-300">
               {content.intro}
             </p>
 
@@ -74,74 +75,82 @@ export function RoofRemovalFaqSection() {
         </div>
 
         <div className="flex flex-col">
-          {content.items.map((item, i) => (
-            <div
-              key={item.q}
-              className="border-b border-stone-200/90"
-            >
-              <button
-                onClick={() =>
-                  setActiveIndex(activeIndex === i ? null : i)
-                }
-                className="flex w-full cursor-pointer items-center justify-between gap-4 bg-transparent py-6 text-left"
+          {content.items.map((item, i) => {
+            const isOpen = activeIndex === i;
+
+            return (
+              <div
+                key={item.q}
+                className="border-b border-white/10 transition-colors"
               >
-                <span
-                  className={[
-                    "font-serif text-lg transition-colors duration-200",
-                    activeIndex === i
-                      ? "text-secondary"
-                      : "text-stone-900",
-                  ].join(" ")}
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() =>
+                    setActiveIndex(isOpen ? null : i)
+                  }
+                  className="group flex w-full cursor-pointer items-center justify-between gap-4 bg-transparent py-6 text-left"
                 >
-                  {item.q}
-                </span>
-
-                <motion.div
-                  animate={{
-                    rotate: activeIndex === i ? 90 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ChevronRight
-                    size={18}
-                    className={
-                      activeIndex === i
-                        ? "text-secondary"
-                        : "text-stone-600"
-                    }
-                  />
-                </motion.div>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {activeIndex === i && (
-                  <motion.div
-                    initial={{
-                      height: 0,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      height: "auto",
-                      opacity: 1,
-                    }}
-                    exit={{
-                      height: 0,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      duration: 0.35,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="overflow-hidden"
+                  <span
+                    className={cn(
+                      "font-serif text-lg transition-colors duration-200",
+                      isOpen
+                        ? "text-secondary font-semibold"
+                        : "text-white group-hover:text-secondary"
+                    )}
                   >
-                    <p className="pb-6 text-sm leading-loose text-stone-600">
-                      {item.a}
-                    </p>
+                    {item.q}
+                  </span>
+
+                  <motion.div
+                    animate={{
+                      rotate: isOpen ? 90 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="shrink-0"
+                  >
+                    <ChevronRight
+                      size={18}
+                      className={cn(
+                        "transition-colors duration-200",
+                        isOpen
+                          ? "text-secondary"
+                          : "text-stone-400 group-hover:text-secondary"
+                      )}
+                    />
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{
+                        height: 0,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        duration: 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-6 text-sm leading-loose text-stone-300">
+                        {item.a}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

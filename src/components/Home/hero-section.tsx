@@ -76,9 +76,7 @@ export function HeroSection() {
               <br />
               <span className="tracking-[0.03em] text-white">in Essex County, NJ</span>
               <br />
-              <span className="text-red-500 mt-2.5 block text-[0.52em] font-semibold normal-case leading-[1.35] tracking-[0.05em]">
-                Free Inspections &amp; Quality Work
-              </span>
+
             </h1>
 
             {/* Tagline Highlights */}

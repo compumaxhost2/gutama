@@ -63,7 +63,7 @@ export function HeroSection() {
             <div className="mb-3.5 hidden sm:inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3.5 py-1 backdrop-blur-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-secondary">
-                Roofing Contractor — New Jersey
+                Roofing Contractor — NJ
               </span>
             </div>
 
